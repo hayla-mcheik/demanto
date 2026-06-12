@@ -65,14 +65,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+          font-family: 'Roboto', sans-serif;
             color: #1A1A1A;
             background-color: #FFFFFF;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+ font-family: 'Roboto', sans-serif;
             font-weight: 500;
             letter-spacing: 0.02em;
         }

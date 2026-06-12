@@ -8,7 +8,7 @@
 
     /* Typography - Matching Home Page */
     .luxury-heading {
-        font-family: 'Cormorant Garamond', serif;
+   font-family: 'Roboto', sans-serif;
         font-weight: 400;
         letter-spacing: 1.5px;
         text-transform: uppercase;
@@ -215,7 +215,7 @@
     }
     
     .category-card-body h5 {
-        font-family: 'Cormorant Garamond', serif;
+     font-family: 'Roboto', sans-serif;
         font-size: 18px;
         color: #222;
         margin-bottom: 5px;
@@ -246,7 +246,7 @@
     }
 
     .empty-state h5 {
-        font-family: 'Cormorant Garamond', serif;
+    font-family: 'Roboto', sans-serif;
         font-size: 22px;
         color: var(--demanto-dark);
         margin-bottom: 10px;

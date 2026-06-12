@@ -6,8 +6,8 @@
                     <div class="contact-email">
                         <span>
                             Email us: 
-                            <a href="mailto:{{ $appSetting->email1 ?? 'info@talyscollection.com' }}">
-                                {{ $appSetting->email1 ?? 'info@talyscollection.com' }}
+                            <a href="mailto:{{ $appSetting->email1 ?? 'info@demanto.com' }}">
+                                {{ $appSetting->email1 ?? 'info@demanto.com' }}
                             </a>
                             @if(!empty($appSetting->email2))
                                 <span class="mx-2">|</span>
@@ -127,7 +127,8 @@
                             <div class="header-action-area">
                                 <div class="shop-button-group">
                                     <div class="shop-button-item position-relative parent-cart-hover">
-                                        <a class="shop-button d-flex align-items-center text-decoration-none gap-2" href="{{ url('cart') }}">
+                               <a class="shop-button d-flex align-items-center text-decoration-none gap-2 cart-toggle"
+   href="javascript:void(0)">
                                             <div class="position-relative container-cart-bag">
                                                 <i class="icon-bag icon fs-5 text-white target-cart-icon"></i>
                                                 <sup class="shop-count badge rounded-circle"><livewire:frontend.cart.cart-count /></sup>
@@ -462,22 +463,28 @@
         visibility: visible;
         transform: translateY(0);
     }
-    .popup-cart-content {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 340px;
-        background: #fff;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        border: 1px solid var(--boutique-light-border);
-        padding: 20px;
-        z-index: 1090;
-        transition: all 0.3s ease;
-        display: none;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-    }
+  .popup-cart-content{
+    position:absolute;
+    top:100%;
+    right:0;
+    width:340px;
+    background:#fff;
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+    border:1px solid #eee;
+    padding:20px;
+    z-index:1090;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:.3s;
+}
+
+.popup-cart-content.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
 
     /* ==========================================================================
        3. LUXURY TEXT TICKER ANIMATION MATRIX LAYER
@@ -756,5 +763,23 @@
                 }
             });
         }
+        const cartBtn = document.querySelector('.cart-toggle');
+const cartPopup = document.querySelector('.popup-cart-content');
+
+if(cartBtn && cartPopup){
+
+    cartBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        cartPopup.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(e){
+        if(!cartPopup.contains(e.target) && !cartBtn.contains(e.target)){
+            cartPopup.classList.remove('show');
+        }
+    });
+}
     });
 </script>

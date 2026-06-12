@@ -40,7 +40,7 @@
         }
 
         .title {
-            font-family: 'Cormorant Garamond', serif;
+           font-family: 'Roboto', sans-serif;
             font-size: 22px;
             font-weight: 500;
             color: var(--demanto-dark);
@@ -78,7 +78,7 @@
         }
 
         .product-content .title {
-            font-family: 'Cormorant Garamond', serif;
+       font-family: 'Roboto', sans-serif;
             font-size: 14px;
             font-weight: 500;
             margin-bottom: 5px;

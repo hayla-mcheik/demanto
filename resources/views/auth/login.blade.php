@@ -1,9 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.inc.frontend.breadcrumb', [
+    'breadcrumbs' => [
+        [
+            'title' => 'Login',
+            'url' => '#'
+        ]
+    ]
+])
+    
 <div class="container">
 
-    <div class="row justify-content-center mt-5 mb-5">
+<div class="row justify-content-center mt-5 mb-5">
         <div class="col-md-8">
             <h4 class="fz-24 mb-25">Log in to your account</h4>
                <div class="login-form-content">

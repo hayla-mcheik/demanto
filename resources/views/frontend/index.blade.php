@@ -25,7 +25,7 @@
 
     /* Enhanced Typography */
     .luxury-heading {
-        font-family: 'Cormorant Garamond', serif;
+       font-family: 'Roboto', sans-serif;
         font-weight: 400;
         letter-spacing: 1.5px;
         text-transform: uppercase;
@@ -210,7 +210,7 @@
     
     .slider-title {
         color: #fff;
-        font-family: 'Cormorant Garamond', serif;
+       font-family: 'Roboto', sans-serif;
         font-size: 42px;
         font-weight: 300;
         letter-spacing: 2px;
@@ -306,7 +306,7 @@
     }
     
     .collection-content h4 {
-        font-family: 'Cormorant Garamond', serif;
+ font-family: 'Roboto', sans-serif;
         font-size: 18px;
         color: #222;
         margin-bottom: 5px;
@@ -340,7 +340,7 @@
     }
     
     .about-title {
-        font-family: 'Cormorant Garamond', serif;
+       font-family: 'Roboto', sans-serif;
         font-size: 32px;
         line-height: 1.2;
         color: var(--demanto-dark);
@@ -458,7 +458,7 @@
     }
     
     .featured-content h4 {
-        font-family: 'Cormorant Garamond', serif;
+      font-family: 'Roboto', sans-serif;
         font-size: 18px;
         margin-bottom: 8px;
         color: #232323;
@@ -529,7 +529,7 @@
     }
     
     .section-title-demanto {
-        font-family: 'Cormorant Garamond', serif;
+ font-family: 'Roboto', sans-serif;
         color: #B39256;
         font-size: 28px;
         letter-spacing: 1.5px;
@@ -796,9 +796,7 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
                                             <div class="slider-content text-start">
                                                 <h2 class="slider-title ani-left">{{ $sliderItem->title }}</h2>
                                                 <p class="slider-desc ani-right" style="max-width: 550px;">{{ $sliderItem->description }}</p>
-                                                <div class="slider-btn ani-bottom mt-3">
-                                                    <a href="{{ url('/collections') }}" class="btn-demanto">Discover The Collections</a>
-                                                </div>
+                                          
                                             </div>
                                         </div>
                                     </div>

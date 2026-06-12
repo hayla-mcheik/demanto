@@ -54,7 +54,7 @@
     }
 
     .section-title-demanto {
-        font-family: 'Cormorant Garamond', serif;
+       font-family: 'Roboto', sans-serif;
         color: var(--demanto-gold);
         font-size: 28px;
         letter-spacing: 2px;
@@ -182,7 +182,7 @@
     }
 
     .exhibition-content h3 {
-        font-family: 'Cormorant Garamond', serif;
+ font-family: 'Roboto', sans-serif;
         font-size: 20px;
         font-weight: 500;
         color: var(--demanto-dark);
@@ -280,7 +280,7 @@
     }
 
     .empty-state h3 {
-        font-family: 'Cormorant Garamond', serif;
+      font-family: 'Roboto', sans-serif;
         font-size: 24px;
         color: var(--demanto-dark);
         margin-bottom: 10px;

@@ -132,7 +132,7 @@
         }
 
         .title {
-            font-family: 'Cormorant Garamond', serif;
+     font-family: 'Roboto', sans-serif;
             font-size: 32px;
             font-weight: 500;
             color: var(--demanto-dark);
