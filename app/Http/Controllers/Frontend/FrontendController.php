@@ -21,6 +21,7 @@ class FrontendController extends Controller
     {
         $sliders = Slider::where('status','0')->get(); 
         $about = \App\Models\About::first();
+        $aboutData = \App\Models\AboutData::first();
         $trendingProducts = Product::where('trending','1')->latest()->take(15)->get();
         $newArrivalsProducts = Product::latest()->take(14)->get();
         $featuredProducts = Product::where('featured','1')->latest()->take(14)->get();
@@ -30,7 +31,7 @@ class FrontendController extends Controller
         $blogs = Blogs::all();
 $banner = Banner::first();
 $instaFeeds = InstagramFeed::where('status','0')->latest()->take(8)->get();
-        return view('frontend.index',compact('sliders','about','trendingProducts','newArrivalsProducts','featuredProducts','categories','reviews','threecategories','blogs','banner','instaFeeds'));
+        return view('frontend.index',compact('sliders','about','aboutData','trendingProducts','newArrivalsProducts','featuredProducts','categories','reviews','threecategories','blogs','banner','instaFeeds'));
     }
 
 
@@ -101,7 +102,8 @@ public function productView(string $category_slug , string $product_slug)
 public function aboutus()
 {
     $about = \App\Models\About::first();
-    return view('frontend.aboutus', compact('about'));
+    $aboutData = \App\Models\AboutData::first();
+    return view('frontend.aboutus', compact('about','aboutData'));
 }
 
 public function blogs()

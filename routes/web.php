@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutDataController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail; // Import the Mail facade
@@ -134,6 +135,10 @@ Route::put('sliders/{slider}','update');
 Route::get('sliders/{slider}/delete','destroy');
     });
 
+Route::controller(AboutDataController::class)->group(function () {
+    Route::get('/about-data', 'edit')->name('admin.aboutdata.edit');
+    Route::put('/about-data', 'update')->name('admin.aboutdata.update');
+});
 
     Route::controller(App\Http\Controllers\Admin\BlogsController::class)->group(function () {
         Route::get('blogs','index');

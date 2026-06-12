@@ -144,6 +144,81 @@ var carouselSlider = new Swiper('.default-slider-container', {
 
   // Swiper Slider Js
 
+  // Featured Products Luxury Slider
+var featuredProducts = new Swiper('.featured-products-slider', {
+
+    slidesPerView: 4,
+    spaceBetween: 30,
+    loop: true,
+    speed: 1000,
+
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+
+    navigation: {
+        nextEl: '.featured-next',
+        prevEl: '.featured-prev',
+    },
+
+    pagination: {
+        el: '.featured-pagination',
+        clickable: true,
+    },
+
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 15
+        },
+        576: {
+            slidesPerView: 2,
+            spaceBetween: 20
+        },
+        992: {
+            slidesPerView: 3,
+            spaceBetween: 25
+        },
+        1200: {
+            slidesPerView: 4,
+            spaceBetween: 30
+        }
+    }
+});
+var exhibitionsSlider = new Swiper('.exhibitions-slider', {
+
+    centeredSlides:true,
+
+    loop:true,
+
+    speed:1000,
+
+    slidesPerView:3,
+
+    spaceBetween:20,
+
+    autoplay:{
+        delay:3500,
+        disableOnInteraction:false
+    },
+
+    navigation:{
+        nextEl:'.demanto-next',
+        prevEl:'.demanto-prev'
+    },
+
+    breakpoints:{
+
+        0:{
+            slidesPerView:1
+        },
+
+        768:{
+            slidesPerView:3
+        }
+    }
+});
     // Product Single Thumb Slider Js
       var ProductNav = new Swiper('.single-product-nav-slider', {
         spaceBetween: 10,

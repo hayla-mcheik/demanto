@@ -1,72 +1,804 @@
 @extends('layouts.app')
-@section('title','Home Page')
+@section('title', 'Home Page')
+
 @section('content')
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap');
+
+    :root {
+        --demanto-gold: #B39256;
+        --demanto-gold-light: #F7F4EB;
+        --demanto-dark: #232323;
+        --demanto-bg: #FDFBF7;
+        --demanto-muted: #6E6E6E;
+        --luxury-border: rgba(179, 146, 86, 0.25);
+        --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --box-shadow-luxury: 0 25px 45px rgba(179, 146, 86, 0.1);
+    }
+
+    body {
+        background-color: var(--demanto-bg);
+        color: var(--demanto-dark);
+        font-family: 'Roboto', sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* Enhanced Typography */
+    .luxury-heading {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, var(--demanto-dark) 0%, var(--demanto-gold) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 28px !important;
+    }
+
+    .luxury-sub {
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--demanto-gold);
+        font-weight: 500;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 6px;
+    }
+    
+    .luxury-sub::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 1.5px;
+        background: var(--demanto-gold);
+    }
+
+    .luxury-section-title {
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    /* Enhanced Buttons */
+    .btn-demanto {
+        background: linear-gradient(135deg, var(--demanto-gold) 0%, #9a7b45 100%);
+        color: #fff !important;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 10px 28px;
+        border: none;
+        border-radius: 25px;
+        transition: var(--transition-smooth);
+        display: inline-block;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .btn-demanto::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--demanto-dark) 0%, #1a1a1a 100%);
+        transition: all 0.5s ease;
+        z-index: -1;
+        border-radius: 25px;
+    }
+    
+    .btn-demanto:hover::before {
+        left: 0;
+    }
+    
+    .btn-demanto:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(179, 146, 86, 0.3);
+    }
+
+    .btn-demanto-outline {
+        border: 1.5px solid var(--demanto-gold);
+        color: var(--demanto-gold);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 10px 25px;
+        background: transparent;
+        border-radius: 25px;
+        transition: var(--transition-smooth);
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-demanto-outline:hover {
+        background: var(--demanto-gold);
+        color: #fff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(179, 146, 86, 0.2);
+    }
+
+    /* Cards */
+    .luxury-arch-card {
+        background: #fff;
+        border: 1px solid var(--luxury-border);
+        border-radius: 80px 80px 20px 20px;
+        padding: 20px 15px 25px 15px;
+        text-align: center;
+        transition: var(--transition-smooth);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .luxury-arch-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--demanto-gold), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+    }
+    
+    .luxury-arch-card:hover::before {
+        transform: translateX(0);
+    }
+    
+    .luxury-arch-card:hover {
+        border-color: var(--demanto-gold);
+        box-shadow: var(--box-shadow-luxury);
+        transform: translateY(-5px);
+    }
+    
+    .arch-image-wrap {
+        border-radius: 60px 60px 15px 15px;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #f8f6f0 0%, #fff 100%);
+        position: relative;
+    }
+    
+    .arch-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 15px;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .luxury-arch-card:hover .arch-image-wrap img {
+        transform: scale(1.05) rotate(1deg);
+    }
+
+    /* Hero Slider */
+    .home-slider-container {
+        border-radius: 0;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .slider-content-area {
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+    
+    .slider-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%);
+        z-index: 1;
+    }
+    
+    .slider-title {
+        color: #fff;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 42px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .slider-desc {
+        color: rgba(255,255,255,0.9);
+        font-size: 12px;
+        line-height: 1.6;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Collections Section */
+    .signature-collections {
+        background: linear-gradient(135deg, #fdfcf9 0%, #fff 100%);
+        padding: 10px 0;
+    }
+    
+    .collection-arch-card {
+        border: 1px solid #e7dcc7;
+        border-radius: 120px 120px 25px 25px;
+        overflow: hidden;
+        background: #fff;
+        transition: var(--transition-smooth);
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .collection-arch-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        background: linear-gradient(180deg, transparent, rgba(179, 146, 86, 0.05));
+        transition: height 0.4s ease;
+    }
+    
+    .collection-arch-card:hover::after {
+        height: 100%;
+    }
+    
+    .collection-arch-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(179, 146, 86, 0.12);
+        border-color: var(--demanto-gold);
+    }
+    
+    .collection-image {
+        height: 250px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #faf8f3 0%, #fff 100%);
+    }
+    
+    .collection-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .collection-arch-card:hover img {
+        transform: scale(1.05);
+    }
+    
+    .collection-content {
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .collection-icon {
+        color: var(--demanto-gold);
+        font-size: 20px;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease;
+        display: inline-block;
+    }
+    
+    .collection-arch-card:hover .collection-icon {
+        transform: rotate(180deg);
+    }
+    
+    .collection-content h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        color: #222;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .collection-content span {
+        font-size: 9px;
+        letter-spacing: 2px;
+        color: var(--demanto-gold);
+        font-weight: 500;
+    }
+
+    /* About Section */
+    .about-editorial-section {
+        background: linear-gradient(135deg, #FBF9F4 0%, #fff 100%);
+        position: relative;
+        overflow: hidden;
+        padding: 10px 0;
+    }
+    
+    .about-editorial-section::before {
+        content: '♦';
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 60px;
+        color: var(--demanto-gold);
+        opacity: 0.04;
+        font-family: serif;
+    }
+    
+    .about-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 32px;
+        line-height: 1.2;
+        color: var(--demanto-dark);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .about-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--demanto-gold), transparent);
+    }
+    
+    .about-description {
+        color: #666;
+        font-size: 13px;
+        line-height: 1.8;
+        margin-top: 20px;
+    }
+    
+    .metric-number {
+        color: var(--demanto-gold);
+        font-size: 28px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .metric-item {
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    
+    .metric-item:hover {
+        transform: translateY(-3px);
+    }
+    
+    .metric-item i {
+        font-size: 28px;
+        color: var(--demanto-gold);
+        transition: all 0.3s ease;
+    }
+    
+    .metric-item:hover i {
+        transform: scale(1.05);
+    }
+    
+    .metric-label {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        color: #333;
+        text-transform: uppercase;
+        line-height: 1.4;
+        font-weight: 500;
+        margin-top: 8px;
+    }
+
+    /* Featured Products */
+    .featured-products {
+        background: linear-gradient(180deg, #fff, #faf8f3);
+        overflow: hidden;
+        padding: 10px 0;
+    }
+    
+    .featured-product-card {
+        background: #fff;
+        border-radius: 25px;
+        border: 1px solid rgba(179, 146, 86, 0.15);
+        overflow: hidden;
+        transition: 0.4s;
+        height: 100%;
+    }
+    
+    .featured-product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(179, 146, 86, 0.12);
+    }
+    
+    .featured-image {
+        height: 280px;
+        background: #f8f5ef;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .featured-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent, rgba(179, 146, 86, 0.03));
+    }
+    
+    .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 25px;
+        transition: 0.5s;
+    }
+    
+    .featured-product-card:hover img {
+        transform: scale(1.05);
+    }
+    
+    .featured-content {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .featured-content h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #232323;
+    }
+    
+    .featured-content a {
+        color: #B39256;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+    
+    .featured-content a:hover {
+        color: #232323;
+    }
+    
+    .featured-prev,
+    .featured-next {
+        position: absolute;
+        top: 45%;
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        z-index: 10;
+        transition: 0.3s;
+    }
+    
+    .featured-prev:hover,
+    .featured-next:hover {
+        background: #B39256;
+        color: #fff;
+    }
+    
+    .featured-prev {
+        left: -15px;
+    }
+    
+    .featured-next {
+        right: -15px;
+    }
+    
+    .featured-pagination {
+        text-align: center;
+    }
+    
+    .featured-pagination .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #B39256;
+    }
+    
+    .featured-pagination .swiper-pagination-bullet-active {
+        width: 25px;
+        border-radius: 20px;
+    }
+
+    /* Exhibitions Section */
+    .exhibitions-area {
+        background: #FBF9F4;
+        padding: 10px 0;
+    }
+    
+    .section-title-demanto {
+        font-family: 'Cormorant Garamond', serif;
+        color: #B39256;
+        font-size: 28px;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+    }
+    
+    .demanto-exhibition-item {
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    
+    .demanto-exhibition-item img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        transition: 0.5s;
+    }
+    
+    .demanto-exhibition-item:hover img {
+        transform: scale(1.05);
+    }
+    
+    .swiper-slide-prev .demanto-exhibition-item img,
+    .swiper-slide-next .demanto-exhibition-item img {
+        opacity: 0.6;
+    }
+    
+    .demanto-prev,
+    .demanto-next {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #d7c7a4;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: #b39256;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .demanto-prev {
+        left: -10px;
+    }
+    
+    .demanto-next {
+        right: -10px;
+    }
+    
+    .demanto-prev:hover,
+    .demanto-next:hover {
+        background: #B39256;
+        color: #fff;
+    }
+
+    /* Appointment Section */
+    .appointment-marquee {
+        background: linear-gradient(135deg, rgba(179, 146, 86, 0.05) 0%, rgba(179, 146, 86, 0.02) 100%);
+        border-top: 1px solid var(--luxury-border);
+        border-bottom: 1px solid var(--luxury-border);
+        position: relative;
+        overflow: hidden;
+        padding: 10px 0;
+    }
+    
+    .appointment-marquee::before {
+        content: '✧';
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 80px;
+        color: var(--demanto-gold);
+        opacity: 0.03;
+        font-family: serif;
+    }
+    
+    .appointment-marquee::after {
+        content: '✧';
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        font-size: 80px;
+        color: var(--demanto-gold);
+        opacity: 0.03;
+        font-family: serif;
+    }
+
+    /* Loading Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    section {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    /* Lazy Loading Images */
+    img[data-src] {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    img.loaded {
+        opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+        .slider-title { font-size: 36px; }
+        .about-title { font-size: 28px; }
+        .metric-number { font-size: 24px; }
+        .luxury-heading { font-size: 24px !important; }
+    }
+    
+    @media (max-width: 991px) {
+        .home-slider-area, .home-slider-container { height: 600px !important; }
+        .slider-title { font-size: 32px; }
+        .collection-image { height: 220px; }
+        .featured-image { height: 240px; }
+        .demanto-exhibition-item img { height: 240px; }
+    }
+    
+    @media (max-width: 768px) {
+        .home-slider-area, .home-slider-container { height: 500px !important; }
+        .slider-title { font-size: 24px !important; letter-spacing: 1.5px; }
+        .slider-desc { font-size: 11px !important; }
+        .luxury-heading { font-size: 20px !important; }
+        .about-title { font-size: 24px; }
+        .metric-number { font-size: 20px; }
+        .collection-image { height: 180px; padding: 20px; }
+        .collection-content h4 { font-size: 16px; }
+        .btn-demanto, .btn-demanto-outline { padding: 8px 20px; font-size: 9px; }
+        .featured-image { height: 200px; }
+        .demanto-exhibition-item img { height: 200px; }
+        .featured-prev, .featured-next, .demanto-prev, .demanto-next { display: none; }
+    }
+    
+    @media (max-width: 576px) {
+        .slider-title { font-size: 20px !important; }
+        .luxury-section-title { margin-bottom: 25px; }
+        .metric-item i { font-size: 20px; }
+        .metric-label { font-size: 8px; letter-spacing: 1px; }
+        .collection-image { height: 150px; padding: 15px; }
+    }
+
+    /* Smooth Scroll Behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--demanto-bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--demanto-gold);
+        border-radius: 3px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #9a7b45;
+    }
+ .appointment-marquee{
+    position:relative;
+    min-height:200px;
+
+    background:url('{{ asset("assets/img/appoint.jpg") }}');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    align-items:center;
+}
+
+.appointment-overlay{
+    position:absolute;
+    background:
+linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
+    z-index:1;
+}
 
 
 
-<section class="home-slider-area pt-0 p-0">
-    <div class="container-fluid p-0 pt-2 pb-2">
-        <div class="row g-0 align-items-center">
-            
-            <div class="col-lg-3 d-none d-lg-block">
-                <div class="featured-banner-left" style="position: relative; overflow: hidden; height: 70vh;">
-                    
-                    <div class="left-banner-overlay" style="
-                        position: absolute; 
-                        top: 0; 
-                        left: 0; 
-                        width: 100%; 
-                        height: 100%; 
-                        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 100%);
-                        z-index: 1;">
-                    </div>
+.appointment-text{
+    color:#fff;
+    font-size:16px;
+    line-height:1.9;
+}
 
-                    @if(isset($banner) && $banner && $banner->image)
-                        <img src="{{ asset($banner->image) }}"
-                             alt="{{ $banner->title ?? 'Featured Collection' }}" 
-                             style="width: 100%; height: 100%; object-fit: cover;">
-                        
-                        <div class="banner-overlay-text" style="position: absolute; bottom: 30px; left: 20px; color: #fff; z-index: 2; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
-                            <h6 style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">
-                                {{ $banner->subtitle ?? 'New Arrivals' }}
-                            </h6>
-                            <h4 style="font-size: 18px; font-weight: 600; line-height: 1.4;">
-                                {!! isset($banner->title) ? nl2br(e($banner->title)) : 'The Pearl <br> Collection' !!}
-                            </h4>
-                        </div>
-                    @else
-                        <img src="{{ asset('assets/img/image-left.jpg') }}" alt="Default Banner" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="banner-overlay-text" style="position: absolute; bottom: 30px; left: 20px; color: #fff; z-index: 2;">
-                            <h6 style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase;">New Arrivals</h6>
-                            <h4 style="font-size: 18px; font-weight: 600;">The Pearl <br> Collection</h4>
-                        </div>
-                    @endif
-                </div>
-            </div>
+.luxury-sub{
+    color:#fff;
+    letter-spacing:4px;
+}
 
-            <div class="col-12 col-lg-9 p-1">
-                <div class="swiper-container swiper-pagination-style dots-bg-light home-slider-container default-slider-container" style="height: 70vh;">
-                    <div class="swiper-wrapper home-slider-wrapper slider-default">
-                        
-                        @foreach ($sliders as $key => $sliderItem)
-                        <div class="swiper-slide">
+.appointment-marquee .btn-demanto{
+
+    min-width:220px;
+
+    padding:14px 35px;
+
+    letter-spacing:2px;
+
+    font-size:11px;
+}
+
+.appointment-marquee .btn-demanto-outline{
+
+    min-width:220px;
+
+    padding:14px 35px;
+
+    letter-spacing:2px;
+
+    font-size:11px;
+}
+
+@media(max-width:768px){
+
+    .appointment-marquee{
+
+        padding:80px 0;
+    }
+
+    .appointment-title{
+
+        font-size:34px;
+    }
+}
+</style>
+
+<!-- Hero Slider Section -->
+<section class="home-slider-area p-0 m-0" style="height: 80vh; overflow: hidden;">
+    <div class="container-fluid p-0 h-100">
+        <div class="row g-0 align-items-center h-100">
+            <div class="col-12 col-lg-12 p-0 h-100">
+                <div class="swiper-container swiper-pagination-style dots-bg-light home-slider-container default-slider-container h-100">
+                    <div class="swiper-wrapper home-slider-wrapper slider-default h-100">
+                        @forelse ($sliders as $sliderItem)
+                        <div class="swiper-slide h-100">
                             @if ($sliderItem->image)
-                            <div class="slider-content-area" 
-                                 style="height: 100%; background-image: url('{{ asset($sliderItem->image) }}'); background-size: cover; background-position: center; position: relative;">
-                                
+                            <div class="slider-content-area" style="height: 100%; background-image: url('{{ asset($sliderItem->image) }}'); background-size: cover; background-position: center; position: relative;">
                                 <div class="slider-overlay"></div>
-
                                 <div class="container h-100" style="position: relative; z-index: 2;">
-                                    <div class="row h-100 align-items-center justify-content-center justify-content-lg-start">
-                                        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-                                            <div class="slider-content slider-content-light text-center text-lg-start">
-                                                <h2 class="slider-title ani-left">
-                                                    {{ $sliderItem->title }}
-                                                </h2>
-                                                <p class="slider-desc ani-right">
-                                                    {{ $sliderItem->description }}
-                                                </p>
-                                
+                                    <div class="row h-100 align-items-center">
+                                        <div class="col-12 col-sm-10 col-md-8 col-lg-7 ps-3 ps-md-5">
+                                            <div class="slider-content text-start">
+                                                <h2 class="slider-title ani-left">{{ $sliderItem->title }}</h2>
+                                                <p class="slider-desc ani-right" style="max-width: 550px;">{{ $sliderItem->description }}</p>
+                                                <div class="slider-btn ani-bottom mt-3">
+                                                    <a href="{{ url('/collections') }}" class="btn-demanto">Discover The Collections</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -74,724 +806,423 @@
                             </div>
                             @endif
                         </div>
-                        @endforeach
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<style>
-    /* 1. Base Layout */
-    .featured-banner-left { border-right: 1px solid #f2f2f2; }
-    .home-slider-container { border-radius: 0; overflow: hidden; }
-
-    /* Desktop Overlay (Left to Right Fade) */
-    .slider-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
-        z-index: 1;
-    }
-
-    /* 2. Typography & UI */
-    .slider-title {
-        color: #fff;
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-
-    .slider-desc {
-        color: rgba(255,255,255,0.9);
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    .custom-slider-btn {
-        border-radius: 0;
-        padding: 12px 35px;
-        text-transform: uppercase;
-        font-size: 14px;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
-        border-width: 2px;
-        margin-top: 30px;
-    }
-
-    .custom-slider-btn:hover {
-        background-color: #fff !important;
-        color: #000 !important;
-        transform: translateY(-3px);
-    }
-
-    /* 3. Animations */
-    .slider-title, .slider-desc, .slider-btn {
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* Desktop slide directions */
-    .ani-left   { transform: translateX(-60px); }
-    .ani-right  { transform: translateX(60px); }
-    .ani-bottom { transform: translateY(40px); }
-
-    .swiper-slide-active .slider-title,
-    .swiper-slide-active .slider-desc,
-    .swiper-slide-active .slider-btn {
-        opacity: 1;
-        visibility: visible;
-        transform: translate(0, 0);
-    }
-
-    .swiper-slide-active .slider-title { transition-delay: 0.3s; }
-    .swiper-slide-active .slider-desc  { transition-delay: 0.5s; }
-    .swiper-slide-active .slider-btn   { transition-delay: 0.7s; }
-
-    /* 4. Responsive (Mobile & Tablet) */
-    @media (max-width: 991px) {
-        .home-slider-container, .featured-banner-left { height: 450px !important; }
-    }
-
-    @media (max-width: 767px) {
-        .home-slider-container { height: 350px !important; }
-
-        /* Darken entire overlay for mobile text readability */
-        .slider-overlay {
-            background: rgba(0,0,0,0.45) !important;
-        }
-
-        .slider-title { font-size: 22px !important; }
-        .slider-desc { font-size: 12px !important; padding: 0 10px; }
-
-        /* Change slide direction on mobile to vertical for cleaner look */
-        .ani-left   { transform: translateY(-30px); }
-        .ani-right  { transform: translateY(30px); }
-    }
-    
-    /* Hover effect for side banner */
-    .featured-banner-left img { transition: transform 1.5s ease; }
-    .featured-banner-left:hover img { transform: scale(1.05); }
-    .slider-content h2 , .slider-content p{
-        text-align: start;
-        padding: 0px;
-    }
-</style>
-
-<section>
-    <div class="about-editorial-root py-2 position-relative overflow-hidden">
-        @if($about)
-        <div class="art-background-layer">
-            
-            <div class="large-bg-text">{{ $about->title ?? 'About Us' }}</div>
-            <svg class="botanical-svg" viewBox="0 0 100 100" fill="none">
-                <path d="M10 80C30 80 80 60 90 10M10 80C40 70 80 40 90 10" stroke="#b95c19" stroke-width="0.2" opacity="0.2"/>
-            </svg>
-        </div>
-
-        <div class="wide-content-wrapper px-4 px-md-5 position-relative z-2">
-            
-            <div class="header-minimal mb-4">
-                <h2 class="display-title mt-2">{{ $about->title ?? 'About Us' }}</h2>
- 
-            </div>
-
-            <div class="description-full-width">
-                <p class="editorial-text" v-html="">{!! nl2br(e($about->description)) !!}
-                </p>
-            </div>
-
-            <div class="footer-compact mt-5 d-flex align-items-center gap-4">
-                <div class="signature-wrap">
-                    <img src="/assets/img/logo.png" alt="Signature" class="about-sig-logo">
-            
-                </div>
-            
-                <span class="motto mt-4">{{ $about->title ?? 'About Us' }}</span>
-            </div>
-            
-        </div>
-        @else
-        <div class="container py-5 text-center">
-            <p>About Us content is currently being updated.</p>
-        </div>
-    @endif
-    </div>
-  </section>
-
-<script setup>
-defineProps({ about: Object });
-</script>
-
-<style >
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Montserrat:wght@300;400;600;700&display=swap');
-
-.about-editorial-root {
-    background-color: #ffffff;
-    color: #51555A;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    min-height: 20vh;
-    display: flex;
-    align-items: center;
-}
-
-/* Background "Polish It" Text Styling */
-.art-background-layer {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.large-bg-text {
-    position: absolute;
-    top: 50%;
-    left: 13%;
-    transform: translateY(-50%);
-    font-size: 10vw;
-    font-weight: 900;
-    color: #d97da50d !important; /* Extremely subtle grey-white */
-    letter-spacing: 1px;
-    line-height: 0.8;
-    white-space: nowrap;
-    z-index: 1;
-}
-
-.botanical-svg {
-    position: absolute;
-    width: 25%;
-    top: 10%;
-    right: -2%;
-    z-index: 1;
-    transform: rotate(-15deg);
-}
-
-/* Content Layout */
-.wide-content-wrapper {
-    width: 100%;
-    z-index: 2;
-}
-
-/* Typography - Small & Refined */
-.eyebrow {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: #D97DA5 !important;
-    font-weight: 700;
-}
-
-.display-title {
-    font-size: 24px; /* Reduced for elegance */
-    font-weight: 700;
-    color: #51555A;
-    text-transform: capitalize;
-}
-
-.accent-line {
-    width: 40px;
-    height: 1px;
-    background-color: #D97DA5 !important;
-}
-
-.editorial-text {
-    /* Small font size matching footer (approx 13px) */
-    font-size: 0.75rem; 
-    line-height: 2.2;
-    color: #51555A;
-    font-weight: 400;
-
-    letter-spacing: 0.4px;
-}
-
-/* Signature & Logo Styling */
-.about-sig-logo {
-    width: 55px;
-    height: auto;
-    opacity: 0.9;
-}
-
-.sig-font {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #1a1a1a;
-}
-
-.dot-divider {
-    width: 4px;
-    height: 4px;
-    background-color: #D97DA5 !important;
-    border-radius: 50%;
-}
-
-.motto {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #999;
-}
-
-@media (max-width: 768px) {
-    .large-bg-text { font-size: 10vw; left: 4%;letter-spacing: 1px;}
-    .display-title { font-size: 1.1rem; margin-top: 20px !important; }
-    .editorial-text { font-size: 0.7rem; max-width: 100%; }
-    .footer-compact { flex-direction: column; align-items: flex-start; gap: 15px; }
-    .dot-divider { display: none; }
-}
-</style>
-
-<section class="product-area">
-    <div class="container pb-0">
-        <div class="row">
-            <div class="col-sm-8 m-auto">
-                <div class="section-title text-center mb-1">
-                    <h2 class="title" style="text-transform: capitalize;">Our Products</h2>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            {{-- Using newArrivalsProducts and taking only 6 items --}}
-            @forelse ($newArrivalsProducts->take(6) as $product)
-                <div class="col-6 col-md-4 col-lg-3 mb-30 p-0">
-                    <div class="product-item">
-                        <div class="inner-content">
-                            <div class="product-thumb">
-                                <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}">
-                                    @if($product->productImages->count() > 0)
-                                        <img src="{{ asset($product->productImages[0]->image) }}" alt="product-img">                        
-                                        <img class="second-image" src="{{ asset($product->productImages[1]->image ?? $product->productImages[0]->image) }}" alt="product-img">
-                                    @endif 
-                                </a>
-                                
-                                {{-- <livewire:frontend.indexwish :product="$product"/>
-                                 --}}
-                                {{-- <div class="white-bg">                            
-                                    <livewire:frontend.cart.add-to-cart :product="$product"/>
-                                </div> --}}
-
-                                <ul class="product-flag">
-                                    <li class="new" style="font-size: 10px;">
-                                        @if ($product->quantity > 0)
-                                            <span>In Stock</span>
-                                        @else
-                                            Out of Stock
-                                        @endif
-                                    </li>
-                                    
-                                    {{-- Correct Discount Calculation --}}
-                                    @if($product->original_price && $product->original_price > $product->selling_price)
-                                        @php
-                                            $discount = (($product->original_price - $product->selling_price) / $product->original_price ) * 100;
-                                        @endphp
-                                        <li class="discount" style="font-size: 9px;">-{{ round($discount, 0) }}%</li>
-                                    @endif
-                                </ul>
-                            </div>
-<div class="product-desc" style="padding: 0px 0;">
-    <div class="product-info">
-        <div class="d-flex justify-content-between align-items-center px-4 pt-2 pb-2">
-            <h4 class="title" style="margin-bottom: 0;">
-                <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}" 
-                   style="color:#51555a; font-size: 0.75rem; font-weight: 700;">
-                    {{ $product->name }}
-                </a>
-            </h4>
-            <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}" 
-               style="color: #fff; font-size: 12px;">
-                <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
-        {{-- <div class="prices mt-1">
-            @if($product->original_price > $product->selling_price)
-                <span class="price-old" style="font-size: 10px; color: #51555a; text-decoration: line-through; margin-right: 5px;">€{{ $product->original_price }}</span>
-            @endif
-            <span class="price" style="font-size: 12px; font-weight: 600; color: #D97DA5;">€{{ $product->selling_price }}</span>
-        </div> --}}
-    </div>
-</div>
-                        </div>
-                    </div>
-                </div>
-            @empty
-                <div class="col-12 text-center">
-                    <p>No Products Available</p>
-                </div>
-            @endforelse
-        </div>
-    </div>
-</section>
-
-  <!--== End Popup Product  ==-->
-{{-- <section class="divider-area divider-product-discount-area bg-img" data-bg-img="{{ asset('assets/img/banner-home.jpg')}}">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="divider-style2-wrap">
-          <div class="row">
-            <div class="col-xl-5 col-lg-6 col-md-9 col-sm-12">
-              <div class="accessory-banner-content animate-fadeInUp">
-                <h6 class="banner-sub-title">The Art of Detail</h6>
-                <h2 class="banner-main-title">Elevate Your <br class="d-none d-md-block">Everyday Look</h2>
-                <p class="banner-description">
-                  Discover a curated collection of accessories designed to celebrate your unique elegance. From morning coffee to midnight stars.
-                </p>
-                <div class="banner-action">
-                  <a class="btn-boutique" href="{{ url('collections') }}">Explore Collection</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<style>
-  /* Base Desktop Styling */
-  .divider-product-discount-area {
-    padding: 100px 0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-  }
-
-  .accessory-banner-content {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 35px; /* Reduced padding for cleaner look */
-    border-radius: 2px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  }
-
-  /* Small Typography Aesthetic */
-  .banner-sub-title {
-    font-size: 9px !important; /* Extremely small for luxury feel */
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #D97DA5;
-    margin-bottom: 12px;
-    font-weight: 700;
-  }
-
-  .banner-main-title {
-    font-size: 24px; /* Smaller main title */
-    font-weight: 700;
-    line-height: 1.2;
-    color: #51555A;
-    margin-bottom: 15px;
-  }
-
-  .banner-description {
-    font-size: 0.75rem; /* Reduced description size */
-    color: #51555A;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    font-weight: 300;
-    max-width: 85%;
-  }
-
-  .btn-boutique {
-    font-size: 9px; /* Smallest button text */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: #51555A;
-    color: #fff;
-    padding: 12px 25px;
-    display: inline-block;
-    transition: 0.3s;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  /* --- MOBILE RESPONSIVE --- */
-
-  @media (max-width: 767px) {
-    .divider-product-discount-area {
-      padding: 50px 0;
-      min-height: auto;
-      background-attachment: scroll; /* Critical for mobile performance */
-    }
-      .divider-style2-wrap{
-    margin-top: 10%;
-  }
-    .accessory-banner-content {
-      padding: 25px 20px;
-      text-align: center;
-      width: 90%;
-      margin: 0 auto;
-    }
-
-    .banner-main-title {
-      font-size: 1rem; /* Scaled down for mobile */
-      margin-bottom: 10px;
-    }
-
-    .banner-description {
-      font-size: 10px; /* Smallest readable description */
-      max-width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .banner-sub-title {
-      font-size: 8px !important;
-      letter-spacing: 2px;
-    }
-
-    .btn-boutique {
-      padding: 10px 20px;
-      width: 100%; /* Easy to click on touch screens */
-    }
-  }
-
-</style> --}}
-
-
-{{-- <section class="product-area">
-    <div class="container pt-95 pt-lg-70 pb-lg-60">
-        <div class="row">
-            <div class="col-sm-8 m-auto">
-                <div class="section-title text-center mb-1">
-                    <h2 class="title" style="text-transform: capitalize; font-size: 20px; letter-spacing: 1px;">Featured Products</h2>
-       
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="product-slider owl-carousel owl-theme">
-                    @if($featuredProducts)
-                        @foreach ($featuredProducts as $productItem)
-                            <div class="item">
-                                <div class="product-item">
-                                    <div class="inner-content">
-                                        <div class="product-thumb">
-                                            @if($productItem->productImages->count() > 0)    
-                                                <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
-                                                    <img src="{{ asset($productItem->productImages[0]->image) }}" alt="{{ $productItem->name }}">
-                                                    @if($productItem->productImages->count() > 1)
-                                                        <img class="second-image" src="{{ asset($productItem->productImages[1]->image) }}" alt="{{ $productItem->name }}">
-                                                    @endif
-                                                </a>
-                                            @endif
-                                            
-                                    
-                                            
-                                            <div class="white-bg">                            
-                                                <livewire:frontend.cart.add-to-cart :product="$productItem"/>
-                                            </div>
-
-                                            <ul class="product-flag">
-                                                <li class="new" style="font-size: 10px;">
-                                                    @if ($productItem->quantity > 0)
-                                                        <span>In Stock</span>
-                                                    @else
-                                                        <span style="background: #999;">Out of Stock</span>
-                                                    @endif
-                                                </li>
-                                                @if($productItem->original_price && $productItem->original_price > $productItem->selling_price)
-                                                    @php
-                                                        $discount = (($productItem->original_price - $productItem->selling_price) / $productItem->original_price ) * 100;
-                                                    @endphp
-                                                    <li class="discount" style="font-size: 9px;">-{{ round($discount , 0) }}%</li>
-                                                @endif
-                                            </ul>
-                                        </div>
-
-                                        <div class="product-desc" style="padding: 10px 0;">
-                                            <div class="product-info text-center">
-                                                <h4 class="title" style="margin-bottom: 5px;">
-                                                    <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}" 
-                                                       style="color:#51555a; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3px;">
-                                                       {{ $productItem->name }}
-                                                    </a>
-                                                </h4>
-                                                <div class="prices">
-                                                    @if($productItem->original_price && $productItem->original_price > $productItem->selling_price)
-                                                        <span class="price-old" style="font-size: 10px; color: #999; text-decoration: line-through; margin-right: 5px;">
-                                                            €{{ $productItem->original_price }}
-                                                        </span>
-                                                    @endif
-                                                    <span class="price" style="font-size: 12px; font-weight: 600; color: #D97DA5;">
-                                                        €{{ $productItem->selling_price }}
-                                                    </span>
+                        @empty
+                        <div class="swiper-slide h-100">
+                            <div class="slider-content-area" style="height: 100%; background-image: url('{{ asset('assets/img/slider-placeholder.jpg') }}'); background-size: cover; background-position: center; position: relative;">
+                                <div class="slider-overlay"></div>
+                                <div class="container h-100" style="position: relative; z-index: 2;">
+                                    <div class="row h-100 align-items-center">
+                                        <div class="col-12 col-lg-7 ps-5">
+                                            <div class="slider-content text-start">
+                                                <h2 class="slider-title ani-left">Timeless Luxury <br>By Demanto</h2>
+                                                <p class="slider-desc ani-right">Where Diamonds Become Art.</p>
+                                                <div class="slider-btn ani-bottom mt-3">
+                                                    <a href="{{ url('/collections') }}" class="btn-demanto">Discover The Collections</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    @endif
+                        </div>
+                        @endforelse
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
     </div>
-</section> --}}
-    <!--== Start Blog Area Wrapper ==-->
-    <section class="blog-area pb-60">
-        <div class="container pt-0 pb-0 ">
-          <div class="row">
-            <div class="col-sm-8 m-auto">
-              <div class="section-title text-center">
-                <h2 class="title">Latest News</h2>
-                {{-- <div class="desc">
-          <p style="font-size: 0.8rem; color: #51555a; font-weight: 400;">Present posts in a best way to highlight interesting moments of your blog.</p>
-                </div> --}}
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="blog-slider owl-carousel owl-theme">
-                @foreach($blogs as $blog)
-                <div class="item">
-                  <!--== Start Blog Item ==-->
-                  <div class="post-item">
-                    <div class="inner-content">
-                      <div class="thumb">
-                                          <a href="{{ url('blog/details/'. $blog->id) }}"><img src="{{ asset($blog->image)}}" class="img" alt="Image-HasTech"></a>
-                      </div>
-                      <div class="content">
-                        <h4 class="title"><a href="{{ url('blog/details/'. $blog->id) }}">{{ words_limit($blog->description, 10) }}</a></h4>
-                      </div>
+</section>
+
+<!-- Signature Collections Section -->
+<section class="signature-collections">
+    <div class="container-fluid">
+        <div class="luxury-section-title">
+            <span class="luxury-sub">Curated Vault</span>
+            <h2 class="luxury-heading mt-2">Our Signature Collections</h2>
+            <p class="text-muted mt-2" style="font-size: 12px; max-width: 600px; margin: 0 auto;">Discover our meticulously curated collections</p>
+        </div>
+
+        <div class="row justify-content-center g-3">
+            @foreach($categories as $categoryItem)
+                <div class="col-6 col-md-3 mb-3">
+                    <a href="{{ url('/collections/'.$categoryItem->slug) }}" class="text-decoration-none">
+                        <div class="collection-arch-card">
+                            <div class="collection-image">
+                                <img src="{{ asset($categoryItem->image) }}" alt="{{ $categoryItem->name }}" loading="lazy">
+                            </div>
+                            <div class="collection-content">
+                                <div class="collection-icon">✧</div>
+                                <h4>{{ $categoryItem->name }}</h4>
+                                <span>Explore →</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="{{ url('/collections') }}" class="demanto-btn">Explore All Collections</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Editorial Section -->
+<section class="about-editorial-section">
+    <div class="container-fluid">
+        <div class="row align-items-center g-4">
+            <!-- Images -->
+            <div class="col-lg-6">
+                <div class="row g-2">
+                    <div class="col-7">
+                        <div class="position-relative overflow-hidden" style="border-radius: 15px;">
+                            <img src="{{ ($aboutData && $aboutData->imgone) ? asset('storage/'.$aboutData->imgone) : asset('assets/img/craft-1.jpg') }}"
+                                 class="w-100" style="height: 400px; object-fit: cover; transition: transform 0.5s ease;"
+                                 alt="Luxury Craftsmanship" loading="lazy">
+                        </div>
                     </div>
-                  </div>
-                  <!--== End Blog Item ==-->
-                </div>
- @endforeach
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--== End Blog Area Wrapper ==-->
-
-{{-- <section class="instagram-shop-area py-5">
-    <div class="container-fluid text-center">
-                <div class="row">
-            <div class="col-sm-8 m-auto">
-                <div class="section-title text-center mb-1">
-                    <h2 class="title" style="text-transform: capitalize;">Shop Our Instagram</h2>
+                    <div class="col-5">
+                        <div class="mb-2 overflow-hidden" style="border-radius: 15px;">
+                            <img src="{{ ($aboutData && $aboutData->imgtwo) ? asset('storage/'.$aboutData->imgtwo) : asset('assets/img/craft-2.jpg') }}"
+                                 class="w-100" style="height: 195px; object-fit: cover; transition: transform 0.5s ease;"
+                                 alt="Fine Jewelry" loading="lazy">
+                        </div>
+                        <div class="overflow-hidden" style="border-radius: 15px;">
+                            <img src="{{ ($aboutData && $aboutData->imgthree) ? asset('storage/'.$aboutData->imgthree) : asset('assets/img/craft-3.jpg') }}"
+                                 class="w-100" style="height: 195px; object-fit: cover; transition: transform 0.5s ease;"
+                                 alt="Expert Craftsmanship" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row g-3">
-            @foreach($instaFeeds as $item)
-                <div class="col-6 col-md-3">
-                    <div class="insta-card position-relative overflow-hidden">
-                        <img src="{{ asset($item->image) }}" class="w-100 h-100 object-fit-cover" style="aspect-ratio: 1/1;">
-                        
-                        <div class="insta-overlay">
-                            <div class="d-flex flex-column gap-2">
-                                <a href="{{ url('collections/'.$item->product->category->slug.'/'.$item->product->slug) }}" class="btn btn-light btn-sm">
-                                    Shop {{ $item->product->name }}<br>
-                                    <strong>${{ $item->product->selling_price }}</strong>
-                                </a>
 
-                                @if($item->insta_link)
-                                    <a href="{{ $item->insta_link }}" target="_blank" class="btn btn-outline-light btn-sm">
-                                        <i class="fa fa-instagram"></i> View on Instagram
-                                    </a>
-                                @endif
+            <!-- Content -->
+            <div class="col-lg-6 ps-lg-4">
+                <h2 class="about-title">
+                    {{ $aboutData->title ?? 'Crafting Timeless Elegance Since 2005' }}
+                </h2>
+                <div class="about-description">
+                    {!! nl2br(e($aboutData->description ?? 'With more than 20 years of expertise, DEMANTO is a leading name in fine jewelry manufacturing.')) !!}
+                </div>
+                
+                <hr class="my-3" style="border-color: var(--luxury-border);">
+                
+                <div class="row text-center g-3">
+                    <div class="col-3">
+                        <div class="metric-number">
+                            {{ $aboutData->years ?? 20 }}+
+                        </div>
+                        <div class="metric-label">
+                            YEARS OF<br>EXPERTISE
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="metric-item">
+                            @if(!empty($aboutData->iconone))
+                                <i class="{{ $aboutData->iconone }}"></i>
+                            @else
+                                <i class="fa-solid fa-gem"></i>
+                            @endif
+                            <div class="metric-label mt-1">
+                                {!! $aboutData->titleone ?? 'FINEST<br>MATERIALS' !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="metric-item">
+                            @if(!empty($aboutData->icontwo))
+                                <i class="{{ $aboutData->icontwo }}"></i>
+                            @else
+                                <i class="fa-solid fa-award"></i>
+                            @endif
+                            <div class="metric-label mt-1">
+                                {!! $aboutData->titletwo ?? 'EXPERT<br>CRAFTSMANSHIP' !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="metric-item">
+                            @if(!empty($aboutData->iconthree))
+                                <i class="{{ $aboutData->iconthree }}"></i>
+                            @else
+                                <i class="fa-solid fa-earth-americas"></i>
+                            @endif
+                            <div class="metric-label mt-1">
+                                {!! $aboutData->titlethree ?? 'GLOBAL<br>PRESENCE' !!}
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+
+                <div class="mt-4">
+                    <a href="{{ url('/aboutus') }}" class="btn-demanto">Discover Our Story</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<style>
-.insta-card .insta-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: 0.3s;
-}
-.insta-card:hover .insta-overlay { opacity: 1; }
-.insta-overlay .btn{
-background: var(--logo-pink-dark);
-color: white;
-border: transparent;
-font-size: 12px;
-}
-</style> --}}
 
-<style>
-   .product-item{
-  margin: 10px;
- }
-</style>
-      
-      <!-- jQuery -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <!-- Bootstrap JS -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      
-      <script>
-        $(document).ready(function(){
-          $('.btn-quick-vieww').click(function(){
-            $('#exampleModal').modal('show');
-          });
-        });
-      </script>
-@endsection
+<!-- Featured Products Section -->
+<section class="featured-products">
+    <div class="container-fluid">
+        <div class="luxury-section-title mb-4">
+            <span class="luxury-sub">Timeless Masterpieces</span>
+            <h2 class="luxury-heading mt-2">Featured Pieces</h2>
+            <p class="text-muted mt-2" style="font-size: 12px;">Discover our most exquisite creations</p>
+        </div>
 
+        <div class="position-relative">
+            <div class="swiper featured-products-slider">
+                <div class="swiper-wrapper">
+                    @foreach($newArrivalsProducts as $product)
+                    <div class="swiper-slide">
+                        <div class="featured-product-card">
+                            <div class="featured-image">
+                                <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}">
+                                    @if($product->productImages->count())
+                                        <img src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}">
+                                    @else
+                                        <img src="{{ asset('assets/img/placeholder.jpg') }}" alt="">
+                                    @endif
+                                </a>
+                            </div>
+                            <div class="featured-content">
+                                <h4>{{ $product->name }}</h4>
+                                <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}">Discover Details →</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="featured-pagination mt-3"></div>
+            </div>
+            <div class="featured-prev"><i class="fa fa-angle-left"></i></div>
+            <div class="featured-next"><i class="fa fa-angle-right"></i></div>
+        </div>
 
+        <div class="text-center mt-4">
+            <a href="{{ url('/collections') }}" class="btn-demanto">View All Jewelry</a>
+        </div>
+    </div>
+</section>
 
-@section('script')
+<!-- Exhibitions Section -->
+<section class="exhibitions-area">
+    <div class="container-fluid">
+        <div class="text-center mb-4">
+            <h2 class="section-title-demanto">EXHIBITIONS & EVENTS</h2>
+        </div>
+
+        <div class="position-relative">
+            <div class="swiper exhibitions-slider">
+                <div class="swiper-wrapper">
+                    @foreach($blogs as $exhibition)
+                    <div class="swiper-slide">
+                        <div class="demanto-exhibition-item">
+                            <img src="{{ asset($exhibition->image) }}" alt="{{ $exhibition->title }}">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="demanto-prev"><i class="fa fa-angle-left"></i></div>
+            <div class="demanto-next"><i class="fa fa-angle-right"></i></div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url('/exhibitions') }}" class="btn-demanto-outline">VIEW ALL EXHIBITIONS</a>
+        </div>
+    </div>
+</section>
+
+<!-- Private Appointment Section -->
+<section class="appointment-marquee">
+
+    <div class="appointment-overlay"></div>
+
+    <div class="container position-relative z-2">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-6 col-md-8">
+
+                <span class="luxury-sub mb-3 d-block">
+                     Private Appointment
+                </span>
+
+             
+                <p class="appointment-text">
+                    Book a private consultation with our experts
+                    and discover the world of DEMANTO.
+                </p>
+
+                <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+
+                    <a href="{{ url('/contact') }}"
+                       class="btn-demanto">
+                        BOOK AN APPOINTMENT
+                    </a>
+
+                    <a href="{{ url('/contact') }}"
+                       class="btn-demanto-outline">
+                        CONTACT US
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <script>
-  $('.four-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:false,
-    dots:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:4
-        }
-    }
-})
-  </script>
-  <style>
-.banner-overlay-text h6 , .banner-overlay-text h4{
-  color: white;
-}
-.testimonial-area{
-  background: #fbfbfb;
-}
-.firstActiveItem .testimonial-item .testi-inner-content .testi-content {
-  background: white;
-}
-  </style>
+document.addEventListener('DOMContentLoaded', function() {
+    // Lazy loading images
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // Add fade-in animation to sections as they appear
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.5s ease-out';
+        sectionObserver.observe(section);
+    });
+});
+</script>
 
+<style>
+/* Additional utility classes */
+.header-area.header-default {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050; 
+    background: transparent;
+}
+
+.header-top {
+    background: rgba(0, 0, 0, 0.15) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+.header-top a {
+    color: #fff !important;
+}
+
+.header-bottom.to-be-sticky {
+    background: transparent !important;
+}
+
+.home-slider-area {
+    position: relative;
+    z-index: 1;
+}
+
+.home-slider-area .container-fluid {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.slider-content-area {
+    padding-top: 120px; 
+}
+
+header.demanto-header {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    background: transparent !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important; 
+}
+
+header.demanto-header .header-main-content a {
+    color: #ffffff !important;
+}
+
+.demanto-btn {
+    border: 1.5px solid var(--demanto-gold);
+    color: var(--demanto-gold);
+    padding: 10px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 10px;
+    transition: var(--transition-smooth);
+    display: inline-block;
+    border-radius: 25px;
+}
+
+.demanto-btn:hover {
+    background: var(--demanto-gold);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(179, 146, 86, 0.2);
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Slider Animations */
+.ani-left, .ani-right, .ani-bottom {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.ani-left   { transform: translateX(-30px); }
+.ani-right  { transform: translateX(30px); }
+.ani-bottom { transform: translateY(20px); }
+
+.swiper-slide-active .ani-left,
+.swiper-slide-active .ani-right,
+.swiper-slide-active .ani-bottom {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+.swiper-slide-active .ani-left { transition-delay: 0.2s; }
+.swiper-slide-active .ani-right  { transition-delay: 0.4s; }
+.swiper-slide-active .ani-bottom   { transition-delay: 0.6s; }
+</style>
 @endsection
-
-
-
-

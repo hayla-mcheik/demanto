@@ -1,25 +1,15 @@
 @extends('layouts.app')
 @section('title','Blog Details Page')
 @section('content')
-    <!--== Start Page Header Area Wrapper ==-->
-<div class="page-header-area bg-img" data-bg-img="{{ asset('assets/img/photos/bg-02.jpg') }}">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <div class="page-header-content">
-            <nav class="breadcrumb-area">
-              <ul class="breadcrumb">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-sep"><i class="fa fa-angle-right"></i></li>
-                <li>{{ $blog->title }}</li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-      <!--== End Page Header Area Wrapper ==-->
+  <!-- Dynamic Breadcrumb -->
+@include('layouts.inc.frontend.breadcrumb', [
+    'breadcrumbs' => [
+        [
+            'title' => 'Event Details',
+            'url' => '#'
+        ]
+    ]
+]);
   
       <!--== Start Blog Area Wrapper ==-->
       <section class="blog-area blog-single-area">

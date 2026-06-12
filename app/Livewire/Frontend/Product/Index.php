@@ -5,17 +5,18 @@ namespace App\Livewire\Frontend\Product;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\Wishlist;
 use App\Models\Cart;
 
 class Index extends Component
 {
-    public $productItem;
-    public $products, $category, $categories;
+    use WithPagination;
+    
+    public $category, $categories;
     public $brandInputs = [], $priceInput;
-    public $inStockCount, $outOfStockCount;
-    public $IsInWishlist = false;
-
+    public $perPage = 12;
+    
     protected $queryString = [
         'brandInputs' => ['except' => '', 'as' => 'brand'],
         'priceInput' => ['except' => '', 'as' => 'price'],
@@ -23,15 +24,8 @@ class Index extends Component
 
     public function mount($category, $categories)
     {
-        $this->products = Product::all();
         $this->category = $category;
         $this->categories = $categories;
-
-        if (Auth::check() && $this->productItem) {
-            $this->IsInWishlist = Wishlist::where('user_id', auth()->id())
-                ->where('product_id', $this->productItem->id)
-                ->exists();
-        }
     }
 
     /* ---------------- Wishlist ---------------- */
@@ -66,7 +60,6 @@ class Index extends Component
             'product_id' => $productId,
         ]);
 
-        $this->IsInWishlist = true;
         $this->dispatch('wishlistAddedUpdated');
 
         $this->dispatch(
@@ -156,7 +149,7 @@ class Index extends Component
 
     public function render()
     {
-        $this->products = Product::where('category_id', $this->category->id)
+        $products = Product::where('category_id', $this->category->id)
             ->when($this->brandInputs, fn ($q) =>
                 $q->whereIn('brand', $this->brandInputs)
             )
@@ -170,10 +163,10 @@ class Index extends Component
                 );
             })
             ->where('status', '0')
-            ->get();
+            ->paginate($this->perPage);
 
         return view('livewire.frontend.product.index', [
-            'products' => $this->products,
+            'products' => $products,
             'category' => $this->category,
         ]);
     }

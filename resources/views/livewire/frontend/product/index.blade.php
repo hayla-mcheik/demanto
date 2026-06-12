@@ -1,5 +1,7 @@
 <div>
-
+<style>
+   
+</style>
  <section class="product-area">
     <div class="container-fluid pb-55">
         <div class="row">
@@ -46,73 +48,40 @@
                 <div class="product-body-wrap">
                     <div class="tab-content product-tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-                            <div class="row">
-                                @forelse ($products as $productItem)
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="product-item">
-                                            <div class="inner-content">
-                                                <div class="product-thumb">
-                                                    @if($productItem->productImages->count() > 0)    
-                                                        <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
-                                                            <img src="{{ asset($productItem->productImages[0]->image) }}" alt="{{ $productItem->name }}">
-                                                            @if($productItem->productImages->count() > 1)
-                                                                <img class="second-image" src="{{ asset($productItem->productImages[1]->image) }}" alt="{{ $productItem->name }}">
-                                                            @endif
-                                                        </a>
-                                                    @endif
+                        <div class="row g-4">
 
-                                                    <ul class="product-flag">
-                                                        <li class="new" style="font-size: 10px;">
-                                                            @if ($productItem->quantity > 0)
-                                                                <span>In Stock</span>
-                                                            @else
-                                                                Out of Stock
-                                                            @endif
-                                                        </li>
-                                                        
-                                                        {{-- Discount Badge Logic --}}
-                                                        @if($productItem->original_price > $productItem->selling_price)
-                                                            @php
-                                                                $discount = (($productItem->original_price - $productItem->selling_price) / $productItem->original_price ) * 100;
-                                                            @endphp
-                                                            @if(round($discount, 0) > 0)
-                                                                <li class="discount" style="font-size: 9px;">-{{ round($discount, 0) }}%</li>
-                                                            @endif
-                                                        @endif
-                                                    </ul>
-                                                </div>
+@forelse ($products as $product)
 
-                                                <div class="product-desc" style="padding: 10px 10px;">
-                                                    <div class="product-info">
-                                                        <h4 class="title" style="margin-bottom: 5px;">
-                                                            <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}" 
-                                                               style="color:#51555a; font-size: 0.75rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; width: 100%; text-decoration: none;">
-                                                                <span>{{ $productItem->name }}</span>
-                                                                <i class="fa fa-arrow-right" style="font-size: 0.65rem; color: #D97DA5;"></i>
-                                                            </a>
-                                                        </h4>
-                                                        <div class="prices text-start">
-                                                            {{-- Old Price Logic --}}
-                                                            @if($productItem->original_price > $productItem->selling_price)
-                                                                <span class="price-old" style="font-size: 10px; color: #e3dcdc; text-decoration: line-through; margin-right: 5px;">
-                                                                    €{{ $productItem->original_price }}
-                                                                </span>
-                                                            @endif
-                                                            <span class="price" style="font-size: 12px; font-weight: 600; color: white;">
-                                                                €{{ $productItem->selling_price }}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @empty
-                                    <div class="col-12 text-center">
-                                        <p>No Products Available</p>
-                                    </div>
-                                @endforelse
+<div class="col-6 col-md-4 col-lg-3">
+          <div class="swiper-slide">
+                        <div class="featured-product-card">
+                            <div class="featured-image">
+                                <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}">
+                                    @if($product->productImages->count())
+                                        <img src="{{ asset($product->productImages[0]->image) }}" alt="{{ $product->name }}">
+                                    @else
+                                        <img src="{{ asset('assets/img/placeholder.jpg') }}" alt="">
+                                    @endif
+                                </a>
                             </div>
+                            <div class="featured-content">
+                                <h4>{{ $product->name }}</h4>
+                                <a href="{{ url('/collections/'.$product->category->slug.'/'.$product->slug) }}">Discover Details →</a>
+                            </div>
+                        </div>
+                    </div>
+
+</div>
+
+@empty
+
+<div class="col-12 text-center py-5">
+    <h5>No Products Available</h5>
+</div>
+
+@endforelse
+
+</div>
                         </div>
                     </div>
                 </div>
