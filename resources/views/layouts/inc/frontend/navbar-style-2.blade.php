@@ -67,7 +67,7 @@
                     @endguest
 
                     <div class="theme-currency border-start ps-3 border-light-subtle">
-                        <a class="dropdown-btn currency-toggle text-decoration-none" href="#" role="button" style="letter-spacing: 1px;">
+                        <a class="dropdown-btn currency-toggle text-decoration-none" href="#" role="button" style="letter-spacing: 0.5px;">
                             USD $
                         </a>
                     </div>
@@ -119,7 +119,7 @@
                         <div class="align-right d-flex align-items-center gap-4">
                             <div class="contact-link boutique-text-small d-none d-xl-block">
                                 <div class="phone">
-                                    <span class=" fw-normal me-1">Call us:</span>
+                                    <span class="fw-normal me-1">Call us:</span>
                                     <a href="tel:{{ $appSetting->phone1 ?? '+33142968800' }}" class="text-decoration-none">{{ $appSetting->phone1 ?? '+33 1 42 96 88 00' }}</a>
                                 </div>
                             </div>
@@ -127,13 +127,12 @@
                             <div class="header-action-area">
                                 <div class="shop-button-group">
                                     <div class="shop-button-item position-relative parent-cart-hover">
-                               <a class="shop-button d-flex align-items-center text-decoration-none gap-2 cart-toggle"
-   href="javascript:void(0)">
+                                        <a class="shop-button d-flex align-items-center text-decoration-none gap-2 cart-toggle" href="javascript:void(0)">
                                             <div class="position-relative container-cart-bag">
                                                 <i class="icon-bag icon fs-5 text-white target-cart-icon"></i>
                                                 <sup class="shop-count badge rounded-circle"><livewire:frontend.cart.cart-count /></sup>
                                             </div>
-                                            <div class="cart-amount-summary d-none d-md-inline-block fw-bold target-cart-total" style="font-size: 11px; letter-spacing: 0.5px;">
+                                            <div class="cart-amount-summary d-none d-md-inline-block fw-bold target-cart-total" style="font-size: 10px; letter-spacing: 0.3px;">
                                                 <livewire:frontend.cart.total-amount-cart />
                                             </div>
                                         </a>
@@ -174,7 +173,7 @@
                     <div class="header-item justify-content-end boutique-icon-small">
                         <button class="btn-cart bg-transparent border-0 position-relative fs-4" onclick="window.location.href='{{ url('cart') }}'">
                             <i class="icon-bag text-white target-mobile-cart-icon"></i> 
-                            <span class="item-count position-absolute badge rounded-circle shop-count" style="top: -5px; right: -8px; font-size: 8px; padding: 4px 6px;">
+                            <span class="item-count position-absolute badge rounded-circle shop-count" style="top: -5px; right: -8px; font-size: 8px; padding: 2px 4px;">
                                 <livewire:frontend.cart.cart-count />
                             </span>
                         </button>
@@ -189,7 +188,7 @@
     <div class="off-canvas-inner">
         <div class="off-canvas-header">
             <div class="logo text-start">
-                <img class="logo-main" src="{{ asset('assets/img/logogold.png') }}" alt="Logo" style="max-width: 80px;">
+                <img class="logo-main" src="{{ asset('assets/img/logogold.png') }}" alt="Logo" style="max-width: 70px;">
             </div>
             <button class="btn-menu-close" id="closeSidebar"> <i class="icon-close"></i></button>
         </div>
@@ -245,6 +244,7 @@
     .header-top .account-links a,
     .header-top .dropdown-btn {
         color: #fff !important;
+        font-size: 10px !important;
     }
 
     .header-top a:hover,
@@ -310,9 +310,9 @@
         left: 50%;
         transform: translateX(-50%);
         background: #ffffff;
-        min-width: 230px;
+        min-width: 210px;
         box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-        padding: 15px 0;
+        padding: 12px 0;
         display: none;
         z-index: 1080;
         border: 1px solid var(--boutique-light-border);
@@ -339,9 +339,9 @@
     }
 
     .boutique-dropdown li a {
-        padding: 10px 24px !important;
+        padding: 8px 22px !important;
         color: var(--boutique-dark) !important;
-        font-size: 12px !important;
+        font-size: 11px !important;
         font-weight: 600 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.5px;
@@ -354,7 +354,7 @@
     .boutique-dropdown li a:hover {
         color: var(--boutique-pink) !important;
         background: #fbfbfb;
-        padding-left: 28px !important;
+        padding-left: 26px !important;
     }
 
     /* Refactored Clean Authentication Dropdown Structures */
@@ -366,10 +366,10 @@
         top: 100%;
         right: 0;
         background: #fff;
-        min-width: 180px;
+        min-width: 160px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.06);
         border: 1px solid var(--boutique-light-border);
-        padding: 8px 0;
+        padding: 6px 0;
         display: none;
         z-index: 1090;
         list-style: none;
@@ -380,9 +380,9 @@
     }
     .dropdown-content-menu li a {
         display: block;
-        padding: 8px 20px;
+        padding: 6px 18px;
         color: var(--boutique-dark) !important;
-        font-size: 11px !important;
+        font-size: 10px !important;
         text-transform: uppercase;
         text-decoration: none;
         font-weight: 600;
@@ -402,40 +402,41 @@
         transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     @media (max-width: 991px) {
-        .logo-main { max-width: 80px !important; }
+        .logo-main { max-width: 70px !important; }
     }
     @media (min-width: 992px) {
-        .logo-main { max-width: 100px !important; }
+        .logo-main { max-width: 90px !important; }
         .logo-main:hover { transform: scale(1.02); }
     }
 
     .boutique-nav li a,
     .boutique-text-small a,
     .header-top .dropdown-btn {
-        font-size: 11px !important;
+        font-size: 10px !important;
         text-transform: uppercase;
-        letter-spacing: 1.2px;
-        font-weight: 700;
+        letter-spacing: 1px;
+        font-weight: 600;
         text-decoration: none;
     }
 
     .boutique-nav li a {
-        padding: 8px 16px !important;
+        padding: 6px 14px !important;
         display: inline-block;
         color: white !important;
         transition: color 0.25s ease;
     }
-    .boutique-nav li ul li a {
-             color: var(--logo-pink-dark) !important;
-    }
+       .boutique-nav li ul li  a {
+       color: var(--demanto-gold) !important;
+         font-size: 9px !important;
+       } 
     .contact-email span {
-        font-size: 11px !important;
-        letter-spacing: 0.5px;
+        font-size: 10px !important;
+        letter-spacing: 0.3px;
         color: rgba(255,255,255,0.8);
     }
     .contact-email span a {
         text-transform: lowercase !important;
-        font-weight: 600;
+        font-weight: 500;
         text-decoration: none;
     }
 
@@ -450,10 +451,15 @@
     .shop-count {
         background: var(--boutique-pink) !important;
         color: #ffffff !important;
-        font-size: 9px !important;
+        font-size: 8px !important;
         font-weight: 600;
-        padding: 3px 6px !important;
+        padding: 2px 5px !important;
         border-radius: 50% !important;
+        min-width: 16px;
+        height: 16px;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Mini Cart Dropdown Styles */
@@ -463,45 +469,45 @@
         visibility: visible;
         transform: translateY(0);
     }
-  .popup-cart-content{
-    position:absolute;
-    top:100%;
-    right:0;
-    width:340px;
-    background:#fff;
-    box-shadow:0 20px 40px rgba(0,0,0,.12);
-    border:1px solid #eee;
-    padding:20px;
-    z-index:1090;
+    
+    .popup-cart-content {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 300px;
+        background: #fff;
+        box-shadow: 0 20px 40px rgba(0,0,0,.12);
+        border: 1px solid #eee;
+        padding: 15px;
+        z-index: 1090;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: .3s;
+    }
 
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(10px);
-    transition:.3s;
-}
-
-.popup-cart-content.show{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
+    .popup-cart-content.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 
     /* ==========================================================================
        3. LUXURY TEXT TICKER ANIMATION MATRIX LAYER
        ========================================================================== */
     .luxury-ticker {
-        height: 22px;
+        height: 20px;
         overflow: hidden;
         position: relative;
         width: 100%;
     }
     .ticker-item {
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
         color: var(--boutique-pink);
-        line-height: 22px;
+        line-height: 20px;
         text-align: center;
         width: 100%;
         position: absolute;
@@ -533,17 +539,13 @@
     .off-canvas-wrapper {
         position: fixed;
         top: 0;
-        left: -320px;
-        width: 320px;
+        left: -300px;
+        width: 300px;
         height: 100%;
         z-index: 2050;
         transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .off-canvas-wrapper .btn-menu-close{
-        background: transparent !important;
-        color: black !important;
-    }
-
+    
     .off-canvas-wrapper.active {
         left: 0;
         background-color: white;
@@ -580,7 +582,7 @@
     }
 
     .off-canvas-header {
-        padding: 30px 25px;
+        padding: 25px 20px;
         border-bottom: 1px solid var(--boutique-light-border);
         display: flex;
         justify-content: space-between;
@@ -590,8 +592,8 @@
     .btn-menu-close {
         background: none;
         border: none;
-        font-size: 11px;
-        letter-spacing: 2px;
+        font-size: 10px;
+        letter-spacing: 1.5px;
         cursor: pointer;
         font-weight: 600;
         display: flex;
@@ -602,7 +604,7 @@
 
     .mobile-main-nav {
         list-style: none;
-        padding: 15px 0;
+        padding: 10px 0;
         margin: 0;
         overflow-y: auto;
         flex-grow: 1;
@@ -614,18 +616,18 @@
 
     .mobile-main-nav > li > a {
         display: block;
-        padding: 16px 30px;
-        font-size: 11px;
+        padding: 14px 25px;
+        font-size: 10px;
         font-weight: 600;
         color: var(--boutique-dark);
         text-decoration: none;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
         text-transform: uppercase;
     }
 
     .mobile-sub-categories {
         list-style: none;
-        padding: 5px 0 15px 45px;
+        padding: 5px 0 12px 40px;
         background: #fafafa;
         display: none;
         border-top: 1px solid #f5f5f5;
@@ -633,12 +635,12 @@
 
     .mobile-sub-categories li a {
         display: block;
-        padding: 10px 0;
-        font-size: 10px;
+        padding: 8px 0;
+        font-size: 9px;
         color: var(--boutique-muted);
         text-decoration: none;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
         font-weight: 500;
     }
 
@@ -657,7 +659,6 @@
             background: rgba(0,0,0,0.35);
             transition: background 0.3s ease;
         }
-        /* When sticky behavior triggers for top navbar element variants on responsive layers */
         .header-area.header-sticky-active .responsive-header {
             background: #ffffff !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -667,22 +668,15 @@
             color: var(--boutique-dark) !important;
         }
     }
-    .shop-count{
-    position:absolute;
-    top:-8px;
-    right:-8px;
-    width:18px;
-    height:18px;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    background:#C9A96E !important;
-    color:#fff !important;
-    border-radius:50% !important;
-    font-size:10px !important;
-    font-weight:600;
-    padding:0 !important;
-}
+    
+    .cart-amount-summary {
+        font-size: 10px !important;
+        font-weight: 500 !important;
+    }
+    
+    .phone a, .phone span {
+        font-size: 10px !important;
+    }
 </style>
 
 <script>
@@ -763,23 +757,22 @@
                 }
             });
         }
+        
         const cartBtn = document.querySelector('.cart-toggle');
-const cartPopup = document.querySelector('.popup-cart-content');
+        const cartPopup = document.querySelector('.popup-cart-content');
 
-if(cartBtn && cartPopup){
+        if(cartBtn && cartPopup){
+            cartBtn.addEventListener('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                cartPopup.classList.toggle('show');
+            });
 
-    cartBtn.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-
-        cartPopup.classList.toggle('show');
-    });
-
-    document.addEventListener('click', function(e){
-        if(!cartPopup.contains(e.target) && !cartBtn.contains(e.target)){
-            cartPopup.classList.remove('show');
+            document.addEventListener('click', function(e){
+                if(!cartPopup.contains(e.target) && !cartBtn.contains(e.target)){
+                    cartPopup.classList.remove('show');
+                }
+            });
         }
-    });
-}
     });
 </script>
