@@ -92,6 +92,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                 padding-top: 130px;
             }
         }
+        .phpdebugbar-restore-btn{
+            display: none;
+        }
 
         /* Scroll Top Button */
         .scroll-to-top {
