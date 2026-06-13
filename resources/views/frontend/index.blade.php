@@ -347,7 +347,7 @@
     .featured-products {
         background: linear-gradient(180deg, #fff, #faf8f3);
         overflow: hidden;
-        padding: 30px 0;
+        padding: 0px 0;
     }
     
     .featured-product-card {
