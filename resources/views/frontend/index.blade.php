@@ -21,30 +21,31 @@
         color: var(--demanto-dark);
         font-family: 'Roboto', sans-serif;
         overflow-x: hidden;
+        font-size: 13px;
     }
 
-    /* Enhanced Typography */
+    /* Typography - Minimized */
     .luxury-heading {
-       font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        letter-spacing: 1.5px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
         text-transform: uppercase;
         background: linear-gradient(135deg, var(--demanto-dark) 0%, var(--demanto-gold) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        font-size: 28px !important;
+        font-size: 22px !important;
     }
 
     .luxury-sub {
-        font-size: 10px;
-        letter-spacing: 3px;
+        font-size: 9px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--demanto-gold);
         font-weight: 500;
         display: inline-block;
         position: relative;
-        padding-bottom: 6px;
+        padding-bottom: 4px;
     }
     
     .luxury-sub::after {
@@ -53,25 +54,25 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 30px;
+        width: 25px;
         height: 1.5px;
         background: var(--demanto-gold);
     }
 
     .luxury-section-title {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         position: relative;
     }
     
-    /* Enhanced Buttons */
+    /* Buttons - Minimized */
     .btn-demanto {
         background: linear-gradient(135deg, var(--demanto-gold) 0%, #9a7b45 100%);
         color: #fff !important;
-        font-size: 10px;
-        letter-spacing: 2px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        padding: 10px 28px;
+        padding: 8px 22px;
         border: none;
         border-radius: 25px;
         transition: var(--transition-smooth);
@@ -101,23 +102,21 @@
     
     .btn-demanto:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(179, 146, 86, 0.3);
+        box-shadow: 0 5px 15px rgba(179, 146, 86, 0.3);
     }
 
     .btn-demanto-outline {
         border: 1.5px solid var(--demanto-gold);
         color: var(--demanto-gold);
-        font-size: 10px;
-        letter-spacing: 2px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        padding: 10px 25px;
+        padding: 8px 20px;
         background: transparent;
         border-radius: 25px;
         transition: var(--transition-smooth);
         text-decoration: none;
         display: inline-block;
-        position: relative;
-        overflow: hidden;
     }
     
     .btn-demanto-outline:hover {
@@ -127,12 +126,12 @@
         box-shadow: 0 5px 15px rgba(179, 146, 86, 0.2);
     }
 
-    /* Cards */
+    /* Cards - Minimized */
     .luxury-arch-card {
         background: #fff;
         border: 1px solid var(--luxury-border);
-        border-radius: 80px 80px 20px 20px;
-        padding: 20px 15px 25px 15px;
+        border-radius: 60px 60px 15px 15px;
+        padding: 15px 12px 18px 12px;
         text-align: center;
         transition: var(--transition-smooth);
         height: 100%;
@@ -166,10 +165,10 @@
     }
     
     .arch-image-wrap {
-        border-radius: 60px 60px 15px 15px;
+        border-radius: 50px 50px 12px 12px;
         overflow: hidden;
         aspect-ratio: 1/1;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         background: linear-gradient(135deg, #f8f6f0 0%, #fff 100%);
         position: relative;
     }
@@ -178,7 +177,7 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        padding: 15px;
+        padding: 12px;
         transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
@@ -186,78 +185,41 @@
         transform: scale(1.05) rotate(1deg);
     }
 
-    /* Hero Slider */
-    .home-slider-container {
-        border-radius: 0;
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .slider-content-area {
-        position: relative;
-        transition: transform 0.3s ease;
-    }
-    
-    .slider-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%);
-        z-index: 1;
-    }
-    
+    /* Hero Slider - Minimized */
     .slider-title {
         color: #fff;
-       font-family: 'Roboto', sans-serif;
-        font-size: 42px;
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin-bottom: 12px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 34px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
         text-transform: uppercase;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
     .slider-desc {
         color: rgba(255,255,255,0.9);
-        font-size: 12px;
-        line-height: 1.6;
+        font-size: 11px;
+        line-height: 1.5;
         font-weight: 300;
         letter-spacing: 0.5px;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
-    /* Collections Section */
+    /* Collections Section - Minimized */
     .signature-collections {
         background: linear-gradient(135deg, #fdfcf9 0%, #fff 100%);
-        padding: 10px 0;
+        padding: 30px 0;
     }
     
     .collection-arch-card {
         border: 1px solid #e7dcc7;
-        border-radius: 120px 120px 25px 25px;
+        border-radius: 100px 100px 20px 20px;
         overflow: hidden;
         background: #fff;
         transition: var(--transition-smooth);
         height: 100%;
         position: relative;
         cursor: pointer;
-    }
-    
-    .collection-arch-card::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 0;
-        background: linear-gradient(180deg, transparent, rgba(179, 146, 86, 0.05));
-        transition: height 0.4s ease;
-    }
-    
-    .collection-arch-card:hover::after {
-        height: 100%;
     }
     
     .collection-arch-card:hover {
@@ -267,8 +229,8 @@
     }
     
     .collection-image {
-        height: 250px;
-        padding: 25px;
+        height: 200px;
+        padding: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -279,7 +241,7 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform 0.5s ease;
     }
     
     .collection-arch-card:hover img {
@@ -288,15 +250,15 @@
     
     .collection-content {
         text-align: center;
-        padding: 20px;
+        padding: 15px;
         position: relative;
         z-index: 1;
     }
     
     .collection-icon {
         color: var(--demanto-gold);
-        font-size: 20px;
-        margin-bottom: 10px;
+        font-size: 16px;
+        margin-bottom: 8px;
         transition: transform 0.3s ease;
         display: inline-block;
     }
@@ -306,115 +268,91 @@
     }
     
     .collection-content h4 {
- font-family: 'Roboto', sans-serif;
-        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
         color: #222;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
         font-weight: 500;
     }
     
     .collection-content span {
-        font-size: 9px;
-        letter-spacing: 2px;
+        font-size: 8px;
+        letter-spacing: 1.5px;
         color: var(--demanto-gold);
         font-weight: 500;
     }
 
-    /* About Section */
+    /* About Section - Minimized */
     .about-editorial-section {
         background: linear-gradient(135deg, #FBF9F4 0%, #fff 100%);
         position: relative;
         overflow: hidden;
-        padding: 10px 0;
-    }
-    
-    .about-editorial-section::before {
-        content: '♦';
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        font-size: 60px;
-        color: var(--demanto-gold);
-        opacity: 0.04;
-        font-family: serif;
+        padding: 30px 0;
     }
     
     .about-title {
-       font-family: 'Roboto', sans-serif;
-        font-size: 32px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
         line-height: 1.2;
         color: var(--demanto-dark);
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
         position: relative;
         display: inline-block;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
     
     .about-title::after {
         content: '';
         position: absolute;
-        bottom: -10px;
+        bottom: -8px;
         left: 0;
-        width: 50px;
+        width: 40px;
         height: 2px;
         background: linear-gradient(90deg, var(--demanto-gold), transparent);
     }
     
     .about-description {
         color: #666;
-        font-size: 13px;
-        line-height: 1.8;
-        margin-top: 20px;
+        font-size: 12px;
+        line-height: 1.6;
+        margin-top: 15px;
     }
     
     .metric-number {
         color: var(--demanto-gold);
-        font-size: 28px;
-        margin-bottom: 5px;
+        font-size: 22px;
+        margin-bottom: 4px;
         font-weight: 600;
         font-family: 'Roboto', sans-serif;
     }
     
-    .metric-item {
-        text-align: center;
-        transition: transform 0.3s ease;
-    }
-    
-    .metric-item:hover {
-        transform: translateY(-3px);
-    }
-    
     .metric-item i {
-        font-size: 28px;
+        font-size: 22px;
         color: var(--demanto-gold);
         transition: all 0.3s ease;
     }
     
-    .metric-item:hover i {
-        transform: scale(1.05);
-    }
-    
     .metric-label {
-        font-size: 9px;
-        letter-spacing: 1.5px;
+        font-size: 8px;
+        letter-spacing: 1px;
         color: #333;
         text-transform: uppercase;
-        line-height: 1.4;
+        line-height: 1.3;
         font-weight: 500;
-        margin-top: 8px;
+        margin-top: 6px;
     }
 
-    /* Featured Products */
+    /* Featured Products - Minimized */
     .featured-products {
         background: linear-gradient(180deg, #fff, #faf8f3);
         overflow: hidden;
-        padding: 10px 0;
+        padding: 30px 0;
     }
     
     .featured-product-card {
         background: #fff;
-        border-radius: 25px;
+        border-radius: 20px;
         border: 1px solid rgba(179, 146, 86, 0.15);
         overflow: hidden;
         transition: 0.4s;
@@ -427,24 +365,17 @@
     }
     
     .featured-image {
-        height: 280px;
+        height: 220px;
         background: #f8f5ef;
         overflow: hidden;
         position: relative;
-    }
-    
-    .featured-image::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(transparent, rgba(179, 146, 86, 0.03));
     }
     
     .featured-image img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        padding: 25px;
+        padding: 20px;
         transition: 0.5s;
     }
     
@@ -453,14 +384,14 @@
     }
     
     .featured-content {
-        padding: 20px;
+        padding: 15px;
         text-align: center;
     }
     
     .featured-content h4 {
-      font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        margin-bottom: 8px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        margin-bottom: 6px;
         color: #232323;
     }
     
@@ -468,68 +399,18 @@
         color: #B39256;
         text-decoration: none;
         text-transform: uppercase;
-        font-size: 10px;
-        letter-spacing: 1.5px;
-    }
-    
-    .featured-content a:hover {
-        color: #232323;
-    }
-    
-    .featured-prev,
-    .featured-next {
-        position: absolute;
-        top: 45%;
-        width: 40px;
-        height: 40px;
-        background: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        cursor: pointer;
-        z-index: 10;
-        transition: 0.3s;
-    }
-    
-    .featured-prev:hover,
-    .featured-next:hover {
-        background: #B39256;
-        color: #fff;
-    }
-    
-    .featured-prev {
-        left: -15px;
-    }
-    
-    .featured-next {
-        right: -15px;
-    }
-    
-    .featured-pagination {
-        text-align: center;
-    }
-    
-    .featured-pagination .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        background: #B39256;
-    }
-    
-    .featured-pagination .swiper-pagination-bullet-active {
-        width: 25px;
-        border-radius: 20px;
+        font-size: 9px;
+        letter-spacing: 1px;
     }
 
-    /* Exhibitions Section */
+    /* Exhibitions Section - UNCHANGED */
     .exhibitions-area {
         background: #FBF9F4;
         padding: 10px 0;
     }
     
     .section-title-demanto {
- font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto', sans-serif;
         color: #B39256;
         font-size: 28px;
         letter-spacing: 1.5px;
@@ -590,7 +471,7 @@
         color: #fff;
     }
 
-    /* Appointment Section */
+    /* Appointment Section - Minimized */
     .appointment-marquee {
         background: linear-gradient(135deg, rgba(179, 146, 86, 0.05) 0%, rgba(179, 146, 86, 0.02) 100%);
         border-top: 1px solid var(--luxury-border);
@@ -637,61 +518,46 @@
     section {
         animation: fadeInUp 0.6s ease-out;
     }
-    
-    /* Lazy Loading Images */
-    img[data-src] {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    img.loaded {
-        opacity: 1;
-    }
 
     /* Responsive */
     @media (max-width: 1200px) {
-        .slider-title { font-size: 36px; }
-        .about-title { font-size: 28px; }
-        .metric-number { font-size: 24px; }
-        .luxury-heading { font-size: 24px !important; }
+        .slider-title { font-size: 30px; }
+        .about-title { font-size: 22px; }
+        .metric-number { font-size: 20px; }
+        .luxury-heading { font-size: 20px !important; }
     }
     
     @media (max-width: 991px) {
         .home-slider-area, .home-slider-container { height: 600px !important; }
-        .slider-title { font-size: 32px; }
-        .collection-image { height: 220px; }
-        .featured-image { height: 240px; }
+        .slider-title { font-size: 28px; }
+        .collection-image { height: 180px; }
+        .featured-image { height: 200px; }
         .demanto-exhibition-item img { height: 240px; }
     }
     
     @media (max-width: 768px) {
         .home-slider-area, .home-slider-container { height: 500px !important; }
-        .slider-title { font-size: 24px !important; letter-spacing: 1.5px; }
-        .slider-desc { font-size: 11px !important; }
-        .luxury-heading { font-size: 20px !important; }
-        .about-title { font-size: 24px; }
-        .metric-number { font-size: 20px; }
-        .collection-image { height: 180px; padding: 20px; }
-        .collection-content h4 { font-size: 16px; }
-        .btn-demanto, .btn-demanto-outline { padding: 8px 20px; font-size: 9px; }
-        .featured-image { height: 200px; }
+        .slider-title { font-size: 22px !important; letter-spacing: 1px; }
+        .slider-desc { font-size: 10px !important; }
+        .luxury-heading { font-size: 18px !important; }
+        .about-title { font-size: 20px; }
+        .metric-number { font-size: 18px; }
+        .collection-image { height: 150px; padding: 15px; }
+        .collection-content h4 { font-size: 13px; }
+        .btn-demanto, .btn-demanto-outline { padding: 6px 16px; font-size: 8px; }
+        .featured-image { height: 180px; }
         .demanto-exhibition-item img { height: 200px; }
-        .featured-prev, .featured-next, .demanto-prev, .demanto-next { display: none; }
     }
     
     @media (max-width: 576px) {
-        .slider-title { font-size: 20px !important; }
-        .luxury-section-title { margin-bottom: 25px; }
-        .metric-item i { font-size: 20px; }
-        .metric-label { font-size: 8px; letter-spacing: 1px; }
-        .collection-image { height: 150px; padding: 15px; }
+        .slider-title { font-size: 18px !important; }
+        .luxury-section-title { margin-bottom: 20px; }
+        .metric-number { font-size: 16px; }
+        .metric-label { font-size: 7px; }
+        .collection-image { height: 120px; padding: 12px; }
+        .collection-content h4 { font-size: 12px; }
     }
 
-    /* Smooth Scroll Behavior */
-    html {
-        scroll-behavior: smooth;
-    }
-    
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
         width: 6px;
@@ -709,77 +575,52 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #9a7b45;
     }
- .appointment-marquee{
-    position:relative;
-    min-height:200px;
 
-    background:url('{{ asset("assets/img/appoint.jpg") }}');
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-
-    display:flex;
-    align-items:center;
-}
-
-.appointment-overlay{
-    position:absolute;
-    background:
-linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
-    z-index:1;
-}
-
-
-
-.appointment-text{
-    color:#fff;
-    font-size:16px;
-    line-height:1.9;
-}
-
-.luxury-sub{
-    color:#fff;
-    letter-spacing:4px;
-}
-
-.appointment-marquee .btn-demanto{
-
-    min-width:220px;
-
-    padding:14px 35px;
-
-    letter-spacing:2px;
-
-    font-size:11px;
-}
-
-.appointment-marquee .btn-demanto-outline{
-
-    min-width:220px;
-
-    padding:14px 35px;
-
-    letter-spacing:2px;
-
-    font-size:11px;
-}
-
-@media(max-width:768px){
-
-    .appointment-marquee{
-
-        padding:80px 0;
+    .appointment-marquee {
+        position: relative;
+        min-height: 200px;
+        background: url('{{ asset("assets/img/appoint.jpg") }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
     }
 
-    .appointment-title{
-
-        font-size:34px;
+    .appointment-overlay {
+        position: absolute;
+        background: linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
+        z-index: 1;
     }
-}
+
+    .appointment-text {
+        color: #fff;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .luxury-sub {
+        color: #fff;
+        letter-spacing: 4px;
+    }
+
+    .appointment-marquee .btn-demanto {
+        min-width: 180px;
+        padding: 10px 25px;
+        letter-spacing: 2px;
+        font-size: 9px;
+    }
+
+    .appointment-marquee .btn-demanto-outline {
+        min-width: 180px;
+        padding: 10px 25px;
+        letter-spacing: 2px;
+        font-size: 9px;
+    }
 </style>
 
 <!-- Hero Slider Section -->
-<section class="home-slider-area p-0 m-0" style="height: 80vh; overflow: hidden;">
+<section class="home-slider-area p-0 m-0" style="height: 70vh; overflow: hidden;">
     <div class="container-fluid p-0 h-100">
         <div class="row g-0 align-items-center h-100">
             <div class="col-12 col-lg-12 p-0 h-100">
@@ -796,7 +637,6 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
                                             <div class="slider-content text-start">
                                                 <h2 class="slider-title ani-left">{{ $sliderItem->title }}</h2>
                                                 <p class="slider-desc ani-right" style="max-width: 550px;">{{ $sliderItem->description }}</p>
-                                          
                                             </div>
                                         </div>
                                     </div>
@@ -814,7 +654,7 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
                                             <div class="slider-content text-start">
                                                 <h2 class="slider-title ani-left">Timeless Luxury <br>By Demanto</h2>
                                                 <p class="slider-desc ani-right">Where Diamonds Become Art.</p>
-                                                <div class="slider-btn ani-bottom mt-3">
+                                                <div class="slider-btn ani-bottom mt-2">
                                                     <a href="{{ url('/collections') }}" class="btn-demanto">Discover The Collections</a>
                                                 </div>
                                             </div>
@@ -837,13 +677,13 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
     <div class="container-fluid">
         <div class="luxury-section-title">
             <span class="luxury-sub">Curated Vault</span>
-            <h2 class="luxury-heading mt-2">Our Signature Collections</h2>
-            <p class="text-muted mt-2" style="font-size: 12px; max-width: 600px; margin: 0 auto;">Discover our meticulously curated collections</p>
+            <h2 class="luxury-heading mt-1">Our Signature Collections</h2>
+            <p class="text-muted mt-1" style="font-size: 11px; max-width: 600px; margin: 0 auto;">Discover our meticulously curated collections</p>
         </div>
 
-        <div class="row justify-content-center g-3">
+        <div class="row justify-content-center g-2">
             @foreach($categories as $categoryItem)
-                <div class="col-6 col-md-3 mb-3">
+                <div class="col-6 col-md-3 mb-2">
                     <a href="{{ url('/collections/'.$categoryItem->slug) }}" class="text-decoration-none">
                         <div class="collection-arch-card">
                             <div class="collection-image">
@@ -860,7 +700,7 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
             @endforeach
         </div>
 
-        <div class="text-center mt-3">
+        <div class="text-center mt-2">
             <a href="{{ url('/collections') }}" class="demanto-btn">Explore All Collections</a>
         </div>
     </div>
@@ -869,34 +709,32 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
 <!-- About Editorial Section -->
 <section class="about-editorial-section">
     <div class="container-fluid">
-        <div class="row align-items-center g-4">
-            <!-- Images -->
+        <div class="row align-items-center g-3">
             <div class="col-lg-6">
                 <div class="row g-2">
                     <div class="col-7">
-                        <div class="position-relative overflow-hidden" style="border-radius: 15px;">
+                        <div class="position-relative overflow-hidden" style="border-radius: 12px;">
                             <img src="{{ ($aboutData && $aboutData->imgone) ? asset('storage/'.$aboutData->imgone) : asset('assets/img/craft-1.jpg') }}"
-                                 class="w-100" style="height: 400px; object-fit: cover; transition: transform 0.5s ease;"
+                                 class="w-100" style="height: 350px; object-fit: cover; transition: transform 0.5s ease;"
                                  alt="Luxury Craftsmanship" loading="lazy">
                         </div>
                     </div>
                     <div class="col-5">
-                        <div class="mb-2 overflow-hidden" style="border-radius: 15px;">
+                        <div class="mb-2 overflow-hidden" style="border-radius: 12px;">
                             <img src="{{ ($aboutData && $aboutData->imgtwo) ? asset('storage/'.$aboutData->imgtwo) : asset('assets/img/craft-2.jpg') }}"
-                                 class="w-100" style="height: 195px; object-fit: cover; transition: transform 0.5s ease;"
+                                 class="w-100" style="height: 170px; object-fit: cover; transition: transform 0.5s ease;"
                                  alt="Fine Jewelry" loading="lazy">
                         </div>
-                        <div class="overflow-hidden" style="border-radius: 15px;">
+                        <div class="overflow-hidden" style="border-radius: 12px;">
                             <img src="{{ ($aboutData && $aboutData->imgthree) ? asset('storage/'.$aboutData->imgthree) : asset('assets/img/craft-3.jpg') }}"
-                                 class="w-100" style="height: 195px; object-fit: cover; transition: transform 0.5s ease;"
+                                 class="w-100" style="height: 170px; object-fit: cover; transition: transform 0.5s ease;"
                                  alt="Expert Craftsmanship" loading="lazy">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Content -->
-            <div class="col-lg-6 ps-lg-4">
+            <div class="col-lg-6 ps-lg-3">
                 <h2 class="about-title">
                     {{ $aboutData->title ?? 'Crafting Timeless Elegance Since 2005' }}
                 </h2>
@@ -904,9 +742,9 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
                     {!! nl2br(e($aboutData->description ?? 'With more than 20 years of expertise, DEMANTO is a leading name in fine jewelry manufacturing.')) !!}
                 </div>
                 
-                <hr class="my-3" style="border-color: var(--luxury-border);">
+                <hr class="my-2" style="border-color: var(--luxury-border);">
                 
-                <div class="row text-center g-3">
+                <div class="row text-center g-2">
                     <div class="col-3">
                         <div class="metric-number">
                             {{ $aboutData->years ?? 20 }}+
@@ -953,7 +791,7 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
                     </div>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-3">
                     <a href="{{ url('/aboutus') }}" class="btn-demanto">Discover Our Story</a>
                 </div>
             </div>
@@ -964,10 +802,10 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
 <!-- Featured Products Section -->
 <section class="featured-products">
     <div class="container-fluid">
-        <div class="luxury-section-title mb-4">
+        <div class="luxury-section-title mb-3">
             <span class="luxury-sub">Timeless Masterpieces</span>
-            <h2 class="luxury-heading mt-2">Featured Pieces</h2>
-            <p class="text-muted mt-2" style="font-size: 12px;">Discover our most exquisite creations</p>
+            <h2 class="luxury-heading mt-1">Featured Pieces</h2>
+            <p class="text-muted mt-1" style="font-size: 11px;">Discover our most exquisite creations</p>
         </div>
 
         <div class="position-relative">
@@ -993,19 +831,19 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
                     </div>
                     @endforeach
                 </div>
-                <div class="featured-pagination mt-3"></div>
+                <div class="featured-pagination mt-2"></div>
             </div>
             <div class="featured-prev"><i class="fa fa-angle-left"></i></div>
             <div class="featured-next"><i class="fa fa-angle-right"></i></div>
         </div>
 
-        <div class="text-center mt-4">
+        <div class="text-center mt-3">
             <a href="{{ url('/collections') }}" class="btn-demanto">View All Jewelry</a>
         </div>
     </div>
 </section>
 
-<!-- Exhibitions Section -->
+<!-- Exhibitions Section - UNCHANGED -->
 <section class="exhibitions-area">
     <div class="container-fluid">
         <div class="text-center mb-4">
@@ -1036,92 +874,37 @@ linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
 
 <!-- Private Appointment Section -->
 <section class="appointment-marquee">
-
     <div class="appointment-overlay"></div>
-
     <div class="container position-relative z-2">
-
         <div class="row justify-content-center text-center">
-
             <div class="col-lg-6 col-md-8">
-
-                <span class="luxury-sub mb-3 d-block">
-                     Private Appointment
-                </span>
-
-             
+                <span class="luxury-sub mb-2 d-block">Private Appointment</span>
                 <p class="appointment-text">
-                    Book a private consultation with our experts
-                    and discover the world of DEMANTO.
+                    Book a private consultation with our experts and discover the world of DEMANTO.
                 </p>
-
-                <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
-
-                    <a href="{{ url('/contact') }}"
-                       class="btn-demanto">
-                        BOOK AN APPOINTMENT
-                    </a>
-
-                    <a href="{{ url('/contact') }}"
-                       class="btn-demanto-outline">
-                        CONTACT US
-                    </a>
-
+                <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url('/contact') }}" class="btn-demanto">BOOK AN APPOINTMENT</a>
+                    <a href="{{ url('/contact') }}" class="btn-demanto-outline">CONTACT US</a>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Lazy loading images
     const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
+    const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 img.src = img.dataset.src;
                 img.classList.add('loaded');
-                observer.unobserve(img);
+                imageObserver.unobserve(img);
             }
         });
     });
-    
     images.forEach(img => imageObserver.observe(img));
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-    
-    // Add fade-in animation to sections as they appear
-    const sections = document.querySelectorAll('section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'all 0.5s ease-out';
-        sectionObserver.observe(section);
-    });
 });
 </script>
 
@@ -1136,56 +919,23 @@ document.addEventListener('DOMContentLoaded', function() {
     background: transparent;
 }
 
-.header-top {
-    background: rgba(0, 0, 0, 0.15) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #fff !important;
-}
-
-.header-top a {
-    color: #fff !important;
-}
-
-.header-bottom.to-be-sticky {
-    background: transparent !important;
-}
-
 .home-slider-area {
     position: relative;
     z-index: 1;
 }
 
-.home-slider-area .container-fluid {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
 .slider-content-area {
-    padding-top: 120px; 
-}
-
-header.demanto-header {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; 
-    background: transparent !important; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important; 
-}
-
-header.demanto-header .header-main-content a {
-    color: #ffffff !important;
+    padding-top: 100px; 
 }
 
 .demanto-btn {
     border: 1.5px solid var(--demanto-gold);
     color: var(--demanto-gold);
-    padding: 10px 25px;
+    padding: 8px 20px;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 10px;
+    letter-spacing: 1px;
+    font-size: 9px;
     transition: var(--transition-smooth);
     display: inline-block;
     border-radius: 25px;
@@ -1195,11 +945,6 @@ header.demanto-header .header-main-content a {
     background: var(--demanto-gold);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(179, 146, 86, 0.2);
-}
-
-.object-fit-cover {
-    object-fit: cover;
 }
 
 /* Slider Animations */
@@ -1208,9 +953,9 @@ header.demanto-header .header-main-content a {
     visibility: hidden;
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.ani-left   { transform: translateX(-30px); }
-.ani-right  { transform: translateX(30px); }
-.ani-bottom { transform: translateY(20px); }
+.ani-left { transform: translateX(-25px); }
+.ani-right { transform: translateX(25px); }
+.ani-bottom { transform: translateY(15px); }
 
 .swiper-slide-active .ani-left,
 .swiper-slide-active .ani-right,
@@ -1220,7 +965,7 @@ header.demanto-header .header-main-content a {
     transform: translate(0, 0);
 }
 .swiper-slide-active .ani-left { transition-delay: 0.2s; }
-.swiper-slide-active .ani-right  { transition-delay: 0.4s; }
-.swiper-slide-active .ani-bottom   { transition-delay: 0.6s; }
+.swiper-slide-active .ani-right { transition-delay: 0.4s; }
+.swiper-slide-active .ani-bottom { transition-delay: 0.6s; }
 </style>
 @endsection

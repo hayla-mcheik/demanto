@@ -31,27 +31,39 @@
             pointer-events: none;
         }
 
-        /* Shopping Cart */
+        .product-area::after {
+            content: '✧';
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 60px;
+            color: var(--demanto-gold);
+            opacity: 0.03;
+            font-family: serif;
+            pointer-events: none;
+        }
+
+        /* Shopping Cart - Minimized */
         .shopping-cart-content {
             background: #fff;
-            border-radius: 20px;
+            border-radius: 18px;
             border: 1px solid var(--luxury-border);
-            padding: 20px;
+            padding: 18px;
         }
 
         .title {
-           font-family: 'Roboto', sans-serif;
-            font-size: 22px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
             font-weight: 500;
             color: var(--demanto-dark);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 2px solid var(--demanto-gold);
             display: inline-block;
         }
 
         .shopping-cart-item {
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--luxury-border);
             transition: var(--transition-smooth);
         }
@@ -62,13 +74,14 @@
 
         .product-thumb {
             background: linear-gradient(135deg, #faf8f3 0%, #fff 100%);
-            border-radius: 12px;
-            padding: 8px;
+            border-radius: 10px;
+            padding: 6px;
             text-align: center;
         }
 
         .product-thumb img {
             width: 100%;
+            height: 150px;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
@@ -78,10 +91,10 @@
         }
 
         .product-content .title {
-       font-family: 'Roboto', sans-serif;
-            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
             font-weight: 500;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             border: none;
             padding: 0;
         }
@@ -98,30 +111,30 @@
 
         .product-price {
             color: var(--demanto-gold);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
         }
 
-        /* Quantity Box */
+        /* Quantity Box - Minimized */
         .quantity__box {
             display: flex;
             align-items: center;
             gap: 3px;
             background: #f8f6f0;
-            border-radius: 20px;
+            border-radius: 18px;
             padding: 2px;
             width: fit-content;
         }
 
         .quantity__value {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border: none;
             background: #fff;
             border-radius: 50%;
             cursor: pointer;
             transition: var(--transition-smooth);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--demanto-dark);
         }
@@ -132,12 +145,12 @@
         }
 
         .quantity__number {
-            width: 40px;
+            width: 38px;
             text-align: center;
             border: none;
             background: transparent;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--demanto-dark);
         }
 
@@ -149,27 +162,27 @@
         .product-close a {
             color: #999;
             transition: var(--transition-smooth);
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .product-close a:hover {
             color: #e74c3c;
         }
 
-        /* Button Styles */
+        /* Button Styles - Minimized */
         .btn-primary {
             background: linear-gradient(135deg, var(--demanto-gold) 0%, #9a7b45 100%);
             color: #fff;
             font-size: 9px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            padding: 8px 20px;
+            padding: 7px 18px;
             border: none;
-            border-radius: 20px;
+            border-radius: 18px;
             transition: var(--transition-smooth);
             display: inline-block;
             text-decoration: none;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .btn-primary:hover {
@@ -178,52 +191,52 @@
             color: #fff;
         }
 
-        /* Cart Summary */
+        /* Cart Summary - Minimized */
         .shopping-cart-summary {
             background: #fff;
-            border-radius: 20px;
+            border-radius: 18px;
             border: 1px solid var(--luxury-border);
-            padding: 20px;
+            padding: 18px;
             position: sticky;
             top: 100px;
         }
 
         .cart-detailed-totals {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .card-block-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            padding: 6px 0;
         }
 
         .card-block-item .label {
             color: var(--demanto-muted);
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .card-block-item .value {
             color: var(--demanto-dark);
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .separator {
             height: 1px;
             background: var(--luxury-border);
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         .btn-checkout {
             background: linear-gradient(135deg, var(--demanto-gold) 0%, #9a7b45 100%);
             color: #fff;
-            font-size: 10px;
-            letter-spacing: 2px;
+            font-size: 9px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            padding: 10px 20px;
+            padding: 9px 18px;
             border: none;
-            border-radius: 20px;
+            border-radius: 18px;
             transition: var(--transition-smooth);
             display: block;
             text-align: center;
@@ -237,38 +250,92 @@
             color: #fff;
         }
 
-        /* Empty Cart */
+        /* Empty Cart - Minimized */
         .empty-cart {
             text-align: center;
-            padding: 40px 20px;
+            padding: 35px 20px;
         }
 
         .empty-cart i {
-            font-size: 48px;
+            font-size: 42px;
             color: var(--demanto-gold);
             opacity: 0.3;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .empty-cart p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--demanto-muted);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        /* Responsive */
+        /* Responsive - Minimized */
         @media (max-width: 768px) {
             .shopping-cart-content,
             .shopping-cart-summary {
                 padding: 15px;
             }
             .title {
-                font-size: 20px;
+                font-size: 16px;
             }
             .product-thumb img {
-                width: 60px;
-                height: 60px;
+                width: 155px;
+                height: 155px;
             }
+            .product-content .title {
+                font-size: 12px;
+            }
+            .product-price {
+                font-size: 11px;
+            }
+            .quantity__value {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            .quantity__number {
+                width: 35px;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .shopping-cart-content,
+            .shopping-cart-summary {
+                padding: 12px;
+            }
+            .title {
+                font-size: 15px;
+            }
+            .product-thumb img {
+                width: 150px;
+                height: 150px;
+            }
+            .product-content .title {
+                font-size: 11px;
+            }
+            .btn-primary {
+                padding: 6px 15px;
+                font-size: 8px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--demanto-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--demanto-gold);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9a7b45;
         }
     </style>
 
@@ -348,7 +415,7 @@
                     @if(count($items) > 0)
                     <div class="col-lg-4">
                         <div class="shopping-cart-summary">
-                            <h4 class="title mb-2" style="font-size: 18px;">Order Summary</h4>
+                            <h4 class="title mb-2" style="font-size: 16px;">Order Summary</h4>
                             <div class="cart-detailed-totals">
                                 <div class="card-block-item">
                                     <span class="label">{{ collect($items)->sum('quantity') }} items</span>
@@ -362,7 +429,7 @@
                                 <div class="separator"></div>
                                 <div class="card-block-item fw-bold">
                                     <span class="label">Total</span>
-                                    <span class="value" style="color: var(--demanto-gold); font-size: 18px;">${{ number_format($total, 2) }}</span>
+                                    <span class="value" style="color: var(--demanto-gold); font-size: 16px;">${{ number_format($total, 2) }}</span>
                                 </div>
                             </div>
                             

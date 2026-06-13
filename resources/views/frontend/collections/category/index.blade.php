@@ -5,29 +5,39 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap');
 
+    :root {
+        --demanto-gold: #B39256;
+        --demanto-gold-light: #F7F4EB;
+        --demanto-dark: #232323;
+        --demanto-bg: #FDFBF7;
+        --demanto-muted: #6E6E6E;
+        --luxury-border: rgba(179, 146, 86, 0.25);
+        --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --box-shadow-luxury: 0 25px 45px rgba(179, 146, 86, 0.1);
+    }
 
-    /* Typography - Matching Home Page */
+    /* Typography - Minimized */
     .luxury-heading {
-   font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        letter-spacing: 1.5px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
         text-transform: uppercase;
         background: linear-gradient(135deg, var(--demanto-dark) 0%, var(--demanto-gold) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        font-size: 28px !important;
+        font-size: 22px !important;
     }
 
     .luxury-sub {
-        font-size: 10px;
-        letter-spacing: 3px;
+        font-size: 9px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--demanto-gold);
         font-weight: 500;
         display: inline-block;
         position: relative;
-        padding-bottom: 6px;
+        padding-bottom: 4px;
     }
     
     .luxury-sub::after {
@@ -36,25 +46,25 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 30px;
+        width: 25px;
         height: 1.5px;
         background: var(--demanto-gold);
     }
 
     .luxury-section-title {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         position: relative;
     }
 
-    /* Buttons - Matching Home Page */
+    /* Buttons - Minimized */
     .btn-demanto {
         background: linear-gradient(135deg, var(--demanto-gold) 0%, #9a7b45 100%);
         color: #fff !important;
-        font-size: 10px;
-        letter-spacing: 2px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        padding: 10px 28px;
+        padding: 8px 22px;
         border: none;
         border-radius: 25px;
         transition: var(--transition-smooth);
@@ -84,23 +94,21 @@
     
     .btn-demanto:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(179, 146, 86, 0.3);
+        box-shadow: 0 5px 15px rgba(179, 146, 86, 0.3);
     }
 
     .btn-demanto-outline {
         border: 1.5px solid var(--demanto-gold);
         color: var(--demanto-gold);
-        font-size: 10px;
-        letter-spacing: 2px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        padding: 10px 25px;
+        padding: 8px 20px;
         background: transparent;
         border-radius: 25px;
         transition: var(--transition-smooth);
         text-decoration: none;
         display: inline-block;
-        position: relative;
-        overflow: hidden;
     }
     
     .btn-demanto-outline:hover {
@@ -110,10 +118,10 @@
         box-shadow: 0 5px 15px rgba(179, 146, 86, 0.2);
     }
 
-    /* Categories Section - Matching Home Page Collections Section */
+    /* Categories Section */
     .all-categories {
         background: linear-gradient(135deg, #fdfcf9 0%, #fff 100%);
-        padding: 10px 0 40px 0;
+        padding: 30px 0 40px 0;
         position: relative;
         overflow: hidden;
     }
@@ -121,9 +129,9 @@
     .all-categories::before {
         content: '♦';
         position: absolute;
-        top: 50px;
-        right: 50px;
-        font-size: 120px;
+        top: 30px;
+        right: 30px;
+        font-size: 80px;
         color: var(--demanto-gold);
         opacity: 0.03;
         font-family: serif;
@@ -133,19 +141,19 @@
     .all-categories::after {
         content: '✧';
         position: absolute;
-        bottom: 50px;
-        left: 50px;
-        font-size: 100px;
+        bottom: 30px;
+        left: 30px;
+        font-size: 60px;
         color: var(--demanto-gold);
         opacity: 0.03;
         font-family: serif;
         pointer-events: none;
     }
 
-    /* Category Cards - Matching Collection Cards from Home Page */
+    /* Category Cards - Minimized */
     .category-card {
         border: 1px solid #e7dcc7;
-        border-radius: 120px 120px 25px 25px;
+        border-radius: 100px 100px 20px 20px;
         overflow: hidden;
         background: #fff;
         transition: var(--transition-smooth);
@@ -176,8 +184,8 @@
     }
     
     .category-card-img {
-        height: 250px;
-        padding: 25px;
+        height: 200px;
+        padding: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -197,15 +205,15 @@
     
     .category-card-body {
         text-align: center;
-        padding: 20px;
+        padding: 15px;
         position: relative;
         z-index: 1;
     }
     
     .category-icon {
         color: var(--demanto-gold);
-        font-size: 20px;
-        margin-bottom: 10px;
+        font-size: 16px;
+        margin-bottom: 8px;
         transition: transform 0.3s ease;
         display: inline-block;
     }
@@ -215,45 +223,45 @@
     }
     
     .category-card-body h5 {
-     font-family: 'Roboto', sans-serif;
-        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
         color: #222;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
         font-weight: 500;
     }
     
     .category-card-body span {
-        font-size: 9px;
-        letter-spacing: 2px;
+        font-size: 8px;
+        letter-spacing: 1.5px;
         color: var(--demanto-gold);
         font-weight: 500;
     }
 
-    /* Empty State */
+    /* Empty State - Minimized */
     .empty-state {
         text-align: center;
-        padding: 60px 20px;
+        padding: 40px 20px;
         background: #fff;
         border-radius: 20px;
         border: 1px solid var(--luxury-border);
     }
 
     .empty-state i {
-        font-size: 48px;
+        font-size: 40px;
         color: var(--demanto-gold);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         opacity: 0.5;
     }
 
     .empty-state h5 {
-    font-family: 'Roboto', sans-serif;
-        font-size: 22px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
         color: var(--demanto-dark);
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .empty-state p {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--demanto-muted);
     }
 
@@ -263,17 +271,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 20px;
-        margin: 20px 0 10px;
+        gap: 15px;
+        margin: 15px 0 5px;
     }
 
     .divider-icon {
         color: var(--demanto-gold);
-        font-size: 12px;
+        font-size: 10px;
         opacity: 0.5;
     }
 
-    /* Animation - Matching Home Page */
+    /* Animation */
     @keyframes fadeInUp {
         from {
             opacity: 0;
@@ -290,37 +298,38 @@
         animation-fill-mode: backwards;
     }
 
-    /* Responsive - Matching Home Page */
+    /* Responsive */
     @media (max-width: 1200px) {
-        .luxury-heading { font-size: 24px !important; }
-        .category-card-img { height: 220px; padding: 20px; }
+        .luxury-heading { font-size: 20px !important; }
+        .category-card-img { height: 180px; padding: 18px; }
     }
     
     @media (max-width: 991px) {
-        .category-card-img { height: 200px; padding: 20px; }
-        .category-card-body h5 { font-size: 16px; }
+        .category-card-img { height: 160px; padding: 15px; }
+        .category-card-body h5 { font-size: 13px; }
     }
     
     @media (max-width: 768px) {
-        .all-categories { padding: 10px 0 30px 0; }
-        .luxury-heading { font-size: 20px !important; }
-        .category-card-img { height: 180px; padding: 20px; }
-        .category-card-body { padding: 15px; }
-        .category-card-body h5 { font-size: 14px; }
-        .category-icon { font-size: 16px; }
-        .category-card-body span { font-size: 8px; }
-        .decorative-divider { margin: 15px 0 5px; }
+        .all-categories { padding: 20px 0 30px 0; }
+        .luxury-heading { font-size: 18px !important; }
+        .category-card-img { height: 150px; padding: 15px; }
+        .category-card-body { padding: 12px; }
+        .category-card-body h5 { font-size: 12px; }
+        .category-icon { font-size: 14px; }
+        .category-card-body span { font-size: 7px; letter-spacing: 1px; }
+        .decorative-divider { margin: 10px 0 5px; gap: 10px; }
+        .divider-icon { font-size: 8px; }
     }
     
     @media (max-width: 576px) {
-        .category-card-img { height: 150px; padding: 15px; }
-        .category-card-body h5 { font-size: 13px; }
-        .empty-state { padding: 40px 15px; }
-        .empty-state i { font-size: 36px; }
-        .empty-state h5 { font-size: 18px; }
+        .category-card-img { height: 120px; padding: 12px; }
+        .category-card-body h5 { font-size: 11px; }
+        .empty-state { padding: 30px 15px; }
+        .empty-state i { font-size: 32px; }
+        .empty-state h5 { font-size: 16px; }
     }
 
-    /* Custom Scrollbar - Matching Home Page */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
         width: 6px;
     }
@@ -349,18 +358,18 @@
     ]
 ])
 
-<!-- Categories Section - Matching Home Page Signature Collections -->
+<!-- Categories Section -->
 <div class="all-categories">
     <div class="container">
-        <div class="luxury-section-title mt-4">
+        <div class="luxury-section-title">
             <span class="luxury-sub">Curated Vault</span>
-            <h2 class="luxury-heading mt-2">Our Collections</h2>
-            <p class="text-muted mt-2" style="font-size: 12px; max-width: 600px; margin: 0 auto;">Discover our meticulously curated categories, each telling a unique story of timeless elegance</p>
+            <h2 class="luxury-heading mt-1">Our Collections</h2>
+            <p class="text-muted mt-1" style="font-size: 11px; max-width: 600px; margin: 0 auto;">Discover our meticulously curated categories, each telling a unique story of timeless elegance</p>
         </div>
 
-        <div class="row justify-content-center g-3">
+        <div class="row justify-content-center g-2">
             @forelse($categories as $index => $categoryItem)
-            <div class="col-6 col-md-4 col-lg-3 mb-3" style="animation-delay: {{ $index * 0.05 }}s">
+            <div class="col-6 col-md-4 col-lg-3 mb-2" style="animation-delay: {{ $index * 0.05 }}s">
                 <a href="{{ url('/collections/'.$categoryItem->slug) }}" class="text-decoration-none">
                     <div class="category-card">
                         <div class="category-card-img">
@@ -380,14 +389,14 @@
                     <i class="fa-regular fa-gem"></i>
                     <h5>No Categories Available</h5>
                     <p>New collections are being curated just for you. Please check back soon.</p>
-                    <a href="{{ url('/') }}" class="btn-demanto" style="margin-top: 20px; display: inline-block;">Return Home</a>
+                    <a href="{{ url('/') }}" class="btn-demanto" style="margin-top: 15px; display: inline-block;">Return Home</a>
                 </div>
             </div>
             @endforelse
         </div>
 
         @if($categories->count() > 0)
-        <div class="row mt-3">
+        <div class="row mt-2">
             <div class="col-12 text-center">
                 <div class="decorative-divider">
                     <span class="divider-icon">✧</span>
@@ -440,15 +449,15 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
-/* Additional utility classes matching home page */
+/* Additional utility classes */
 .demanto-btn {
     border: 1.5px solid var(--demanto-gold);
     color: var(--demanto-gold);
-    padding: 10px 25px;
+    padding: 8px 20px;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 10px;
+    letter-spacing: 1px;
+    font-size: 9px;
     transition: var(--transition-smooth);
     display: inline-block;
     border-radius: 25px;

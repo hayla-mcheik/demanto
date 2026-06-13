@@ -85,28 +85,6 @@
     </div>
 </footer>
 
-{{-- Demanto Luxury Popup (kept as is) --}}
-<div class="modal fade modal-luxury" id="demantoLuxuryPopup" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content">
-            <div class="modal-header justify-content-end border-0 pb-0">
-                <button type="button" class="btn-close-custom" id="closePopupBtn" aria-label="Close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="popup-inner">
-                <div class="popup-icon"><i class="fas fa-crown"></i></div>
-                <h3 class="popup-title">Private Access</h3>
-                <p class="popup-desc">Enter the world of Demanto. Experience our High Jewelry collection and receive an invitation to exclusive atelier viewings.</p>
-                <a href="{{ url('collections') }}" class="btn-gold-popup" id="discoverBtn">Discover Maison</a>
-                <div class="no-thanks-link" id="noThanksLink">No thanks, continue browsing</div>
-                <div class="popup-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
-                    <a href="#"><i class="fab fa-weixin"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <style>
     /* Simplified Footer CSS - Compact & Elegant */

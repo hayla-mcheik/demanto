@@ -119,7 +119,7 @@
             font-size: 9px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 8px 20px;
+            padding: 0px 20px;
             border: none;
             border-radius: 20px;
             transition: var(--transition-smooth);
@@ -273,7 +273,7 @@
                                         <button class="heading-button @if(!$isPersonalInfoValid) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="@if($isPersonalInfoValid) true @else false @endif" aria-controls="collapseTwo">
                                             <span class="step-number">1</span>
                                             Personal Information
-                                            <span class="step-edit"><i class="fa fa-pencil"></i> edit</span>
+                                            {{-- <span class="step-edit"><i class="fa fa-pencil"></i> edit</span> --}}
                                         </button>
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse @if(!$isPersonalInfoValid) show @endif" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -318,7 +318,7 @@
                                         <button class="heading-button @if($isPersonalInfoValid) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="@if($isPersonalInfoValid) true @else false @endif" aria-controls="collapseThree" @if(!$isPersonalInfoValid) disabled style="opacity: 0.5;" @endif>
                                             <span class="step-number">2</span>
                                             Payment Method
-                                            <span class="step-edit"><i class="fa fa-pencil"></i> edit</span>
+                                            {{-- <span class="step-edit"><i class="fa fa-pencil"></i> edit</span> --}}
                                         </button>
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse @if($isPersonalInfoValid) show @endif" aria-labelledby="headingThree" data-bs-parent="#accordionExample">

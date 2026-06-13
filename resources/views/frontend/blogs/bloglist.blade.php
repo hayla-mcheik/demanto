@@ -21,12 +21,12 @@
         font-family: 'Roboto', sans-serif;
     }
 
-    /* Exhibitions Section */
+    /* Exhibitions Section - Minimized */
     .exhibitions-area {
         background: linear-gradient(135deg, #FDFBF7 0%, #fff 100%);
-        padding: 20px 0 50px 0;
         position: relative;
         overflow: hidden;
+        padding: 20px 0 40px 0;
     }
 
     .exhibitions-area::before {
@@ -54,23 +54,23 @@
     }
 
     .section-title-demanto {
-       font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto', sans-serif;
         color: var(--demanto-gold);
-        font-size: 28px;
-        letter-spacing: 2px;
+        font-size: 22px;
+        letter-spacing: 1.5px;
         font-weight: 500;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .section-subtitle {
-        font-size: 10px;
-        letter-spacing: 3px;
+        font-size: 9px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--demanto-gold);
         font-weight: 500;
         display: inline-block;
         position: relative;
-        padding-bottom: 6px;
+        padding-bottom: 4px;
     }
 
     .section-subtitle::after {
@@ -79,22 +79,22 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 30px;
+        width: 25px;
         height: 1.5px;
         background: var(--demanto-gold);
     }
 
-    /* Exhibition Cards - Grid Layout */
+    /* Exhibition Cards - Grid Layout - Minimized */
     .exhibitions-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 25px;
-        margin: 30px 0;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+        margin: 25px 0;
     }
 
     .exhibition-card {
         background: #fff;
-        border-radius: 20px;
+        border-radius: 18px;
         border: 1px solid var(--luxury-border);
         overflow: hidden;
         transition: var(--transition-smooth);
@@ -107,7 +107,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
+        height: 2px;
         background: linear-gradient(90deg, transparent, var(--demanto-gold), transparent);
         transform: translateX(-100%);
         transition: transform 0.6s ease;
@@ -119,7 +119,7 @@
     }
 
     .exhibition-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-4px);
         box-shadow: var(--box-shadow-luxury);
         border-color: var(--demanto-gold);
     }
@@ -127,7 +127,7 @@
     .exhibition-image {
         position: relative;
         overflow: hidden;
-        height: 280px;
+        height: 240px;
         background: linear-gradient(135deg, #faf8f3 0%, #fff 100%);
     }
 
@@ -148,7 +148,7 @@
         left: 0;
         right: 0;
         background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        padding: 20px;
+        padding: 15px;
         transform: translateY(100%);
         transition: transform 0.4s ease;
     }
@@ -159,20 +159,20 @@
 
     .exhibition-overlay span {
         color: #fff;
-        font-size: 11px;
-        letter-spacing: 2px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
     }
 
     .exhibition-content {
-        padding: 20px;
+        padding: 15px;
         text-align: center;
     }
 
     .exhibition-icon {
         color: var(--demanto-gold);
-        font-size: 24px;
-        margin-bottom: 10px;
+        font-size: 18px;
+        margin-bottom: 8px;
         display: inline-block;
         transition: transform 0.3s ease;
     }
@@ -182,11 +182,11 @@
     }
 
     .exhibition-content h3 {
- font-family: 'Roboto', sans-serif;
-        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
         font-weight: 500;
         color: var(--demanto-dark);
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         transition: var(--transition-smooth);
     }
 
@@ -195,99 +195,52 @@
     }
 
     .exhibition-date {
-        font-size: 11px;
+        font-size: 10px;
         color: var(--demanto-gold);
         letter-spacing: 1px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 6px;
     }
 
     .exhibition-date i {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .exhibition-content p {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--demanto-muted);
-        line-height: 1.6;
-        margin-bottom: 15px;
+        line-height: 1.5;
+        margin-bottom: 12px;
     }
 
-    .exhibition-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--demanto-gold);
-        text-decoration: none;
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: var(--transition-smooth);
-    }
-
-    .exhibition-link i {
-        font-size: 10px;
-        transition: transform 0.3s ease;
-    }
-
-    .exhibition-link:hover {
-        color: var(--demanto-dark);
-    }
-
-    .exhibition-link:hover i {
-        transform: translateX(5px);
-    }
-
-    /* Button */
-    .btn-demanto-outline {
-        border: 1.5px solid var(--demanto-gold);
-        color: var(--demanto-gold);
-        font-size: 10px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 10px 28px;
-        background: transparent;
-        border-radius: 25px;
-        transition: var(--transition-smooth);
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .btn-demanto-outline:hover {
-        background: var(--demanto-gold);
-        color: #fff !important;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(179, 146, 86, 0.2);
-    }
-
-    /* Empty State */
+    /* Empty State - Minimized */
     .empty-state {
         text-align: center;
-        padding: 60px 20px;
+        padding: 40px 20px;
         background: #fff;
-        border-radius: 20px;
+        border-radius: 18px;
         border: 1px solid var(--luxury-border);
     }
 
     .empty-state i {
-        font-size: 48px;
+        font-size: 40px;
         color: var(--demanto-gold);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         opacity: 0.5;
     }
 
     .empty-state h3 {
-      font-family: 'Roboto', sans-serif;
-        font-size: 24px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
         color: var(--demanto-dark);
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .empty-state p {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--demanto-muted);
     }
 
@@ -308,45 +261,58 @@
         animation-fill-mode: backwards;
     }
 
-    /* Responsive */
+    /* Responsive - Minimized */
     @media (max-width: 992px) {
         .exhibitions-grid {
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .exhibition-image {
+            height: 220px;
         }
     }
 
     @media (max-width: 768px) {
         .exhibitions-area {
-            padding: 15px 0 40px 0;
+            padding: 15px 0 30px 0;
         }
         .section-title-demanto {
-            font-size: 24px;
+            font-size: 20px;
         }
         .exhibitions-grid {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 18px;
+            margin: 20px 0;
         }
         .exhibition-image {
-            height: 240px;
+            height: 200px;
         }
         .exhibition-content h3 {
-            font-size: 18px;
+            font-size: 15px;
+        }
+        .exhibition-content p {
+            font-size: 11px;
         }
     }
 
     @media (max-width: 576px) {
         .exhibition-image {
-            height: 220px;
+            height: 180px;
         }
         .exhibition-content {
-            padding: 15px;
+            padding: 12px;
         }
         .exhibition-content h3 {
-            font-size: 16px;
+            font-size: 14px;
         }
         .exhibition-content p {
-            font-size: 12px;
+            font-size: 11px;
+        }
+        .exhibition-date {
+            font-size: 9px;
+        }
+        .exhibition-icon {
+            font-size: 16px;
         }
     }
 
@@ -362,6 +328,10 @@
     ::-webkit-scrollbar-thumb {
         background: var(--demanto-gold);
         border-radius: 3px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #9a7b45;
     }
 </style>
 
@@ -380,8 +350,8 @@
     <div class="container">
         <div class="text-center">
             <span class="section-subtitle">Global Footprint</span>
-            <h2 class="section-title-demanto mt-2">EXHIBITIONS & EVENTS</h2>
-            <p class="text-muted mt-2" style="font-size: 12px; max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title-demanto mt-1">EXHIBITIONS & EVENTS</h2>
+            <p class="text-muted mt-1" style="font-size: 11px; max-width: 600px; margin: 0 auto;">
                 Discover our presence at prestigious international exhibitions worldwide
             </p>
         </div>
@@ -404,7 +374,6 @@
                                 <span>{{ $exhibition->created_at ? $exhibition->created_at->format('F d, Y') : 'Coming Soon' }}</span>
                             </div>
                             <p>{{ $exhibition->description ?? 'Experience the pinnacle of craftsmanship at our exclusive exhibition.' }}</p>
-                  
                         </div>
                     </div>
                 @endforeach
@@ -415,14 +384,6 @@
                 <h3>No Events Available</h3>
                 <p>New exhibitions and events are being planned. Please check back soon.</p>
             </div>
-        @endif
-
-        @if($blogs->count() > 0)
-            {{-- <div class="text-center mt-4">
-                <a href="{{ url('/exhibitions') }}" class="btn-demanto-outline">
-                    VIEW ALL EXHIBITIONS
-                </a>
-            </div> --}}
         @endif
     </div>
 </section>

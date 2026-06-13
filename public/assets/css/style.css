@@ -5840,8 +5840,8 @@ font-size: 12px;
   position: relative;
   padding-bottom: 9px;
 }
-.shopping-checkout-content .checkout-accordion .checkout-accordion-item .heading .heading-button.collapsed:before {
-  font-family: "Ionicons";
+/* .shopping-checkout-content .checkout-accordion .checkout-accordion-item .heading .heading-button.collapsed:before {
+  font-family: "simple-line-icons";
   color: #4cbb6c;
   content: "\f3ff";
   position: relative;
@@ -5850,7 +5850,27 @@ font-size: 12px;
   line-height: 2px;
   vertical-align: -8px;
   margin-right: 16px;
+} */
+.heading-button {
+    position: relative;
 }
+
+.heading-button:before {
+    font-family: "simple-line-icons";
+    content: "\e606"; /* arrow-down */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #B39256;
+    font-size: 14px;
+    transition: all .3s ease;
+}
+
+.heading-button.collapsed:before {
+    transform: translateY(-50%) rotate(-90deg);
+}
+
 .shopping-checkout-content .checkout-accordion .checkout-accordion-item .heading .heading-button.collapsed .step-number {
   display: none;
 }
