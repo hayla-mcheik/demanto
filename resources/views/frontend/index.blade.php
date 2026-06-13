@@ -847,7 +847,7 @@
 <section class="exhibitions-area">
     <div class="container-fluid">
         <div class="text-center mb-4">
-            <h2 class="section-title-demanto">EXHIBITIONS & EVENTS</h2>
+            <h2 class="luxury-heading mt-1">EXHIBITIONS & EVENTS</h2>
         </div>
 
         <div class="position-relative">
