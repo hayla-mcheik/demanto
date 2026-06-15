@@ -873,7 +873,7 @@
 </section>
 
 <!-- Private Appointment Section -->
-<section class="appointment-marquee">
+{{-- <section class="appointment-marquee">
     <div class="appointment-overlay"></div>
     <div class="container position-relative z-2">
         <div class="row justify-content-center text-center">
@@ -889,7 +889,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -38,7 +38,19 @@
         pointer-events: none;
     }
 
-    /* Sidebar Styles - Minimized */
+    .product-area::after {
+        content: '✧';
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        font-size: 60px;
+        color: var(--demanto-gold);
+        opacity: 0.03;
+        font-family: serif;
+        pointer-events: none;
+    }
+
+    /* Sidebar Styles - Desktop */
     .shop-sidebar-wrapper {
         background: #fff;
         border-radius: 20px;
@@ -46,6 +58,98 @@
         padding: 15px;
         position: sticky;
         top: 100px;
+    }
+
+    /* Mobile Categories Section - Above Products */
+    .mobile-categories-section {
+        display: none;
+        background: #fff;
+        border-radius: 20px;
+        border: 1px solid var(--luxury-border);
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .mobile-categories-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 5px 0;
+    }
+
+    .mobile-categories-header h4 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--demanto-dark);
+        margin: 0;
+        letter-spacing: 1px;
+    }
+
+    .mobile-categories-header i {
+        color: var(--demanto-gold);
+        font-size: 14px;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-categories-header.active i {
+        transform: rotate(180deg);
+    }
+
+    .mobile-categories-list {
+        display: none;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid var(--luxury-border);
+    }
+
+    .mobile-categories-list.show {
+        display: block;
+    }
+
+    .mobile-categories-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-categories-list ul li {
+        margin-bottom: 8px;
+    }
+
+    .mobile-categories-list ul li a {
+        display: block;
+        padding: 8px 0;
+        color: var(--demanto-muted);
+        text-decoration: none;
+        font-size: 12px;
+        transition: var(--transition-smooth);
+        border-bottom: 1px solid var(--luxury-border);
+        position: relative;
+        padding-left: 15px;
+    }
+
+    .mobile-categories-list ul li a::before {
+        content: '✧';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--demanto-gold);
+        font-size: 9px;
+        opacity: 0;
+        transition: var(--transition-smooth);
+    }
+
+    .mobile-categories-list ul li a:hover {
+        color: var(--demanto-gold);
+        padding-left: 22px;
+    }
+
+    .mobile-categories-list ul li a:hover::before {
+        opacity: 1;
+        left: 6px;
     }
 
     .sidebar-title {
@@ -112,7 +216,7 @@
         left: 6px;
     }
 
-    /* Product Header - Minimized */
+    /* Product Header */
     .product-header-wrap {
         background: #fff;
         border-radius: 15px;
@@ -159,7 +263,7 @@
         color: var(--demanto-gold);
     }
 
-    /* Product Cards - Minimized */
+    /* Product Cards */
     .featured-product-card {
         background: #fff;
         border-radius: 20px;
@@ -223,6 +327,9 @@
         margin-bottom: 6px;
         color: var(--demanto-dark);
         font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .featured-content a {
@@ -265,45 +372,119 @@
         margin-bottom: 8px;
     }
 
-    /* Responsive */
+    /* Sort Bar for Mobile */
+    .sort-bar {
+        display: none !important;
+        background: #fff;
+        border-radius: 15px;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+        border: 1px solid var(--luxury-border);
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .sort-select {
+        padding: 6px 12px;
+        border: 1px solid var(--luxury-border);
+        border-radius: 20px;
+        font-size: 11px;
+        background: #fff;
+        color: var(--demanto-dark);
+        cursor: pointer;
+    }
+
+    /* Responsive Breakpoints */
     @media (max-width: 1200px) {
         .featured-image { height: 200px; }
     }
 
     @media (max-width: 991px) {
-        .shop-sidebar-wrapper {
-            margin-bottom: 20px;
-            position: relative;
-            top: 0;
+        /* Hide desktop sidebar on mobile */
+        .col-lg-2 {
+            display: none;
         }
+        
+        /* Show mobile categories section */
+        .mobile-categories-section {
+            display: block;
+        }
+        
+        .sort-bar {
+            display: none;
+        }
+        
         .featured-image { height: 180px; }
         .featured-image img { padding: 15px; }
+        
+        /* Make products take full width */
+        .col-lg-10 {
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
     }
 
     @media (max-width: 768px) {
         .product-area { padding: 15px 0 30px 0; }
+        
         .product-header-wrap { 
             flex-direction: column; 
             gap: 10px;
             padding: 12px 15px;
         }
+        
         .product-tab-nav { justify-content: center; }
         .total-products { text-align: center; }
+        
         .featured-image { height: 160px; }
         .featured-image img { padding: 15px; }
         .featured-content { padding: 12px; }
-        .featured-content h4 { font-size: 13px; }
+        .featured-content h4 { font-size: 12px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .featured-content a { font-size: 8px; }
-        .sidebar-title { font-size: 13px; }
-        .category-sub-menu ul li a { font-size: 11px; padding: 6px 0; }
+        
+        .container-fluid {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        
+        .row.g-3 {
+            margin-left: -6px;
+            margin-right: -6px;
+        }
+        
+        .row.g-3 > [class*="col-"] {
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+        
+        .mobile-categories-section {
+            padding: 12px;
+        }
+        
+        .mobile-categories-header h4 {
+            font-size: 13px;
+        }
+        
+        .mobile-categories-list ul li a {
+            font-size: 11px;
+            padding: 6px 0;
+            padding-left: 15px;
+        }
     }
 
     @media (max-width: 576px) {
         .featured-image { height: 140px; }
         .featured-image img { padding: 12px; }
         .featured-content { padding: 10px; }
-        .featured-content h4 { font-size: 12px; }
-        .featured-content a { font-size: 8px; }
+        .featured-content h4 { font-size: 11px; }
+        .featured-content a { font-size: 7px; }
+        
+        .product-header-wrap { padding: 10px 12px; }
+        .product-tab-nav li a { width: 30px; height: 30px; font-size: 12px; }
+        .total-products p { font-size: 10px; }
+        
+        .sort-select { font-size: 10px; padding: 4px 10px; }
     }
 
     /* Animation */
@@ -336,13 +517,47 @@
         background: var(--demanto-gold);
         border-radius: 3px;
     }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #9a7b45;
+    }
 </style>
 
 <section class="product-area">
     <div class="container-fluid">
+        <!-- Mobile Categories Section - ABOVE Products -->
+        <div class="mobile-categories-section">
+            <div class="mobile-categories-header" id="mobileCategoriesHeader">
+                <h4><i class="fa fa-sliders-h"></i> All Categories</h4>
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="mobile-categories-list" id="mobileCategoriesList">
+                <ul>
+                    @forelse($categories as $categoryItem)
+                        <li>
+                            <a href="{{ url('/collections/'.$categoryItem->slug) }}">
+                                {{ $categoryItem->name }}
+                            </a>
+                        </li>
+                    @empty
+                        <li>No Categories Available</li>
+                    @endforelse
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sort Bar for Mobile -->
+        <div class="sort-bar">
+            <select class="sort-select" id="mobileSortSelect">
+                <option value="">Sort by: Default</option>
+                <option value="low-to-high">Price: Low to High</option>
+                <option value="high-to-low">Price: High to Low</option>
+            </select>
+        </div>
+
         <div class="row g-3">
-            <!-- Sidebar -->
-            <div class="col-lg-2 order-1 order-lg-1">
+            <!-- Desktop Sidebar (hidden on mobile) -->
+            <div class="col-lg-2">
                 <div class="shop-sidebar-wrapper">
                     <div class="sidebar-item">
                         <h4 class="sidebar-title">
@@ -368,7 +583,7 @@
             </div>
 
             <!-- Products Grid -->
-            <div class="col-lg-10 order-0 order-lg-2">
+            <div class="col-lg-10">
                 <div class="product-header-wrap">
                     <div class="row align-items-center">
                         <div class="col-12">
@@ -427,4 +642,50 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Categories Accordion
+    const mobileCategoriesHeader = document.getElementById('mobileCategoriesHeader');
+    const mobileCategoriesList = document.getElementById('mobileCategoriesList');
+    
+    if (mobileCategoriesHeader && mobileCategoriesList) {
+        mobileCategoriesHeader.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileCategoriesList.classList.toggle('show');
+        });
+    }
+
+    // Mobile Sort Functionality
+    const mobileSortSelect = document.getElementById('mobileSortSelect');
+    if (mobileSortSelect) {
+        mobileSortSelect.addEventListener('change', function() {
+            const sortValue = this.value;
+            if (sortValue) {
+                // Add Livewire sorting logic here if needed
+                console.log('Sort by:', sortValue);
+                // You can emit an event to Livewire component
+                // @this.set('sortBy', sortValue);
+            }
+        });
+    }
+
+    // Lazy loading images
+    const images = document.querySelectorAll('.featured-image img');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+});
+</script>
 </div>
