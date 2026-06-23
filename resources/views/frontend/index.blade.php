@@ -1671,82 +1671,120 @@
 
             <div class="col-lg-7">
 
-                <div class="appointment-form">
+            <div class="appointment-form">
 
-                    <form action="{{ url('/book-appointment') }}" method="POST">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+            <i class="fa fa-check-circle me-2"></i>
+            {{ session('success') }}
 
-                        @csrf
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+            </button>
+        </div>
+    @endif
 
-                        <div class="row">
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+            <ul class="mb-0 ps-3">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
 
-                            <div class="col-md-6 mb-3">
-                                <input type="text"
-                                       name="name"
-                                       class="form-control"
-                                       placeholder="Full Name"
-                                       required>
-                            </div>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+            </button>
+        </div>
+    @endif
 
-                            <div class="col-md-6 mb-3">
-                                <input type="email"
-                                       name="email"
-                                       class="form-control"
-                                       placeholder="Email Address">
-                            </div>
+    <form action="{{ url('/book-appointment') }}" method="POST">
 
-                            <div class="col-md-6 mb-3">
-                                <input type="text"
-                                       name="phone"
-                                       class="form-control"
-                                       placeholder="Phone Number"
-                                       required>
-                            </div>
+        @csrf
 
-                            <div class="col-md-6 mb-3">
-                                <input type="text"
-                                       name="subject"
-                                       class="form-control"
-                                       placeholder="Subject"
-                                       required>
-                            </div>
+        <div class="row">
 
-                            <div class="col-md-6 mb-3">
-                                <input type="date"
-                                       name="appointment_date"
-                                       class="form-control"
-                                       required>
-                            </div>
+            <div class="col-md-6 mb-3">
+                <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="Full Name"
+                    value="{{ old('name') }}"
+                    required>
+            </div>
 
-                            <div class="col-md-6 mb-3">
-                                <input type="time"
-                                       name="appointment_time"
-                                       class="form-control"
-                                       required>
-                            </div>
+            <div class="col-md-6 mb-3">
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Email Address"
+                    value="{{ old('email') }}">
+            </div>
 
-                            <div class="col-12 mb-4">
-                                <textarea class="form-control"
-                                          rows="4"
-                                          name="message"
-                                          placeholder="Your Message"
-                                          required></textarea>
-                            </div>
+            <div class="col-md-6 mb-3">
+                <input
+                    type="text"
+                    name="phone"
+                    class="form-control"
+                    placeholder="Phone Number"
+                    value="{{ old('phone') }}"
+                    required>
+            </div>
 
-                            <div class="col-12">
+            <div class="col-md-6 mb-3">
+                <input
+                    type="text"
+                    name="subject"
+                    class="form-control"
+                    placeholder="Subject"
+                    value="{{ old('subject') }}"
+                    required>
+            </div>
 
-                                <button class="appointment-btn">
+            <div class="col-md-6 mb-3">
+                <input
+                    type="date"
+                    name="appointment_date"
+                    class="form-control"
+                    value="{{ old('appointment_date') }}"
+                    required>
+            </div>
 
-                                    BOOK APPOINTMENT
+            <div class="col-md-6 mb-3">
+                <input
+                    type="time"
+                    name="appointment_time"
+                    class="form-control"
+                    value="{{ old('appointment_time') }}"
+                    required>
+            </div>
 
-                                </button>
+            <div class="col-12 mb-4">
+                <textarea
+                    class="form-control"
+                    rows="4"
+                    name="message"
+                    placeholder="Your Message"
+                    required>{{ old('message') }}</textarea>
+            </div>
 
-                            </div>
+            <div class="col-12">
+                <button type="submit" class="appointment-btn">
+                    BOOK APPOINTMENT
+                </button>
+            </div>
 
-                        </div>
+        </div>
 
-                    </form>
+    </form>
 
-                </div>
+</div>
 
             </div>
 

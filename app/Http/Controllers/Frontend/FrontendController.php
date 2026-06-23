@@ -228,13 +228,13 @@ public function bookAppointment(Request $request)
 
     ];
 
-    Mail::to('info@talyscollection.com')
+    Mail::to('mcheikhayla26@gmail.com')
         ->send(new AppointmentMail($emailData));
 
-    return response()->json([
-        'success' => true,
-        'message' => 'Appointment booked successfully.'
-    ]);
+return redirect()->back()->with(
+    'success',
+    'Your appointment has been booked successfully. We will contact you shortly.'
+);
 }
 public function subscribe(Request $request)
 {
