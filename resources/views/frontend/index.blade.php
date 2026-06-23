@@ -185,96 +185,441 @@
         transform: scale(1.05) rotate(1deg);
     }
 
-    /* Hero Slider - Minimized */
-    .slider-title {
-        color: #fff;
-        font-family: 'Roboto', sans-serif;
-        font-size: 34px;
-        font-weight: 400;
-        letter-spacing: 1.5px;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-    
-    .slider-desc {
-        color: rgba(255,255,255,0.9);
-        font-size: 11px;
-        line-height: 1.5;
-        font-weight: 300;
-        letter-spacing: 0.5px;
-    }
+
 
     /* Collections Section - Minimized */
-    .signature-collections {
-        background: linear-gradient(135deg, #fdfcf9 0%, #fff 100%);
-        padding: 30px 0;
-    }
-    
-    .collection-arch-card {
-        border: 1px solid #e7dcc7;
-        border-radius: 100px 100px 20px 20px;
-        overflow: hidden;
-        background: #fff;
-        transition: var(--transition-smooth);
-        height: 100%;
-        position: relative;
-        cursor: pointer;
-    }
-    
-    .collection-arch-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(179, 146, 86, 0.12);
-        border-color: var(--demanto-gold);
-    }
-    
-    .collection-image {
-        height: 200px;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #faf8f3 0%, #fff 100%);
-    }
-    
-    .collection-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transition: transform 0.5s ease;
-    }
-    
-    .collection-arch-card:hover img {
-        transform: scale(1.05);
-    }
-    
-    .collection-content {
-        text-align: center;
-        padding: 15px;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .collection-icon {
-        color: var(--demanto-gold);
-        font-size: 16px;
-        margin-bottom: 8px;
-        transition: transform 0.3s ease;
-        display: inline-block;
-    }
-    
-    .collection-arch-card:hover .collection-icon {
-        transform: rotate(180deg);
-    }
-    
-    .collection-content h4 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        color: #222;
-        margin-bottom: 4px;
-        font-weight: 500;
-    }
-    
+/*==================================================
+    LUXURY COLLECTIONS
+==================================================*/
+
+.signature-collections{
+    background:#f7f2eb;
+    padding:0px 0;
+}
+
+.collections-title{
+    text-align:center;
+    margin-bottom:0px;
+}
+
+.collections-title span{
+    display:block;
+    font-family:'Roboto';
+    font-weight: 600;
+    font-size:18px;
+    letter-spacing:4px;
+    color:#6f5d48;
+    text-transform:uppercase;
+}
+
+.divider{
+    width:120px;
+    height:25px;
+    margin:0px auto 0;
+    position:relative;
+}
+
+.divider:before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:1px;
+    background:#d7c4a2;
+}
+
+.divider span{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:12px;
+    height:12px;
+    background:#b39256;
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+
+/* CARD */
+
+.collection-card{
+    display:block;
+    text-decoration:none;
+}
+
+.collection-inner{
+
+    position:relative;
+
+    height:330px;
+
+    overflow:hidden;
+
+    border-radius:145px 145px 6px 6px;
+
+    border:1px solid #d9cdb8;
+
+    background:
+        radial-gradient(circle at top,
+            rgba(255,255,255,.95) 0%,
+            rgba(255,255,255,.55) 22%,
+            rgba(255,255,255,0) 45%
+        ),
+
+        linear-gradient(
+            180deg,
+            #c9a96e40  0%,
+            #c9a96e40  45%,
+            #c9a96e40  100%
+        );
+
+    box-shadow:
+        inset 0 0 0 6px #faf8f3,
+        inset 0 0 0 7px #e5d9c8,
+        inset 0 -40px 50px rgba(208,189,161,.18),
+        inset 0 35px 40px rgba(255,255,255,.55),
+        0 12px 24px rgba(0,0,0,.05);
+
+    transition:all .45s ease;
+}
+
+.collection-inner::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border-radius:132px 132px 3px 3px;
+
+    border:2px solid #ebe2d4;
+
+    box-shadow:
+
+        inset 0 0 0 1px rgba(178,147,94,.18),
+
+        inset 0 20px 30px rgba(255,255,255,.35);
+
+    pointer-events:none;
+}
+.collection-inner:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#c8af7f;
+
+    box-shadow:
+
+        inset 0 0 0 6px #faf8f3,
+
+        inset 0 0 0 7px #dbc59b,
+
+        inset 0 -50px 60px rgba(208,189,161,.18),
+
+        0 20px 40px rgba(0,0,0,.08);
+}
+/* TITLE */
+
+.collection-inner h3{
+
+    margin-top:50px;
+
+    margin-bottom:14px;
+
+    font-family:'Roboto';
+
+    font-size:14px;
+
+    font-weight:600;
+
+    letter-spacing:1.8px;
+
+    color:#514437;
+
+    text-transform:uppercase;
+
+    text-align:center;
+}
+
+/* IMAGE */
+
+.collection-image{
+
+    height:170px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    position:relative;
+}
+
+/* shadow under product */
+
+.collection-image:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:35px;
+
+    left:50%;
+
+    bottom:22px;
+
+    transform:translateX(-50%);
+
+    background:radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,.20) 0%,
+        rgba(0,0,0,.10) 45%,
+        rgba(0,0,0,0) 80%
+    );
+
+    filter:blur(10px);
+
+    opacity:.45;
+
+    z-index:1;
+}
+
+.collection-image img{
+
+    max-width:78%;
+
+    max-height:145px;
+
+    object-fit:contain;
+
+    position:relative;
+
+    z-index:2;
+
+    transition:.45s;
+
+    filter:
+
+        brightness(1.02)
+
+        drop-shadow(0 10px 10px rgba(0,0,0,.08))
+
+        drop-shadow(0 22px 18px rgba(0,0,0,.06));
+}
+.collection-inner:hover img{
+
+    transform:translateY(-8px) scale(1.04);
+
+    filter:
+        drop-shadow(0 12px 12px rgba(0,0,0,.12))
+        drop-shadow(0 24px 24px rgba(0,0,0,.10));
+}
+
+/* FOOTER */
+
+.discover-link{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:24px;
+
+    text-align:center;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:8px;
+
+    font-weight:500;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#76614a;
+}
+
+.discover-link span{
+
+    margin-left:8px;
+
+    transition:.3s;
+}
+
+.collection-inner:hover .discover-link span{
+
+    margin-left:16px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.collection-inner{
+
+    height:240px;
+
+    border-radius:110px 110px 6px 6px;
+}
+
+.collection-inner::before{
+
+    inset:10px;
+
+    border-radius:100px 100px 4px 4px;
+}
+
+.collection-inner h3{
+
+    margin-top:30px;
+
+    font-size:12px;
+}
+
+.collection-image{
+
+    height:165px;
+}
+
+.collection-image img{
+
+    max-height:140px;
+
+    max-width:76%;
+}
+
+.collection-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:105px;
+
+    height:18px;
+
+    left:50%;
+
+    bottom:20px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:#000;
+
+    opacity:.12;
+
+    filter:blur(13px);
+
+    z-index:1;
+}
+.discover-link{
+
+    bottom:16px;
+
+    font-size:7px;
+}
+
+.collections-title span{
+
+    font-size:16px;
+}
+
+}
+.signature-slider{
+    overflow:hidden;
+    padding:15px 0 45px;
+}
+
+.signature-prev,
+.signature-next{
+
+    width:42px;
+    height:42px;
+
+    border:1px solid #d7c7a4;
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#B39256;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:absolute;
+    top:45%;
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    z-index:10;
+
+    transition:.3s;
+}
+
+.signature-prev{
+
+    left:-20px;
+
+}
+
+.signature-next{
+
+    right:-20px;
+
+}
+
+.signature-prev:hover,
+.signature-next:hover{
+
+    background:#B39256;
+    color:#fff;
+
+}
+
+.signature-pagination{
+
+    margin-top:25px;
+    text-align:center;
+
+}
+
+.signature-pagination .swiper-pagination-bullet{
+
+    background:#B39256;
+    opacity:.35;
+
+}
+
+.signature-pagination .swiper-pagination-bullet-active{
+
+    opacity:1;
+
+}
+@media(max-width:768px){
+
+
+
+.signature-slider{
+
+    padding-bottom:35px;
+
+}
+
+}
+
     .collection-content span {
         font-size: 8px;
         letter-spacing: 1.5px;
@@ -617,98 +962,356 @@
         letter-spacing: 2px;
         font-size: 9px;
     }
+    /* Additional utility classes */
+.header-area.header-default {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050; 
+    background: transparent;
+}
+
+.home-slider-area {
+    position: relative;
+    z-index: 1;
+}
+
+/*=========================================
+        HERO IMAGE
+=========================================*/
+
+.home-banner{
+
+    position:relative;
+
+    width:100%;
+
+    height:40vh;
+
+    min-height:400px;
+
+    overflow:hidden;
+}
+
+.hero-banner-image{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
+
+    background-position:center center;
+
+    display:flex;
+
+    align-items:center;
+}
+.slider-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    background:linear-gradient(
+        100deg,
+        rgba(248,245,240,.98) 0%,
+        rgba(248,245,240,.85) 25%,
+        rgba(248,245,240,.18) 55%,
+        rgba(248,245,240,0) 85%
+    );
+}
+.slider-content{
+
+    position:relative;
+
+    z-index:5;
+
+    max-width:620px;
+
+    padding-top:30px;
+}
+
+.slider-title{
+    font-size:40px;
+
+    color:#ac7d4b;
+
+    margin-bottom:10px;
+}
+
+.slider-desc{
+
+    max-width:520px;
+
+    font-size:14px;
+    color:#ac7d4b;
+
+    margin-bottom:15px;
+}
+@media(max-width:1200px){
+
+.home-banner{
+
+    min-height:650px;
+}
+
+.slider-title{
+
+    font-size:56px;
+}
+
+}
+
+@media(max-width:991px){
+
+.home-banner{
+
+    min-height:580px;
+}
+
+.hero-banner-image{
+
+    background-position:65% center;
+}
+
+.slider-content{
+
+    text-align:start;
+
+    margin:auto;
+
+    padding-top:10px;
+}
+
+.slider-title{
+
+    font-size:42px;
+}
+
+.slider-desc{
+
+    margin:auto auto 30px;
+
+    font-size:15px;
+}
+
+.slider-btn{
+
+    display:flex;
+
+    justify-content:start;
+}
+
+}
+
+@media(max-width:768px){
+
+.home-banner{
+
+    min-height:500px;
+}
+
+.hero-banner-image{
+
+    background-position:70% center;
+}
+
+.slider-title{
+
+    font-size:30px;
+}
+
+.slider-desc{
+
+    font-size:14px;
+}
+
+.btn-demanto{
+
+    padding:12px 28px;
+
+    font-size:11px;
+}
+
+}
+
+@media(max-width:480px){
+
+.home-banner{
+
+    min-height:430px;
+}
+
+.slider-title{
+
+    font-size:24px;
+}
+
+.slider-desc{
+
+    font-size:13px;
+}
+
+.btn-demanto{
+
+    width:100%;
+
+    max-width:240px;
+}
+
+}
+.hero-banner-image{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-dark-overlay{
+    position:absolute;
+    inset:0;
+  background:rgba(0,0,0,.45);
+    z-index:1;
+}
 </style>
 
 <!-- Hero Slider Section -->
-<section class="home-slider-area p-0 m-0" style="height: 70vh; overflow: hidden;">
-    <div class="container-fluid p-0 h-100">
-        <div class="row g-0 align-items-center h-100">
-            <div class="col-12 col-lg-12 p-0 h-100">
-                <div class="swiper-container swiper-pagination-style dots-bg-light home-slider-container default-slider-container h-100">
-                    <div class="swiper-wrapper home-slider-wrapper slider-default h-100">
-                        @forelse ($sliders as $sliderItem)
-                        <div class="swiper-slide h-100">
-                            @if ($sliderItem->image)
-                            <div class="slider-content-area" style="height: 100%; background-image: url('{{ asset($sliderItem->image) }}'); background-size: cover; background-position: center; position: relative;">
-                                <div class="slider-overlay"></div>
-                                <div class="container h-100" style="position: relative; z-index: 2;">
-                                    <div class="row h-100 align-items-center">
-                                        <div class="col-12 col-sm-10 col-md-8 col-lg-7 ps-3 ps-md-5">
-                                            <div class="slider-content text-start">
-                                                <h2 class="slider-title ani-left">{{ $sliderItem->title }}</h2>
-                                                <p class="slider-desc ani-right" style="max-width: 550px;">{{ $sliderItem->description }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                        @empty
-                        <div class="swiper-slide h-100">
-                            <div class="slider-content-area" style="height: 100%; background-image: url('{{ asset('assets/img/slider-placeholder.jpg') }}'); background-size: cover; background-position: center; position: relative;">
-                                <div class="slider-overlay"></div>
-                                <div class="container h-100" style="position: relative; z-index: 2;">
-                                    <div class="row h-100 align-items-center">
-                                        <div class="col-12 col-lg-7 ps-5">
-                                            <div class="slider-content text-start">
-                                                <h2 class="slider-title ani-left">Timeless Luxury <br>By Demanto</h2>
-                                                <p class="slider-desc ani-right">Where Diamonds Become Art.</p>
-                                                <div class="slider-btn ani-bottom mt-2">
-                                                    <a href="{{ url('/collections') }}" class="btn-demanto">Discover The Collections</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforelse
+<!-- Hero Slider Section -->
+<!-- Hero Banner -->
+<section class="home-banner">
+
+    @php
+        $hero = $sliders->first();
+    @endphp
+<div class="hero-banner-image"
+     style="background-image:url('{{ $hero && $hero->image ? asset($hero->image) : asset('assets/img/slider-placeholder.jpg') }}');">
+
+    <div class="hero-dark-overlay"></div>
+
+    <div class="slider-overlay"></div>
+
+    <div class="container-fluid h-100 p-4">
+
+        <div class="row h-100 align-items-center">
+
+            <div class="col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
+
+                <div class="slider-content">
+
+                    <h1 class="slider-title ani-left">
+                        {{ $hero->title ?? 'Timeless Luxury' }}
+                    </h1>
+
+                    <p class="slider-desc ani-right">
+                        {{ $hero->description ?? 'Where diamonds become timeless masterpieces.' }}
+                    </p>
+
+                    <div class="slider-btn ani-bottom">
+
+                        <a href="{{ url('/collections') }}" class="btn-demanto">
+                            Discover Collections
+                        </a>
+
                     </div>
-                    <div class="swiper-pagination"></div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
+</div>
+
 </section>
 
 <!-- Signature Collections Section -->
 <section class="signature-collections">
-    <div class="container-fluid">
-        <div class="luxury-section-title">
-            <span class="luxury-sub">Curated Vault</span>
-            <h2 class="luxury-heading mt-1">Our Signature Collections</h2>
-            <p class="text-muted mt-1" style="font-size: 11px; max-width: 600px; margin: 0 auto;">Discover our meticulously curated collections</p>
+
+    <div class="container-fluid p-4">
+
+        <div class="collections-title">
+
+            <span>EXPLORE OUR COLLECTIONS</span>
+
+            <div class="divider">
+                <span></span>
+            </div>
+
         </div>
 
-        <div class="row justify-content-center g-2">
+<div class="position-relative">
+
+    <div class="swiper signature-slider">
+
+        <div class="swiper-wrapper">
+
             @foreach($categories as $categoryItem)
-                <div class="col-6 col-md-3 mb-2">
-                    <a href="{{ url('/collections/'.$categoryItem->slug) }}" class="text-decoration-none">
-                        <div class="collection-arch-card">
+
+                <div class="swiper-slide">
+
+                    <a href="{{ url('/collections/'.$categoryItem->slug) }}"
+                       class="collection-card">
+
+                        <div class="collection-inner">
+
+                            <h3>{{ strtoupper($categoryItem->name) }}</h3>
+
                             <div class="collection-image">
-                                <img src="{{ asset($categoryItem->image) }}" alt="{{ $categoryItem->name }}" loading="lazy">
+
+                                <img
+                                    src="{{ asset($categoryItem->image) }}"
+                                    alt="{{ $categoryItem->name }}"
+                                    loading="lazy">
+
                             </div>
-                            <div class="collection-content">
-                                <div class="collection-icon">✧</div>
-                                <h4>{{ $categoryItem->name }}</h4>
-                                <span>Explore →</span>
+
+                            <div class="discover-link">
+
+                                DISCOVER MORE
+
+                                <span>→</span>
+
                             </div>
+
                         </div>
+
                     </a>
+
                 </div>
+
             @endforeach
+
         </div>
 
-        <div class="text-center mt-2">
-            <a href="{{ url('/collections') }}" class="demanto-btn">Explore All Collections</a>
-        </div>
+        <div class="signature-pagination"></div>
+
     </div>
+
+    <div class="signature-prev">
+        <i class="fa fa-angle-left"></i>
+    </div>
+
+    <div class="signature-next">
+        <i class="fa fa-angle-right"></i>
+    </div>
+
+</div>
+
+    </div>
+
 </section>
 
 <!-- About Editorial Section -->
 <section class="about-editorial-section">
-    <div class="container-fluid">
+    <div class="container-fluid p-3">
         <div class="row align-items-center g-3">
             <div class="col-lg-6">
                 <div class="row g-2">
@@ -801,11 +1404,15 @@
 
 <!-- Featured Products Section -->
 <section class="featured-products">
-    <div class="container-fluid">
-        <div class="luxury-section-title mb-3">
-            <span class="luxury-sub">Timeless Masterpieces</span>
-            <h2 class="luxury-heading mt-1">Featured Pieces</h2>
-            <p class="text-muted mt-1" style="font-size: 11px;">Discover our most exquisite creations</p>
+    <div class="container-fluid ">
+        <div class="collections-title mb-3">
+
+            <span>Featured Pieces</span>
+
+            <div class="divider">
+                <span></span>
+            </div>
+
         </div>
 
         <div class="position-relative">
@@ -846,10 +1453,15 @@
 <!-- Exhibitions Section - UNCHANGED -->
 <section class="exhibitions-area">
     <div class="container-fluid">
-        <div class="text-center mb-4">
-            <h2 class="luxury-heading mt-1">EXHIBITIONS & EVENTS</h2>
-        </div>
+        <div class="collections-title mb-3">
 
+            <span>EXHIBITIONS & EVENTS</span>
+
+            <div class="divider">
+                <span></span>
+            </div>
+
+        </div>
         <div class="position-relative">
             <div class="swiper exhibitions-slider">
                 <div class="swiper-wrapper">
@@ -909,63 +1521,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
-/* Additional utility classes */
-.header-area.header-default {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1050; 
-    background: transparent;
-}
 
-.home-slider-area {
-    position: relative;
-    z-index: 1;
-}
 
-.slider-content-area {
-    padding-top: 100px; 
-}
-
-.demanto-btn {
-    border: 1.5px solid var(--demanto-gold);
-    color: var(--demanto-gold);
-    padding: 8px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 9px;
-    transition: var(--transition-smooth);
-    display: inline-block;
-    border-radius: 25px;
-}
-
-.demanto-btn:hover {
-    background: var(--demanto-gold);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-/* Slider Animations */
-.ani-left, .ani-right, .ani-bottom {
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.ani-left { transform: translateX(-25px); }
-.ani-right { transform: translateX(25px); }
-.ani-bottom { transform: translateY(15px); }
-
-.swiper-slide-active .ani-left,
-.swiper-slide-active .ani-right,
-.swiper-slide-active .ani-bottom {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(0, 0);
-}
-.swiper-slide-active .ani-left { transition-delay: 0.2s; }
-.swiper-slide-active .ani-right { transition-delay: 0.4s; }
-.swiper-slide-active .ani-bottom { transition-delay: 0.6s; }
 </style>
 @endsection

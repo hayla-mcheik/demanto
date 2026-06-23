@@ -177,6 +177,54 @@ var swiper = new Swiper(".shop__collection--column5", {
   },
 });
 
+new Swiper(".signature-slider", {
+
+    loop: true,
+
+    speed: 700,
+
+    spaceBetween: 25,
+
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false
+    },
+
+    pagination: {
+        el: ".signature-pagination",
+        clickable: true
+    },
+
+    navigation: {
+        nextEl: ".signature-next",
+        prevEl: ".signature-prev"
+    },
+
+    breakpoints: {
+
+        0: {
+            slidesPerView: 1
+        },
+
+        576: {
+            slidesPerView: 2
+        },
+
+        768: {
+            slidesPerView: 2
+        },
+
+        992: {
+            slidesPerView: 3
+        },
+
+        1200: {
+            slidesPerView: 4
+        }
+
+    }
+
+});
 
 // product swiper clumn4 activation
 var swiper = new Swiper(".product__swiper--column4", {

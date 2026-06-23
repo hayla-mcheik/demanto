@@ -143,6 +143,63 @@ var carouselSlider = new Swiper('.default-slider-container', {
 });
 
   // Swiper Slider Js
+new Swiper(".signature-slider", {
+
+    loop: true,
+
+    speed: 900,
+
+    centeredSlides: false,
+
+    grabCursor: true,
+
+    watchOverflow: true,
+
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+
+    pagination: {
+        el: ".signature-pagination",
+        clickable: true,
+    },
+
+    navigation: {
+        nextEl: ".signature-next",
+        prevEl: ".signature-prev",
+    },
+
+    breakpoints: {
+
+        0: {
+            slidesPerView: 2,
+            spaceBetween: 15
+        },
+
+        576: {
+            slidesPerView: 2,
+            spaceBetween: 20
+        },
+
+        768: {
+            slidesPerView: 2.5,
+            spaceBetween: 25
+        },
+
+        992: {
+            slidesPerView: 3,
+            spaceBetween: 25
+        },
+
+        1200: {
+            slidesPerView: 4,
+            spaceBetween: 30
+        }
+
+    }
+
+});
 
   // Featured Products Luxury Slider
 var featuredProducts = new Swiper('.featured-products-slider', {

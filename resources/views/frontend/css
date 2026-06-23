@@ -1,0 +1,296 @@
+/*==================================================
+    LUXURY COLLECTIONS
+==================================================*/
+
+.signature-collections{
+    background:#f7f2eb;
+    padding:100px 0;
+}
+
+.collections-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.collections-title span{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:36px;
+    letter-spacing:4px;
+    color:#6f5d48;
+    text-transform:uppercase;
+}
+
+.divider{
+    width:120px;
+    height:25px;
+    margin:15px auto 0;
+    position:relative;
+}
+
+.divider:before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:1px;
+    background:#d7c4a2;
+}
+
+.divider span{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:12px;
+    height:12px;
+    background:#b39256;
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+
+/* CARD */
+
+.collection-card{
+    display:block;
+    text-decoration:none;
+}
+
+.collection-inner{
+    position:relative;
+    height:470px;
+    overflow:hidden;
+
+    border-radius:145px 145px 6px 6px;
+
+    background:linear-gradient(180deg,#faf8f4 0%,#f2ebe3 100%);
+
+    border:1px solid #d8ccb8;
+
+    transition:.45s ease;
+
+    box-shadow:
+        inset 0 0 0 6px #fcfaf7,
+        inset 0 0 0 7px #e7d8c4,
+        0 12px 28px rgba(0,0,0,.05);
+}
+
+.collection-inner::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:14px;
+
+    border:1px solid rgba(184,153,101,.28);
+
+    border-radius:132px 132px 4px 4px;
+
+    pointer-events:none;
+}
+.collection-inner:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+        inset 0 0 0 8px #faf8f3,
+        inset 0 0 0 9px #dbc59b,
+        inset 0 30px 40px rgba(255,255,255,.8),
+        0 30px 60px rgba(0,0,0,.10);
+}
+
+/* TITLE */
+
+.collection-inner h3{
+
+    margin-top:24px;
+
+    margin-bottom:14px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    letter-spacing:1.8px;
+
+    color:#514437;
+
+    text-transform:uppercase;
+
+    text-align:center;
+}
+
+/* IMAGE */
+
+.collection-image{
+
+    height:235px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    position:relative;
+}
+
+/* shadow under product */
+
+.collection-image:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:35px;
+
+    left:50%;
+
+    bottom:22px;
+
+    transform:translateX(-50%);
+
+    background:radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,.20) 0%,
+        rgba(0,0,0,.10) 45%,
+        rgba(0,0,0,0) 80%
+    );
+
+    filter:blur(10px);
+
+    opacity:.45;
+
+    z-index:1;
+}
+
+.collection-image img{
+
+    max-width:78%;
+
+    max-height:200px;
+
+    object-fit:contain;
+
+    position:relative;
+
+    z-index:2;
+
+    transition:.45s ease;
+
+    filter:
+        drop-shadow(0 12px 10px rgba(0,0,0,.10))
+        drop-shadow(0 22px 20px rgba(0,0,0,.08));
+}
+.collection-inner:hover img{
+
+    transform:translateY(-8px) scale(1.04);
+
+    filter:
+        drop-shadow(0 12px 12px rgba(0,0,0,.12))
+        drop-shadow(0 24px 24px rgba(0,0,0,.10));
+}
+
+/* FOOTER */
+
+.discover-link{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:24px;
+
+    text-align:center;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:10px;
+
+    font-weight:500;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#76614a;
+}
+
+.discover-link span{
+
+    margin-left:8px;
+
+    transition:.3s;
+}
+
+.collection-inner:hover .discover-link span{
+
+    margin-left:16px;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+.collection-inner{
+
+    height:360px;
+
+    border-radius:110px 110px 6px 6px;
+}
+
+.collection-inner::before{
+
+    inset:10px;
+
+    border-radius:100px 100px 4px 4px;
+}
+
+.collection-inner h3{
+
+    margin-top:20px;
+
+    font-size:15px;
+}
+
+.collection-image{
+
+    height:165px;
+}
+
+.collection-image img{
+
+    max-height:140px;
+
+    max-width:76%;
+}
+
+.collection-image::after{
+
+    width:70px;
+
+    height:12px;
+}
+
+.discover-link{
+
+    bottom:16px;
+
+    font-size:9px;
+}
+
+.collections-title span{
+
+    font-size:22px;
+}
+
+}

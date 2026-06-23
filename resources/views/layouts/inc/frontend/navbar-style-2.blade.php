@@ -1,80 +1,5 @@
-<header class="header-area header-default header-style">
-    <div class="header-top">
-        <div class="container-fluid px-4">
-            <div class="row align-items-center">
-                <div class="col-lg-4 d-none d-lg-block">
-                    <div class="contact-email">
-                        <span>
-                            Email us: 
-                            <a href="mailto:{{ $appSetting->email1 ?? 'info@demanto.com' }}">
-                                {{ $appSetting->email1 ?? 'info@demanto.com' }}
-                            </a>
-                            @if(!empty($appSetting->email2))
-                                <span class="mx-2">|</span>
-                                <a href="mailto:{{ $appSetting->email2 }}">
-                                    {{ $appSetting->email2 }}
-                                </a>
-                            @endif
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 text-md-start text-lg-center text-center">
-                    <div class="luxury-ticker">
-                        @php
-                            $tickerItems = [
-                                '✦ Bespoke Creations ✦ Private Appointments ✦',
-                                '✦ Haute Joaillerie ✦ Atelier Fine Craftsmanship ✦',
-                                '✦ Complimentary Global Insured Shipping ✦'
-                            ];
-                        @endphp
-                        @foreach($tickerItems as $item)
-                            <div class="ticker-item">{{ $item }}</div>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 text-md-end text-center mt-sm-15 d-flex align-items-center justify-content-md-end justify-content-center gap-3">
-                    @guest
-                        <div class="theme-setting">
-                            <div class="account-links d-flex gap-2">
-                                <a href="{{ url('login') }}" class="text-decoration-none">LOGIN</a>
-                                <span class="text-white-50">|</span>
-                                <a href="{{ url('register') }}" class="text-decoration-none">REGISTER</a>
-                            </div>
-                        </div>
-                    @else
-                        <div class="theme-setting dropdown-wrapper">
-                            <a class="dropdown-btn profile-trigger text-decoration-none" href="#" role="button">
-                                {{ Auth::user()->name }} <i class="ion-ios-arrow-down ms-1"></i> 
-                            </a>
-                            <ul class="dropdown-content-menu">
-                                @if(auth()->user()->role_as == '1')
-                                    <li><a href="{{ url('admin/dashboard') }}">My Dashboard</a></li>
-                                @else
-                                    <li><a href="{{ url('account') }}">My Account</a></li>
-                                @endif
-                                <li>
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Sign Out
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    @endguest
-
-                    <div class="theme-currency border-start ps-3 border-light-subtle">
-                        <a class="dropdown-btn currency-toggle text-decoration-none" href="#" role="button" style="letter-spacing: 0.5px;">
-                            USD $
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<header class="header-area header-default header-style {{ request()->is('/') ? '' : 'header-white-links' }}">
+ 
     <div class="header-bottom sticky-header hidden-md-down to-be-sticky">
         <div class="container-fluid px-4">
             <div class="row align-items-center">
@@ -116,33 +41,98 @@
                             </div>
                         </div>
 
-                        <div class="align-right d-flex align-items-center gap-4">
-                            <div class="contact-link boutique-text-small d-none d-xl-block">
-                                <div class="phone">
-                                    <span class="fw-normal me-1">Call us:</span>
-                                    <a href="tel:{{ $appSetting->phone1 ?? '+33142968800' }}" class="text-decoration-none">{{ $appSetting->phone1 ?? '+33 1 42 96 88 00' }}</a>
-                                </div>
-                            </div>
-                            
-                            <div class="header-action-area">
-                                <div class="shop-button-group">
-                                    <div class="shop-button-item position-relative parent-cart-hover">
-                                        <a class="shop-button d-flex align-items-center text-decoration-none gap-2 cart-toggle" href="javascript:void(0)">
-                                            <div class="position-relative container-cart-bag">
-                                                <i class="icon-bag icon fs-5 text-white target-cart-icon"></i>
-                                                <sup class="shop-count badge rounded-circle"><livewire:frontend.cart.cart-count /></sup>
-                                            </div>
-                                            <div class="cart-amount-summary d-none d-md-inline-block fw-bold target-cart-total" style="font-size: 10px; letter-spacing: 0.3px;">
-                                                <livewire:frontend.cart.total-amount-cart />
-                                            </div>
-                                        </a>
-                                        <div class="popup-cart-content">
-                                            <livewire:frontend.cart.cart-items />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="align-right d-flex align-items-center gap-3">
+
+    @guest
+
+    <div class="account-links d-flex align-items-center gap-2">
+
+        <a href="{{ url('login') }}">Login</a>
+
+        <span>|</span>
+
+        <a href="{{ url('register') }}">Register</a>
+
+    </div>
+
+    @else
+
+    <div class="dropdown-wrapper">
+
+        <a class="dropdown-btn profile-trigger" href="#">
+            {{ Auth::user()->name }}
+            <i class="ion-ios-arrow-down ms-1"></i>
+        </a>
+
+        <ul class="dropdown-content-menu">
+
+            @if(auth()->user()->role_as == '1')
+                <li><a href="{{ url('admin/dashboard') }}">Dashboard</a></li>
+            @else
+                <li><a href="{{ url('account') }}">My Account</a></li>
+            @endif
+
+            <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+
+                    Logout
+
+                </a>
+
+                <form id="logout-form"
+                      action="{{ route('logout') }}"
+                      method="POST"
+                      class="d-none">
+
+                    @csrf
+
+                </form>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    @endguest
+
+    <div class="theme-currency">
+
+        <a href="#">USD $</a>
+
+    </div>
+
+    <div class="header-action-area">
+
+        <div class="shop-button-item position-relative parent-cart-hover">
+
+            <a class="shop-button cart-toggle" href="javascript:void(0)">
+
+                <div class="position-relative">
+
+                    <i class="icon-bag icon target-cart-icon"></i>
+
+                    <sup class="shop-count">
+                        <livewire:frontend.cart.cart-count />
+                    </sup>
+
+                </div>
+
+            </a>
+
+            <div class="popup-cart-content">
+
+                <livewire:frontend.cart.cart-items />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
                     </div>
                 </div>
@@ -269,7 +259,31 @@
         animation: headerSlideDown 0.4s ease forwards;
         z-index: 1060;
     }
+/* White links for all pages except homepage */
+.header-white-links .boutique-nav li a,
+.header-white-links .dropdown-wrapper a,
+.header-white-links .theme-currency a,
+.header-white-links .header-action-area a,
+.header-white-links .header-action-area .target-cart-icon {
+    color: #ffffff !important;
+}
+.header-white-links .boutique-nav li  ul li a{
+color: #C9A96E !important;
+}
 
+/* On hover, keep them white with gold accent */
+.header-white-links .boutique-nav li a:hover {
+    color: var(--boutique-pink) !important;
+}
+
+/* For sticky state on non-homepage */
+.header-white-links.header-sticky-active .boutique-nav li a,
+.header-white-links.header-sticky-active .dropdown-wrapper a,
+.header-white-links.header-sticky-active .theme-currency a,
+.header-white-links.header-sticky-active .header-action-area a,
+.header-white-links.header-sticky-active .header-action-area .target-cart-icon {
+    color: var(--boutique-dark) !important;
+}
     .header-bottom.sticky-on .main-menu li a,
     .header-bottom.sticky-on .contact-link a,
     .header-bottom.sticky-on .contact-link span,
@@ -422,9 +436,25 @@
     .boutique-nav li a {
         padding: 6px 14px !important;
         display: inline-block;
-        color: white !important;
+        color: black !important;
         transition: color 0.25s ease;
     }
+/* Default Header */
+.dropdown-wrapper a,
+.theme-currency a,
+.header-action-area a,
+.header-action-area .target-cart-icon{
+    color: #fff;
+    transition: color .3s ease;
+}
+
+/* Sticky Header */
+.header-area.header-sticky-active .dropdown-wrapper a,
+.header-area.header-sticky-active .theme-currency a,
+.header-area.header-sticky-active .header-action-area a,
+.header-area.header-sticky-active .header-action-area .target-cart-icon{
+    color: #000;
+}
        .boutique-nav li ul li  a {
        color: var(--demanto-gold) !important;
          font-size: 9px !important;
