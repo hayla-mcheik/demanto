@@ -69,9 +69,12 @@ Route::get('/blog/details/{id}', 'blogdetails');
 Route::get('/contactus', 'contactus');
 Route::get('search','searchProducts');
 Route::post('/contact/submit', 'contactsubmit');
+Route::post('/book-appointment', 'bookAppointment');
+
 Route::post('/subscribe', 'subscribe');
 Route::get('/product/quick-view/{id}','quickView');
 });
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('wishlist', [App\Http\Controllers\Frontend\WishlistController::class, 'index']);

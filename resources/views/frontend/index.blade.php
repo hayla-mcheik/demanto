@@ -934,7 +934,7 @@
 
     .appointment-overlay {
         position: absolute;
-        background: linear-gradient(rgb(14 14 14 / 28%), rgb(98 98 98 / 45%));
+        background: linear-gradient(rgb(14 14 14 / 64%), rgb(98 98 98 / 45%));
         z-index: 1;
     }
 
@@ -1179,6 +1179,168 @@
   background:rgba(0,0,0,.45);
     z-index:1;
 }
+        .appointment-section{
+
+    position:relative;
+
+    padding:20px 0;
+
+    background:url('assets/img/appointment.jpg') center center;
+
+    background-size:cover;
+}
+
+.appointment-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.appointment-section .container{
+
+    position:relative;
+
+    z-index:2;
+}
+
+.appointment-label{
+
+    color:#B39256;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+.appointment-section h2{
+
+    color:#fff;
+
+    font-size:36px;
+
+    margin:15px 0;
+
+    font-weight:500;
+}
+
+.appointment-section p{
+
+    color:#d7d7d7;
+
+    font-size:14px;
+
+    line-height:28px;
+
+    max-width:420px;
+}
+
+.appointment-form{
+
+    background:rgba(255,255,255,.96);
+
+    padding:40px;
+
+    border-radius:10px;
+}
+
+.appointment-form .form-control{
+
+    height:48px;
+
+    border:none;
+
+    border-bottom:1px solid #ddd;
+
+    border-radius:0;
+
+    background:transparent;
+
+    font-size:13px;
+
+    box-shadow:none;
+}
+
+.appointment-form textarea.form-control{
+
+    height:120px;
+
+    resize:none;
+}
+
+.appointment-form .form-control:focus{
+
+    border-color:#B39256;
+
+    box-shadow:none;
+}
+
+.appointment-btn{
+
+    background:#B39256;
+
+    color:#fff;
+
+    border:none;
+
+    padding:14px 45px;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    transition:.3s;
+}
+
+.appointment-btn:hover{
+
+    background:#232323;
+}
+@media(max-width:991px){
+
+.appointment-section{
+
+    padding:70px 0;
+}
+
+.appointment-section h2{
+
+    font-size:28px;
+
+    text-align:center;
+}
+
+.appointment-section p{
+
+    text-align:center;
+
+    margin:auto auto 30px;
+
+    font-size:13px;
+}
+
+.appointment-label{
+
+    display:block;
+
+    text-align:center;
+}
+
+.appointment-form{
+
+    padding:25px;
+}
+
+.appointment-btn{
+
+    width:100%;
+}
+
+}
+ 
 </style>
 
 <!-- Hero Slider Section -->
@@ -1485,23 +1647,114 @@
 </section>
 
 <!-- Private Appointment Section -->
-{{-- <section class="appointment-marquee">
+<section class="appointment-section">
+
     <div class="appointment-overlay"></div>
-    <div class="container position-relative z-2">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-6 col-md-8">
-                <span class="luxury-sub mb-2 d-block">Private Appointment</span>
-                <p class="appointment-text">
-                    Book a private consultation with our experts and discover the world of DEMANTO.
+
+    <div class="container position-relative">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-5 mb-5 mb-lg-0">
+
+                <span class="appointment-label">
+                    PRIVATE CONSULTATION
+                </span>
+
+                <h2>Book An Appointment</h2>
+
+                <p>
+                    Reserve a private consultation with one of our specialists and discover our exclusive collections in a personalized luxury experience.
                 </p>
-                <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
-                    <a href="{{ url('/contact') }}" class="btn-demanto">BOOK AN APPOINTMENT</a>
-                    <a href="{{ url('/contact') }}" class="btn-demanto-outline">CONTACT US</a>
-                </div>
+
             </div>
+
+            <div class="col-lg-7">
+
+                <div class="appointment-form">
+
+                    <form action="{{ url('/book-appointment') }}" method="POST">
+
+                        @csrf
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       placeholder="Full Name"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input type="email"
+                                       name="email"
+                                       class="form-control"
+                                       placeholder="Email Address">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input type="text"
+                                       name="phone"
+                                       class="form-control"
+                                       placeholder="Phone Number"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input type="text"
+                                       name="subject"
+                                       class="form-control"
+                                       placeholder="Subject"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input type="date"
+                                       name="appointment_date"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <input type="time"
+                                       name="appointment_time"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <textarea class="form-control"
+                                          rows="4"
+                                          name="message"
+                                          placeholder="Your Message"
+                                          required></textarea>
+                            </div>
+
+                            <div class="col-12">
+
+                                <button class="appointment-btn">
+
+                                    BOOK APPOINTMENT
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
         </div>
+
     </div>
-</section> --}}
+
+</section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

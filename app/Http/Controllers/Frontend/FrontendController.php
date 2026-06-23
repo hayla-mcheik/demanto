@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Mail\AppointmentMail;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Category;
@@ -178,6 +180,62 @@ public function contactsubmit(Request $request)
     return back()->with('success', 'Your message has been submitted successfully.');
 }
 
+public function bookAppointment(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'email' => 'nullable|email|max:255',
+        'phone' => [
+            'required',
+            function ($attribute, $value, $fail) {
+
+                $digits = preg_replace('/\D/', '', $value);
+
+                if(strlen($digits) < 8 || strlen($digits) > 15){
+                    $fail('Phone number must be between 8 and 15 digits.');
+                }
+            }
+        ],
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string|max:1000',
+        'appointment_date' => 'required|date',
+        'appointment_time' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+
+        return response()->json([
+            'success' => false,
+            'errors' => $validator->errors()
+        ],422);
+
+    }
+
+    $emailData = [
+
+        'name' => $request->name,
+
+      'email' => $request->email ?? 'Not Provided',
+
+        'phone' => preg_replace('/\D/', '', $request->phone),
+
+        'subject' => $request->subject,
+
+        'message' => $request->message,
+
+        'appointment_date' => $request->appointment_date,
+'appointment_time' => 'required|date_format:H:i'
+
+    ];
+
+    Mail::to('info@talyscollection.com')
+        ->send(new AppointmentMail($emailData));
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Appointment booked successfully.'
+    ]);
+}
 public function subscribe(Request $request)
 {
     $request->validate([
