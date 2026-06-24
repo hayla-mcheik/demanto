@@ -32,7 +32,7 @@ public function boot(): void
     View::share('appSetting', $websiteSetting);
 
     // Share categories and tickers with the frontend layouts
-    View::composer(['layouts.app', 'layouts.inc.frontend.header'], function ($view) {
+    View::composer(['layouts.app', 'layouts.inc.frontend.header', 'layouts.inc.frontend.footer'], function ($view) {
 $allCategories = Category::where('status', '0')->get();
 
 $collections = $allCategories->where('menu', 'Collections');

@@ -187,16 +187,57 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 text-end">
-                    <div class="header-item justify-content-end boutique-icon-small">
-                        <button class="btn-cart bg-transparent border-0 position-relative fs-4" onclick="window.location.href='{{ url('cart') }}'">
-                            <i class="icon-bag text-white target-mobile-cart-icon"></i> 
-                            <span class="item-count position-absolute badge rounded-circle shop-count" style="top: -5px; right: -8px; font-size: 8px; padding: 2px 4px;">
-                                <livewire:frontend.cart.cart-count />
-                            </span>
-                        </button>
-                    </div>
-                </div>
+             <div class="col-4 text-end">
+
+    <div class="header-item justify-content-end boutique-icon-small d-flex align-items-center justify-content-end">
+
+        @if($appSetting->instagram)
+            <a href="{{ $appSetting->instagram }}"
+               target="_blank"
+               class="mobile-social-icon me-3">
+
+                <i class="fab fa-instagram"></i>
+
+            </a>
+        @endif
+
+        @if($appSetting->facebook)
+            <a href="{{ $appSetting->facebook }}"
+               target="_blank"
+               class="mobile-social-icon me-1">
+
+                <i class="fab fa-facebook-f"></i>
+
+            </a>
+        @endif
+
+        @if($appSetting->tiktok)
+            <a href="{{ $appSetting->tiktok }}"
+               target="_blank"
+               class="mobile-social-icon me-3">
+
+                <i class="fab fa-tiktok"></i>
+
+            </a>
+        @endif
+
+        <button class="btn-cart bg-transparent border-0 position-relative"
+                onclick="window.location.href='{{ url('cart') }}'">
+
+            <i class="icon-bag text-white target-mobile-cart-icon"></i>
+
+            <span class="item-count position-absolute badge rounded-circle shop-count"
+                  style="top:-5px;right:-8px;font-size:8px;padding:2px 4px;">
+
+                <livewire:frontend.cart.cart-count />
+
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
             </div>
         </div>
     </div>
@@ -204,75 +245,170 @@
 
 <div class="off-canvas-wrapper" id="mobileSidebar">
     <div class="off-canvas-inner">
+
+        {{-- Header --}}
         <div class="off-canvas-header">
             <div class="logo text-start">
-                <img class="logo-main" src="{{ asset('assets/img/logogold.png') }}" alt="Logo" style="max-width: 70px;">
+                <a href="{{ url('/') }}">
+                    <img class="logo-main"
+                         src="{{ asset('assets/img/logogold.png') }}"
+                         alt="Logo"
+                         style="max-width:70px;">
+                </a>
             </div>
-            <button class="btn-menu-close" id="closeSidebar"> <i class="icon-close"></i></button>
+
+            <button class="btn-menu-close" id="closeSidebar">
+                <i class="icon-close"></i>
+            </button>
         </div>
+
+        {{-- Menu --}}
         <ul class="mobile-main-nav">
-            <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('aboutus') }}">About Us</a></li>
-     <!-- Collections -->
-<li class="has-mobile-dropdown">
-    <a href="javascript:void(0)" class="mobile-dropdown-trigger">
-        Collections
-        <i class="ion-ios-arrow-down float-end mt-1"></i>
-    </a>
 
-    <ul class="mobile-sub-categories">
-        @foreach($collections as $category)
             <li>
-                <a href="{{ url('collections/'.$category->slug) }}">
-                    {{ $category->name }}
-                </a>
+                <a href="{{ url('/') }}">Home</a>
             </li>
-        @endforeach
-    </ul>
-</li>
 
-<!-- High Jewelry -->
-<li class="has-mobile-dropdown">
-    <a href="javascript:void(0)" class="mobile-dropdown-trigger">
-        High Jewelry
-        <i class="ion-ios-arrow-down float-end mt-1"></i>
-    </a>
-
-    <ul class="mobile-sub-categories">
-        @foreach($highJewelry as $category)
             <li>
-                <a href="{{ url('collections/'.$category->slug) }}">
-                    {{ $category->name }}
-                </a>
+                <a href="{{ url('aboutus') }}">About Us</a>
             </li>
-        @endforeach
-    </ul>
-</li>
 
-<!-- AD Signature -->
-<li class="has-mobile-dropdown">
-    <a href="javascript:void(0)" class="mobile-dropdown-trigger">
-        AD Signature
-        <i class="ion-ios-arrow-down float-end mt-1"></i>
-    </a>
+            {{-- Collections --}}
+            <li class="has-mobile-dropdown">
 
-    <ul class="mobile-sub-categories">
-        @foreach($adSignature as $category)
+                <a href="javascript:void(0)" class="mobile-dropdown-trigger">
+                    Collections
+                    <i class="ion-ios-arrow-down float-end mt-1"></i>
+                </a>
+
+                <ul class="mobile-sub-categories">
+                    @foreach($collections as $category)
+                        <li>
+                            <a href="{{ url('collections/'.$category->slug) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </li>
+
+            {{-- High Jewelry --}}
+            <li class="has-mobile-dropdown">
+
+                <a href="javascript:void(0)" class="mobile-dropdown-trigger">
+                    High Jewelry
+                    <i class="ion-ios-arrow-down float-end mt-1"></i>
+                </a>
+
+                <ul class="mobile-sub-categories">
+                    @foreach($highJewelry as $category)
+                        <li>
+                            <a href="{{ url('collections/'.$category->slug) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </li>
+
+            {{-- AD Signature --}}
+            <li class="has-mobile-dropdown">
+
+                <a href="javascript:void(0)" class="mobile-dropdown-trigger">
+                    AD Signature
+                    <i class="ion-ios-arrow-down float-end mt-1"></i>
+                </a>
+
+                <ul class="mobile-sub-categories">
+                    @foreach($adSignature as $category)
+                        <li>
+                            <a href="{{ url('collections/'.$category->slug) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </li>
+
             <li>
-                <a href="{{ url('collections/'.$category->slug) }}">
-                    {{ $category->name }}
-                </a>
+                <a href="{{ url('blogs') }}">News</a>
             </li>
-        @endforeach
-    </ul>
-</li>
-            <li><a href="{{ url('blogs') }}">News</a></li>
-            <li><a href="{{ url('contactus') }}">Contact us</a></li>
+
+            <li>
+                <a href="{{ url('contactus') }}">Contact Us</a>
+            </li>
+
         </ul>
+
+        {{-- ================= Footer ================= --}}
+        <div class="mobile-sidebar-footer">
+
+            @if($appSetting && $appSetting->phone1)
+                <a href="tel:{{ $appSetting->phone1 }}">
+                    <i class="fa fa-phone"></i>
+                    {{ $appSetting->phone1 }}
+                </a>
+            @endif
+
+            @if($appSetting && $appSetting->phone2)
+                <a href="tel:{{ $appSetting->phone2 }}">
+                    <i class="fa fa-phone"></i>
+                    {{ $appSetting->phone2 }}
+                </a>
+            @endif
+
+            @if($appSetting && $appSetting->email1)
+                <a href="mailto:{{ $appSetting->email1 }}">
+                    <i class="fa fa-envelope"></i>
+                    {{ $appSetting->email1 }}
+                </a>
+            @endif
+
+            @if($appSetting && $appSetting->email2)
+                <a href="mailto:{{ $appSetting->email2 }}">
+                    <i class="fa fa-envelope"></i>
+                    {{ $appSetting->email2 }}
+                </a>
+            @endif
+
+            @if($appSetting && $appSetting->address)
+                <div class="sidebar-location">
+                    <i class="fa fa-map-marker-alt"></i>
+                    {{ $appSetting->address }}
+                </div>
+            @endif
+
+            <div class="sidebar-social">
+
+                @if($appSetting && $appSetting->facebook)
+                    <a href="{{ $appSetting->facebook }}" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                @endif
+
+                @if($appSetting && $appSetting->instagram)
+                    <a href="{{ $appSetting->instagram }}" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                @endif
+
+                @if($appSetting && $appSetting->youtube)
+                    <a href="{{ $appSetting->youtube }}" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                @endif
+
+            </div>
+
+        </div>
+
     </div>
 </div>
-<div class="off-canvas-overlay" id="sidebarOverlay"></div>
 
+<div class="off-canvas-overlay" id="sidebarOverlay"></div>
 <style>
     /* ==========================================================================
        1. CORE STRUCTURAL LAYOUT HYDRATION & REFINED DROPDOWN LOGIC FRAMEWORK
@@ -1001,6 +1137,66 @@ color: #C9A96E !important;
         overflow-y: auto;
         flex-grow: 1;
     }
+    .off-canvas-inner{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.mobile-sidebar-footer{
+    margin-top:auto;
+    padding:25px;
+    border-top:1px solid #ececec;
+    background:#fff;
+}
+
+.mobile-sidebar-footer a,
+.mobile-sidebar-footer .sidebar-location{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#232323;
+    text-decoration:none;
+    font-size:12px;
+    margin-bottom:14px;
+    transition:.3s;
+}
+
+.mobile-sidebar-footer a:hover{
+    color:#C9A96E;
+}
+
+.mobile-sidebar-footer i{
+    color:#C9A96E;
+    width:20px;
+    text-align:center;
+}
+
+.sidebar-social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+.sidebar-social a{
+    width:38px;
+    height:38px;
+    border:1px solid #ddd;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#232323;
+    transition:.3s;
+    margin-bottom:0;
+}
+
+.sidebar-social a:hover{
+    background:#C9A96E;
+    border-color:#C9A96E;
+    color:#fff;
+}
 
     .mobile-main-nav > li {
         border-bottom: 1px solid #f9f9f9;
@@ -1074,6 +1270,23 @@ color: #C9A96E !important;
     .phone a, .phone span {
         font-size: 10px !important;
     }
+    .mobile-social-icon{
+    color:#fff;
+    font-size:14px;
+    transition:.3s;
+}
+
+.mobile-social-icon:hover{
+    color:#C9A96E;
+}
+
+.header-area.header-sticky-active .mobile-social-icon{
+    color:#000;
+}
+
+.header-area.header-sticky-active .mobile-social-icon:hover{
+    color:#C9A96E;
+}
 </style>
 
 <script>
@@ -1161,20 +1374,7 @@ mobileDropTriggers.forEach(trigger => {
     });
 
 });
-        if (mobileDropTrigger) {
-            mobileDropTrigger.addEventListener('click', function(e) {
-                e.preventDefault();
-                const parentLi = this.parentElement;
-                const subMenu = this.nextElementSibling;
-                parentLi.classList.toggle('active');
-                
-                if (subMenu.style.display === "none" || subMenu.style.display === "") {
-                    subMenu.style.display = "block";
-                } else {
-                    subMenu.style.display = "none";
-                }
-            });
-        }
+   
         
         const cartBtn = document.querySelector('.cart-toggle');
         const cartPopup = document.querySelector('.popup-cart-content');

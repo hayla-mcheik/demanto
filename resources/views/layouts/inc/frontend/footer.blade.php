@@ -30,28 +30,34 @@
             </div>
 
             {{-- Column 2: Collections --}}
-            <div class="footer-col">
-                <h4>COLLECTIONS</h4>
-                <ul>
-                    @if(isset($allCategories))
-                        @foreach($allCategories->take(6) as $category)
-                            <li><a href="{{ url('collections/'.$category->slug) }}">{{ $category->name }}</a></li>
-                        @endforeach
-                    @else
-                        <li><a href="#">High Jewelry</a></li>
-                        <li><a href="#">Bridal</a></li>
-                        <li><a href="#">Timepieces</a></li>
-                    @endif
-                </ul>
-            </div>
+       {{-- Column 2: Collections --}}
+<div class="footer-col">
+
+    <h4>COLLECTIONS</h4>
+
+    <ul>
+
+        @foreach($collections->take(4) as $category)
+
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
+                </a>
+            </li>
+
+        @endforeach
+
+    </ul>
+
+</div>
 
             {{-- Column 3: Contact & Social (simplified) --}}
             <div class="footer-col">
                 <h4>ATELIER</h4>
                 <div class="contact-compact">
-                    <p><i class="fas fa-map-marker-alt"></i> {{ $appSetting->address ?? '22 Place Vendôme, Paris' }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ $appSetting->address ?? 'beirut, lebanon' }}</p>
                     <p><i class="fas fa-phone-alt"></i> {{ $appSetting->phone1 ?? '+33 1 42 96 88 00' }}</p>
-                    <p><i class="far fa-envelope"></i> {{ $appSetting->email1 ?? 'savoirfaire@demanto.com' }}</p>
+                    <p><i class="far fa-envelope"></i> {{ $appSetting->email1 ?? 'info@demanto.com' }}</p>
                 </div>
                 <div class="social-simple">
                     @if(optional($appSetting)->instagram)<a href="{{ $appSetting->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>@endif
