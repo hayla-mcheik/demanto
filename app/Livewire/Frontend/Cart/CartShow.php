@@ -75,48 +75,110 @@ class CartShow extends Component
         });
     }
 
-    public function updateQuantity($productId, $action)
-    {
-        if (auth()->check()) {
-            $cart = \App\Models\Cart::where('user_id', auth()->id())
-                ->where('product_id', $productId)
-                ->first();
-            
-            if ($cart) {
-                if ($action === 'increase') {
-                    if ($cart->product->quantity > $cart->quantity) {
-                        $cart->increment('quantity');
-                    }
-                } elseif ($action === 'decrease' && $cart->quantity > 1) {
-                    $cart->decrement('quantity');
+ public function updateQuantity($productId, $action)
+{
+    if (auth()->check()) {
+
+        $cart = \App\Models\Cart::where('user_id', auth()->id())
+            ->where('product_id', $productId)
+            ->first();
+
+        if ($cart) {
+
+            if ($action === 'increase') {
+
+                // Product out of stock
+                if ($cart->product->quantity <= 0) {
+
+                    $this->dispatch(
+                        'message',
+                        text: 'This product is currently out of stock.',
+                        type: 'warning',
+                        status: 200
+                    );
+
+                    return;
                 }
-            }
-        } else {
-            $guestCart = CartHelper::getGuestCart();
-            $product = Product::find($productId);
-            
-            if (isset($guestCart[$productId]) && $product) {
-                if ($action === 'increase') {
-                    if ($product->quantity > $guestCart[$productId]['quantity']) {
-                        $guestCart[$productId]['quantity']++;
-                    }
-                } elseif ($action === 'decrease' && $guestCart[$productId]['quantity'] > 1) {
-                    $guestCart[$productId]['quantity']--;
+
+                // Maximum quantity reached
+                if ($cart->quantity >= $cart->product->quantity) {
+
+                    $this->dispatch(
+                        'message',
+                        text: "Maximum available quantity is {$cart->product->quantity}.",
+                        type: 'warning',
+                        status: 200
+                    );
+
+                    return;
                 }
-                CartHelper::setGuestCart($guestCart);
+
+                $cart->increment('quantity');
+
+            } elseif ($action === 'decrease' && $cart->quantity > 1) {
+
+                $cart->decrement('quantity');
+
             }
         }
-        
-        // Reload cart data
-        $this->loadCart();
-        
-        // Dispatch events to update other components
-        $this->dispatch('cartUpdated', 
-            total: $this->totalPrice, 
-            count: count($this->cartItems)
-        );
+
+    } else {
+
+        $guestCart = CartHelper::getGuestCart();
+        $product = Product::find($productId);
+
+        if (isset($guestCart[$productId]) && $product) {
+
+            if ($action === 'increase') {
+
+                // Product out of stock
+                if ($product->quantity <= 0) {
+
+                    $this->dispatch(
+                        'message',
+                        text: 'This product is currently out of stock.',
+                        type: 'warning',
+                        status: 200
+                    );
+
+                    return;
+                }
+
+                // Maximum quantity reached
+                if ($guestCart[$productId]['quantity'] >= $product->quantity) {
+
+                    $this->dispatch(
+                        'message',
+                        text: "Maximum available quantity is {$product->quantity}.",
+                        type: 'warning',
+                        status: 200
+                    );
+
+                    return;
+                }
+
+                $guestCart[$productId]['quantity']++;
+
+            } elseif ($action === 'decrease' && $guestCart[$productId]['quantity'] > 1) {
+
+                $guestCart[$productId]['quantity']--;
+
+            }
+
+            CartHelper::setGuestCart($guestCart);
+        }
     }
 
+    // Reload cart
+    $this->loadCart();
+
+    // Update header/cart icon
+    $this->dispatch(
+        'cartUpdated',
+        total: $this->totalPrice,
+        count: count($this->cartItems)
+    );
+}
     public function removeItem($productId)
     {
         if (auth()->check()) {

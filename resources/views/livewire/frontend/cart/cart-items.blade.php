@@ -190,9 +190,9 @@
                         <img src="{{ asset('assets/img/no-image.png') }}" alt="no-image">
                     @endif
                     <span class="product-title">{{ Str::limit($item['name'], 25) }}</span>
-                    <span class="product-quantity">{{ $item['quantity'] }}x</span>
+                    <span class="product-quantity me-2">{{ $item['quantity'] }}x</span>
                 </a>
-                <span class="product-price">${{ number_format($item['price'], 2) }}</span>
+                <span class="product-price ml-2">${{ number_format($item['price'], 2) }}</span>
                 <a class="product-close" href="#" wire:click.prevent="removeItem({{ $item['id'] }})" wire:loading.attr="disabled">
                     <i class="la la-close"></i>
                 </a>

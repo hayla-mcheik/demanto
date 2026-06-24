@@ -29,17 +29,57 @@ class AddToCart extends Component
                 ->where('product_id', $productId)
                 ->first();
 
-            if ($cartItem) {
-                if ($product->quantity > $cartItem->quantity) {
-                    $cartItem->increment('quantity');
-                }
-            } else {
-                \App\Models\Cart::create([
-                    'user_id' => auth()->id(),
-                    'product_id' => $productId,
-                    'quantity' => 1,
-                ]);
-            }
+     if ($cartItem) {
+
+    // Product is out of stock
+    if ($product->quantity <= 0) {
+
+        $this->dispatch(
+            'message',
+            text: 'This product is currently out of stock.',
+            type: 'warning',
+            status: 200
+        );
+
+        return;
+    }
+
+    // User reached the maximum available quantity
+    if ($cartItem->quantity >= $product->quantity) {
+
+        $this->dispatch(
+            'message',
+            text: "Only {$product->quantity} item(s) available.",
+            type: 'warning',
+            status: 200
+        );
+
+        return;
+    }
+
+    $cartItem->increment('quantity');
+
+} else {
+
+    // Don't allow adding a new product if it's out of stock
+    if ($product->quantity <= 0) {
+
+        $this->dispatch(
+            'message',
+            text: 'This product is currently out of stock.',
+            type: 'warning',
+            status: 200
+        );
+
+        return;
+    }
+
+    \App\Models\Cart::create([
+        'user_id' => auth()->id(),
+        'product_id' => $productId,
+        'quantity' => 1,
+    ]);
+}
         }
 
         // Calculate new totals
