@@ -18,22 +18,50 @@
                                     <li><a href="{{ url('/') }}">Home</a></li>
                                     <li><a href="{{ url('aboutus') }}">About Us</a></li>
                                     
-                                    <li class="has-dropdown">
-                                        <a href="javascript:void(0)" class="dropdown-click-trigger">
-                                            Products <i class="ion-ios-arrow-down ms-1"></i>
-                                        </a>
-                                        <ul class="boutique-dropdown">
-                                            @if(isset($allCategories))
-                                                @foreach($allCategories as $categoryItem)
-                                                    <li>
-                                                        <a href="{{ url('collections/'.$categoryItem->slug) }}">
-                                                            {{ $categoryItem->name }}
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                    </li>
+                              <li class="has-dropdown">
+    <a href="#">
+        Collections <i class="ion-ios-arrow-down ms-1"></i>
+    </a>
+    <ul class="boutique-dropdown">
+        @foreach($collections as $category)
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
+
+<li class="has-dropdown">
+    <a href="#">
+        High Jewelry <i class="ion-ios-arrow-down ms-1"></i>
+    </a>
+    <ul class="boutique-dropdown">
+        @foreach($highJewelry as $category)
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
+
+<li class="has-dropdown">
+    <a href="#">
+        AD Signature <i class="ion-ios-arrow-down ms-1"></i>
+    </a>
+    <ul class="boutique-dropdown">
+        @foreach($adSignature as $category)
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
 
                                     <li><a href="{{ url('blogs') }}">News</a></li>
                                     <li><a href="{{ url('contactus') }}">Contact us</a></li>
@@ -185,18 +213,59 @@
         <ul class="mobile-main-nav">
             <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{ url('aboutus') }}">About Us</a></li>
-            <li class="has-mobile-dropdown">
-                <a href="javascript:void(0)" class="mobile-dropdown-trigger">
-                    Products <i class="ion-ios-arrow-down float-end mt-1"></i>
+     <!-- Collections -->
+<li class="has-mobile-dropdown">
+    <a href="javascript:void(0)" class="mobile-dropdown-trigger">
+        Collections
+        <i class="ion-ios-arrow-down float-end mt-1"></i>
+    </a>
+
+    <ul class="mobile-sub-categories">
+        @foreach($collections as $category)
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
                 </a>
-                <ul class="mobile-sub-categories">
-                    @if(isset($allCategories))
-                        @foreach($allCategories as $categoryItem)
-                            <li><a href="{{ url('collections/'.$categoryItem->slug) }}">{{ $categoryItem->name }}</a></li>
-                        @endforeach
-                    @endif
-                </ul>
             </li>
+        @endforeach
+    </ul>
+</li>
+
+<!-- High Jewelry -->
+<li class="has-mobile-dropdown">
+    <a href="javascript:void(0)" class="mobile-dropdown-trigger">
+        High Jewelry
+        <i class="ion-ios-arrow-down float-end mt-1"></i>
+    </a>
+
+    <ul class="mobile-sub-categories">
+        @foreach($highJewelry as $category)
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
+
+<!-- AD Signature -->
+<li class="has-mobile-dropdown">
+    <a href="javascript:void(0)" class="mobile-dropdown-trigger">
+        AD Signature
+        <i class="ion-ios-arrow-down float-end mt-1"></i>
+    </a>
+
+    <ul class="mobile-sub-categories">
+        @foreach($adSignature as $category)
+            <li>
+                <a href="{{ url('collections/'.$category->slug) }}">
+                    {{ $category->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
             <li><a href="{{ url('blogs') }}">News</a></li>
             <li><a href="{{ url('contactus') }}">Contact us</a></li>
         </ul>
@@ -301,76 +370,369 @@ color: #C9A96E !important;
         to { transform: translateY(0); }
     }
 
-    /* Structural Dropdowns */
-    .has-dropdown {
-        position: relative;
-        padding-bottom: 15px !important;
-        margin-bottom: -15px !important;
-    }
+/* Enhanced Structural Dropdowns */
+.has-dropdown {
+    position: relative;
+    padding: 0 8px;
+}
 
-    .boutique-dropdown::before {
-        content: "";
-        position: absolute;
-        top: -25px;
-        left: 0;
-        width: 100%;
-        height: 25px;
-        background: transparent;
-    }
+.has-dropdown > a {
+    position: relative;
+    padding: 6px 10px !important;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
 
-    .boutique-dropdown {
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #ffffff;
-        min-width: 210px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-        padding: 12px 0;
+.has-dropdown > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--boutique-pink);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.has-dropdown > a:hover::after {
+    width: 60%;
+}
+
+.has-dropdown i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 10px;
+}
+
+.has-dropdown:hover i {
+    transform: rotate(180deg);
+}
+
+.boutique-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.10);
+    padding: 8px 0;
+    z-index: 1080;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-align: left;
+    list-style: none;
+    margin: 0;
+}
+
+.boutique-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    border-left: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+@media (min-width: 992px) {
+    .has-dropdown:hover .boutique-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.boutique-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.boutique-dropdown li {
+    display: block;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative;
+}
+
+.boutique-dropdown li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: rgba(201, 169, 110, 0.08);
+}
+
+.boutique-dropdown li a {
+    padding: 10px 25px !important;
+    color: var(--boutique-dark) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px;
+    display: block;
+    transition: all 0.3s ease;
+    border: none !important;
+    text-decoration: none;
+    position: relative;
+}
+
+.boutique-dropdown li a::before {
+    content: '→';
+    position: absolute;
+    left: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--boutique-pink);
+    font-size: 12px;
+}
+
+.boutique-dropdown li a:hover {
+    color: var(--boutique-pink) !important;
+    background: rgba(201, 169, 110, 0.05);
+    padding-left: 35px !important;
+}
+
+.boutique-dropdown li a:hover::before {
+    opacity: 1;
+    left: 20px;
+}
+/* Enhanced Menu Items with Hover Line for ALL items */
+.boutique-nav li {
+    position: relative;
+}
+
+.boutique-nav li > a {
+    position: relative;
+    padding: 6px 14px !important;
+    display: inline-block;
+    color: black !important;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Hover underline effect for ALL menu items */
+.boutique-nav li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--boutique-pink);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-50%);
+}
+
+.boutique-nav li > a:hover::after {
+    width: 60%;
+}
+
+/* For dropdown items, keep the underline on the parent link */
+.has-dropdown > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--boutique-pink);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-50%);
+}
+
+.has-dropdown > a:hover::after {
+    width: 60%;
+}
+
+/* Dropdown arrow rotation */
+.has-dropdown i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 10px;
+}
+
+.has-dropdown:hover i {
+    transform: rotate(180deg);
+}
+
+/* Enhanced Structural Dropdowns */
+.has-dropdown {
+    position: relative;
+    padding: 0 8px;
+}
+
+.boutique-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.10);
+    padding: 8px 0;
+    z-index: 1080;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-align: left;
+    list-style: none;
+    margin: 0;
+}
+
+.boutique-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    border-left: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+@media (min-width: 992px) {
+    .has-dropdown:hover .boutique-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.boutique-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.boutique-dropdown li {
+    display: block;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative;
+}
+
+.boutique-dropdown li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: rgba(201, 169, 110, 0.08);
+}
+
+.boutique-dropdown li a {
+    padding: 10px 25px !important;
+    color: var(--boutique-dark) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px;
+    display: block;
+    transition: all 0.3s ease;
+    border: none !important;
+    text-decoration: none;
+    position: relative;
+}
+
+.boutique-dropdown li a::before {
+    content: '→';
+    position: absolute;
+    left: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--boutique-pink);
+    font-size: 12px;
+}
+
+.boutique-dropdown li a:hover {
+    color: var(--boutique-pink) !important;
+    background: rgba(201, 169, 110, 0.05);
+    padding-left: 35px !important;
+}
+
+.boutique-dropdown li a:hover::before {
+    opacity: 1;
+    left: 20px;
+}
+
+/* White links for all pages except homepage - preserve hover underline */
+.header-white-links .boutique-nav li > a {
+    color: #ffffff !important;
+}
+
+.header-white-links .boutique-nav li > a::after {
+    background: #ffffff;
+}
+
+.header-white-links .boutique-nav li > a:hover {
+    color: var(--boutique-pink) !important;
+}
+
+.header-white-links .boutique-nav li > a:hover::after {
+    background: var(--boutique-pink);
+}
+
+.header-white-links .boutique-nav li ul li a {
+    color: #C9A96E !important;
+}
+
+.header-white-links .boutique-nav li ul li a::after {
+    display: none;
+}
+
+/* For sticky state on non-homepage */
+.header-white-links.header-sticky-active .boutique-nav li > a {
+    color: var(--boutique-dark) !important;
+}
+
+.header-white-links.header-sticky-active .boutique-nav li > a::after {
+    background: var(--boutique-pink);
+}
+
+.header-white-links.header-sticky-active .boutique-nav li > a:hover {
+    color: var(--boutique-pink) !important;
+}
+
+/* Sticky Header - preserve hover underline */
+.header-bottom.sticky-on .boutique-nav li > a {
+    color: var(--boutique-dark) !important;
+}
+
+.header-bottom.sticky-on .boutique-nav li > a::after {
+    background: var(--boutique-pink);
+}
+
+.header-bottom.sticky-on .boutique-nav li > a:hover {
+    color: var(--boutique-pink) !important;
+}
+/* Mobile menu hover line removal */
+@media (max-width: 991px) {
+    .boutique-nav li > a::after {
         display: none;
-        z-index: 1080;
-        border: 1px solid var(--boutique-light-border);
-        border-radius: 2px;
-        text-align: left;
     }
-
-    @media (min-width: 992px) {
-        .has-dropdown:hover .boutique-dropdown {
-            display: block !important;
-            animation: luxuryNavFade 0.3s ease forwards;
-        }
+    
+    .has-dropdown > a::after {
+        display: none;
     }
-
-    .boutique-dropdown.is-open {
-        display: block !important;
-    }
-
-    .boutique-dropdown li {
-        display: block;
-        width: 100%;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .boutique-dropdown li a {
-        padding: 8px 22px !important;
-        color: var(--boutique-dark) !important;
-        font-size: 11px !important;
-        font-weight: 600 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px;
-        display: block;
-        transition: all 0.2s ease;
-        border: none !important;
-        text-decoration: none;
-    }
-
-    .boutique-dropdown li a:hover {
-        color: var(--boutique-pink) !important;
-        background: #fbfbfb;
-        padding-left: 26px !important;
-    }
-
+}
     /* Refactored Clean Authentication Dropdown Structures */
     .dropdown-wrapper {
         position: relative;
@@ -662,6 +1024,11 @@ color: #C9A96E !important;
         display: none;
         border-top: 1px solid #f5f5f5;
     }
+    .mobile-sub-categories{
+    display:none;
+    overflow:hidden;
+    transition:.3s ease;
+}
 
     .mobile-sub-categories li a {
         display: block;
@@ -772,7 +1139,28 @@ color: #C9A96E !important;
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileSidebarFunc);
 
         // Accordion collapsing controls for sub-categories over responsive layers
-        const mobileDropTrigger = document.querySelector('.mobile-dropdown-trigger');
+    const mobileDropTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
+
+mobileDropTriggers.forEach(trigger => {
+
+    trigger.addEventListener('click', function(e) {
+
+        e.preventDefault();
+
+        const parent = this.parentElement;
+        const submenu = this.nextElementSibling;
+
+        parent.classList.toggle('active');
+
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+        } else {
+            submenu.style.display = 'block';
+        }
+
+    });
+
+});
         if (mobileDropTrigger) {
             mobileDropTrigger.addEventListener('click', function(e) {
                 e.preventDefault();

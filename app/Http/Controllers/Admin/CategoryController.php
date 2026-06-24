@@ -23,6 +23,7 @@ public function store(CaregoryFormRequest $request)
 
 $validatedData = $request->validated();
 $category = new Category;
+$category->menu = $validatedData['menu'];
 $category->name = $validatedData['name'];
 $category->slug = Str::slug($validatedData['slug']);
 $category->description = $validatedData['description'];
@@ -56,6 +57,7 @@ public function update(CaregoryFormRequest $request, $category)
 {
     $category = Category::findOrFail($category);
     $validatedData = $request->validated();
+    $category->menu = $validatedData['menu'];
     $category->name = $validatedData['name'];
     $category->slug = Str::slug($validatedData['slug']);
     $category->description = $validatedData['description'];

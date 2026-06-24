@@ -532,17 +532,53 @@
                 <i class="fa fa-chevron-down"></i>
             </div>
             <div class="mobile-categories-list" id="mobileCategoriesList">
-                <ul>
-                    @forelse($categories as $categoryItem)
-                        <li>
-                            <a href="{{ url('/collections/'.$categoryItem->slug) }}">
-                                {{ $categoryItem->name }}
-                            </a>
-                        </li>
-                    @empty
-                        <li>No Categories Available</li>
-                    @endforelse
-                </ul>
+              <h5 class="sidebar-title">Collections</h5>
+
+<ul>
+
+@foreach($collections as $categoryItem)
+
+<li>
+    <a href="{{ url('/collections/'.$categoryItem->slug) }}">
+        {{ $categoryItem->name }}
+    </a>
+</li>
+
+@endforeach
+
+</ul>
+
+<h5 class="sidebar-title mt-4">High Jewelry</h5>
+
+<ul>
+
+@foreach($highJewelry as $categoryItem)
+
+<li>
+    <a href="{{ url('/collections/'.$categoryItem->slug) }}">
+        {{ $categoryItem->name }}
+    </a>
+</li>
+
+@endforeach
+
+</ul>
+
+<h5 class="sidebar-title mt-4">AD Signature</h5>
+
+<ul>
+
+@foreach($adSignature as $categoryItem)
+
+<li>
+    <a href="{{ url('/collections/'.$categoryItem->slug) }}">
+        {{ $categoryItem->name }}
+    </a>
+</li>
+
+@endforeach
+
+</ul>
             </div>
         </div>
 
@@ -565,17 +601,53 @@
                         </h4>
                         <div class="sidebar-body">
                             <div class="category-sub-menu">
-                                <ul>
-                                    @forelse($categories as $categoryItem)
-                                        <li>
-                                            <a href="{{ url('/collections/'.$categoryItem->slug) }}">
-                                                {{ $categoryItem->name }}
-                                            </a>
-                                        </li>
-                                    @empty
-                                        <li>No Categories Available</li>
-                                    @endforelse
-                                </ul>
+                        <h6>Collections</h6>
+
+<ul>
+
+@foreach($collections as $categoryItem)
+
+<li>
+<a href="{{ url('/collections/'.$categoryItem->slug) }}">
+{{ $categoryItem->name }}
+</a>
+</li>
+
+@endforeach
+
+</ul>
+
+<h6 class="mt-3">High Jewelry</h6>
+
+<ul>
+
+@foreach($highJewelry as $categoryItem)
+
+<li>
+<a href="{{ url('/collections/'.$categoryItem->slug) }}">
+{{ $categoryItem->name }}
+</a>
+</li>
+
+@endforeach
+
+</ul>
+
+<h6 class="mt-3">AD Signature</h6>
+
+<ul>
+
+@foreach($adSignature as $categoryItem)
+
+<li>
+<a href="{{ url('/collections/'.$categoryItem->slug) }}">
+{{ $categoryItem->name }}
+</a>
+</li>
+
+@endforeach
+
+</ul>
                             </div>
                         </div>
                     </div>

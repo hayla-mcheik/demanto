@@ -14,6 +14,32 @@
     @csrf
     @method('PUT')
     <div class="row">
+        <div class="col-md-6 mb-3">
+    <label>Menu</label>
+
+    <select name="menu" class="form-control">
+
+        <option value="Collections"
+            {{ $category->menu == 'Collections' ? 'selected' : '' }}>
+            Collections
+        </option>
+
+        <option value="High Jewelry"
+            {{ $category->menu == 'High Jewelry' ? 'selected' : '' }}>
+            High Jewelry
+        </option>
+
+        <option value="AD Signature"
+            {{ $category->menu == 'AD Signature' ? 'selected' : '' }}>
+            AD Signature
+        </option>
+
+    </select>
+
+    @error('menu')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
     <div class=" col-md-6 mb-3">
         <label>Name</label>
         <input type="text" name="name" value="{{ $category->name }}" class="form-control">

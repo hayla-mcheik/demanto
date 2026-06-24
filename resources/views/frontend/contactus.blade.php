@@ -145,8 +145,8 @@
                 <div class="info">
                     <h5 class="title">Email:</h5>
                     <p>
-                        <a href="mailto:{{ $appSetting->email1 ?? 'info@talyscollection.com' }}">
-                            {{ $appSetting->email1 ?? 'info@talyscollection.com' }}
+                        <a href="mailto:{{ $appSetting->email1 ?? 'info@demanto.com' }}">
+                            {{ $appSetting->email1 ?? 'info@demanto.com' }}
                         </a>
                         @if($appSetting->email2)
                             <br>

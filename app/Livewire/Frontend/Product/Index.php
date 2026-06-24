@@ -13,20 +13,30 @@ class Index extends Component
 {
     use WithPagination;
     
-    public $category, $categories;
+public $category;
+public $collections;
+public $highJewelry;
+public $adSignature;
     public $brandInputs = [], $priceInput;
     public $perPage = 12;
+    
     
     protected $queryString = [
         'brandInputs' => ['except' => '', 'as' => 'brand'],
         'priceInput' => ['except' => '', 'as' => 'price'],
     ];
 
-    public function mount($category, $categories)
-    {
-        $this->category = $category;
-        $this->categories = $categories;
-    }
+public function mount(
+    $category,
+    $collections,
+    $highJewelry,
+    $adSignature
+){
+    $this->category = $category;
+    $this->collections = $collections;
+    $this->highJewelry = $highJewelry;
+    $this->adSignature = $adSignature;
+}
 
     /* ---------------- Wishlist ---------------- */
 

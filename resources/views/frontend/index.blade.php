@@ -538,7 +538,7 @@
 }
 .signature-slider{
     overflow:hidden;
-    padding:15px 0 45px;
+    padding:15px 0 25px;
 }
 
 .signature-prev,
@@ -614,7 +614,7 @@
 
 .signature-slider{
 
-    padding-bottom:35px;
+    padding-bottom:10px;
 
 }
 
@@ -710,7 +710,7 @@
     }
     
     .featured-image {
-        height: 220px;
+        height: 300px;
         background: #f8f5ef;
         overflow: hidden;
         position: relative;
@@ -719,7 +719,7 @@
     .featured-image img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         padding: 20px;
         transition: 0.5s;
     }
@@ -769,7 +769,7 @@
     
     .demanto-exhibition-item img {
         width: 100%;
-        height: 280px;
+        height: 400px;
         object-fit: cover;
         transition: 0.5s;
     }
@@ -876,8 +876,8 @@
         .home-slider-area, .home-slider-container { height: 600px !important; }
         .slider-title { font-size: 28px; }
         .collection-image { height: 180px; }
-        .featured-image { height: 200px; }
-        .demanto-exhibition-item img { height: 240px; }
+        .featured-image { height: 2800px; }
+        .demanto-exhibition-item img { height: 340px; }
     }
     
     @media (max-width: 768px) {
@@ -890,7 +890,7 @@
         .collection-image { height: 150px; padding: 15px; }
         .collection-content h4 { font-size: 13px; }
         .btn-demanto, .btn-demanto-outline { padding: 6px 16px; font-size: 8px; }
-        .featured-image { height: 180px; }
+        .featured-image { height: 280px; }
         .demanto-exhibition-item img { height: 200px; }
     }
     
@@ -1399,73 +1399,60 @@
 
     <div class="container-fluid p-4">
 
-        <div class="collections-title">
-
+        <div class="collections-title ">
             <span>EXPLORE OUR COLLECTIONS</span>
 
             <div class="divider">
                 <span></span>
             </div>
-
         </div>
 
-<div class="position-relative">
+        {{-- ========================= COLLECTIONS ========================= --}}
+        @if($collections->count())
 
-    <div class="swiper signature-slider">
 
-        <div class="swiper-wrapper">
 
-            @foreach($categories as $categoryItem)
+        <div class="position-relative">
 
-                <div class="swiper-slide">
+            <div class="swiper signature-slider collections-slider">
 
-                    <a href="{{ url('/collections/'.$categoryItem->slug) }}"
-                       class="collection-card">
+                <div class="swiper-wrapper">
 
-                        <div class="collection-inner">
+                    @foreach($collections as $categoryItem)
 
-                            <h3>{{ strtoupper($categoryItem->name) }}</h3>
+                    <div class="swiper-slide">
 
-                            <div class="collection-image">
+                        <a href="{{ url('/collections/'.$categoryItem->slug) }}" class="collection-card">
 
-                                <img
-                                    src="{{ asset($categoryItem->image) }}"
-                                    alt="{{ $categoryItem->name }}"
-                                    loading="lazy">
+                            <div class="collection-inner">
+
+                                <h3>{{ strtoupper($categoryItem->name) }}</h3>
+
+                                <div class="collection-image">
+                                    <img src="{{ asset($categoryItem->image) }}"
+                                         alt="{{ $categoryItem->name }}">
+                                </div>
+
+                                <div class="discover-link">
+                                    DISCOVER MORE
+                                    <span>→</span>
+                                </div>
 
                             </div>
 
-                            <div class="discover-link">
+                        </a>
 
-                                DISCOVER MORE
+                    </div>
 
-                                <span>→</span>
-
-                            </div>
-
-                        </div>
-
-                    </a>
+                    @endforeach
 
                 </div>
 
-            @endforeach
+            </div>
 
         </div>
 
-        <div class="signature-pagination"></div>
-
-    </div>
-
-    <div class="signature-prev">
-        <i class="fa fa-angle-left"></i>
-    </div>
-
-    <div class="signature-next">
-        <i class="fa fa-angle-right"></i>
-    </div>
-
-</div>
+        @endif
 
     </div>
 

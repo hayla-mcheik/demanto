@@ -27,13 +27,23 @@ class FrontendController extends Controller
         $trendingProducts = Product::where('trending','1')->latest()->take(15)->get();
         $newArrivalsProducts = Product::latest()->take(14)->get();
         $featuredProducts = Product::where('featured','1')->latest()->take(14)->get();
-        $categories = Category::where('status', '0')->with('products')->get();
+    $collections = Category::where('status','0')
+        ->where('menu','Collections')
+        ->get();
+
+    $highJewelry = Category::where('status','0')
+        ->where('menu','High Jewelry')
+        ->get();
+
+    $adSignature = Category::where('status','0')
+        ->where('menu','AD Signature')
+        ->get();
         $reviews= ReviewsModel::where('status','0')->get();
         $threecategories = Category::where('status','0')->take(3)->get();
         $blogs = Blogs::all();
 $banner = Banner::first();
 $instaFeeds = InstagramFeed::where('status','0')->latest()->take(8)->get();
-        return view('frontend.index',compact('sliders','about','aboutData','trendingProducts','newArrivalsProducts','featuredProducts','categories','reviews','threecategories','blogs','banner','instaFeeds'));
+        return view('frontend.index',compact('sliders','about','aboutData','trendingProducts','newArrivalsProducts','featuredProducts','collections','highJewelry','adSignature','reviews','threecategories','blogs','banner','instaFeeds'));
     }
 
 
@@ -64,21 +74,58 @@ return redirect()->back()->with('message','Empty Search');
     }
 
 
-    public function categories()
-    {
-        $categories = Category::where('status','0')->get();
-        return view('frontend.collections.category.index',compact('categories'));
-    }
+  public function categories()
+{
+    $collections = Category::where('status','0')
+        ->where('menu','Collections')
+        ->get();
 
+    $highJewelry = Category::where('status','0')
+        ->where('menu','High Jewelry')
+        ->get();
+
+    $adSignature = Category::where('status','0')
+        ->where('menu','AD Signature')
+        ->get();
+
+    return view(
+        'frontend.collections.category.index',
+        compact(
+            'collections',
+            'highJewelry',
+            'adSignature'
+        )
+    );
+}
     public function products($category_slug)
     {
         $inStockCount = Product::where('quantity', '>', 0)->count();
         $outOfStockCount = Product::where('quantity', '=', 0)->count();
         $category = Category::where('slug',$category_slug)->withCount('products')->first();
-        $categories = Category::where('status','0')->get();
+$collections = Category::where('status','0')
+    ->where('menu','Collections')
+    ->get();
+
+$highJewelry = Category::where('status','0')
+    ->where('menu','High Jewelry')
+    ->get();
+
+$adSignature = Category::where('status','0')
+    ->where('menu','AD Signature')
+    ->get();
         if($category){
             // $products = $category->products()->get();
-            return view('frontend.collections.products.index',compact('category','categories','inStockCount','outOfStockCount'));
+return view(
+    'frontend.collections.products.index',
+    compact(
+        'category',
+        'collections',
+        'highJewelry',
+        'adSignature',
+        'inStockCount',
+        'outOfStockCount'
+    )
+);
          } else{
                 return redirect()->back();
             }

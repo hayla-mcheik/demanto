@@ -13,6 +13,25 @@
 <form action="{{ url('admin/category') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
+        <div class="mb-3">
+    <label>Menu</label>
+
+    <select name="menu" class="form-control">
+
+        <option value="Collections">
+            Collections
+        </option>
+
+        <option value="High Jewelry">
+            High Jewelry
+        </option>
+
+        <option value="AD Signature">
+            AD Signature
+        </option>
+
+    </select>
+</div>
     <div class=" col-md-6 mb-3">
         <label>Name</label>
         <input type="text" name="name" class="form-control">

@@ -22,13 +22,23 @@
 @include('layouts.inc.frontend.breadcrumb', [
     'breadcrumbs' => [
         [
-            'title' => 'Products',
+            'title' => $category->menu,
+            'url' => url('/collections')
+        ],
+        [
+            'title' => $category->name,
             'url' => '#'
         ]
     ]
 ])
-
-                <livewire:frontend.product.index :category="$category" :categories="$categories" :inStockCount="$inStockCount" :outOfStockCount="$outOfStockCount" />
+<livewire:frontend.product.index
+    :category="$category"
+    :collections="$collections"
+    :highJewelry="$highJewelry"
+    :adSignature="$adSignature"
+    :inStockCount="$inStockCount"
+    :outOfStockCount="$outOfStockCount"
+/>
 
       
 

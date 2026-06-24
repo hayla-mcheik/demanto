@@ -355,7 +355,7 @@
 }
 .signature-slider{
     overflow:hidden;
-    padding:15px 0 45px;
+    padding:15px 0 25px;
 }
 
 .signature-prev,
@@ -431,7 +431,7 @@
 
 .signature-slider{
 
-    padding-bottom:35px;
+    padding-bottom:10px;
 
 }
 
@@ -461,72 +461,59 @@
     <div class="container-fluid p-4">
 
         <div class="collections-title">
-
             <span>EXPLORE OUR COLLECTIONS</span>
 
             <div class="divider">
                 <span></span>
             </div>
-
         </div>
 
-<div class="position-relative">
+        {{-- ========================= COLLECTIONS ========================= --}}
+        @if($collections->count())
 
-    <div class="swiper signature-slider">
 
-        <div class="swiper-wrapper">
 
-            @foreach($categories as $categoryItem)
+        <div class="position-relative">
 
-                <div class="swiper-slide">
+            <div class="swiper signature-slider collections-slider">
 
-                    <a href="{{ url('/collections/'.$categoryItem->slug) }}"
-                       class="collection-card">
+                <div class="swiper-wrapper">
 
-                        <div class="collection-inner">
+                    @foreach($collections as $categoryItem)
 
-                            <h3>{{ strtoupper($categoryItem->name) }}</h3>
+                    <div class="swiper-slide">
 
-                            <div class="collection-image">
+                        <a href="{{ url('/collections/'.$categoryItem->slug) }}" class="collection-card">
 
-                                <img
-                                    src="{{ asset($categoryItem->image) }}"
-                                    alt="{{ $categoryItem->name }}"
-                                    loading="lazy">
+                            <div class="collection-inner">
+
+                                <h3>{{ strtoupper($categoryItem->name) }}</h3>
+
+                                <div class="collection-image">
+                                    <img src="{{ asset($categoryItem->image) }}"
+                                         alt="{{ $categoryItem->name }}">
+                                </div>
+
+                                <div class="discover-link">
+                                    DISCOVER MORE
+                                    <span>→</span>
+                                </div>
 
                             </div>
 
-                            <div class="discover-link">
+                        </a>
 
-                                DISCOVER MORE
+                    </div>
 
-                                <span>→</span>
-
-                            </div>
-
-                        </div>
-
-                    </a>
+                    @endforeach
 
                 </div>
 
-            @endforeach
+            </div>
 
         </div>
 
-        <div class="signature-pagination"></div>
-
-    </div>
-
-    <div class="signature-prev">
-        <i class="fa fa-angle-left"></i>
-    </div>
-
-    <div class="signature-next">
-        <i class="fa fa-angle-right"></i>
-    </div>
-
-</div>
+        @endif
 
     </div>
 

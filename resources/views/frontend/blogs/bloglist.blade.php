@@ -87,9 +87,9 @@
     /* Exhibition Cards - Grid Layout - Minimized */
     .exhibitions-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 20px;
-        margin: 25px 0;
+        grid-template-columns: repeat(3, minmax(320px, 1fr));
+        gap: 10px;
+        margin: 10px 0;
     }
 
     .exhibition-card {
@@ -127,7 +127,7 @@
     .exhibition-image {
         position: relative;
         overflow: hidden;
-        height: 240px;
+        height: 340px;
         background: linear-gradient(135deg, #faf8f3 0%, #fff 100%);
     }
 
@@ -268,7 +268,7 @@
             gap: 18px;
         }
         .exhibition-image {
-            height: 220px;
+            height: 300px;
         }
     }
 
@@ -285,7 +285,7 @@
             margin: 20px 0;
         }
         .exhibition-image {
-            height: 200px;
+            height: 300px;
         }
         .exhibition-content h3 {
             font-size: 15px;
@@ -297,7 +297,7 @@
 
     @media (max-width: 576px) {
         .exhibition-image {
-            height: 180px;
+            height: 280px;
         }
         .exhibition-content {
             padding: 12px;
@@ -333,6 +333,53 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #9a7b45;
     }
+    .collections-title{
+    text-align:center;
+    margin-bottom:0px;
+}
+
+.collections-title span{
+    display:block;
+    font-family:'Roboto';
+    font-weight: 600;
+    font-size:18px;
+    letter-spacing:4px;
+    color:#6f5d48;
+    text-transform:uppercase;
+}
+
+.divider{
+    width:120px;
+    height:25px;
+    margin:0px auto 0;
+    position:relative;
+}
+
+.divider:before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:1px;
+    background:#d7c4a2;
+}
+
+.divider span{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:12px;
+    height:12px;
+    background:#b39256;
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+@media(max-width:768px){
+    .collections-title span{
+
+    font-size:16px;
+}
+}
 </style>
 
 <!-- Dynamic Breadcrumb -->
@@ -348,12 +395,14 @@
 <!-- Exhibitions Section - Grid Layout (No Slider) -->
 <section class="exhibitions-area">
     <div class="container">
-        <div class="text-center">
-            <span class="section-subtitle">Global Footprint</span>
-            <h2 class="section-title-demanto mt-1">EXHIBITIONS & EVENTS</h2>
-            <p class="text-muted mt-1" style="font-size: 11px; max-width: 600px; margin: 0 auto;">
-                Discover our presence at prestigious international exhibitions worldwide
-            </p>
+           <div class="collections-title mb-3">
+
+            <span>EXHIBITIONS & EVENTS</span>
+
+            <div class="divider">
+                <span></span>
+            </div>
+
         </div>
 
         @if($blogs->count() > 0)

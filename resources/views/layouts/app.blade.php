@@ -95,14 +95,42 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         .phpdebugbar-restore-btn{
             display: none;
         }
+/* Floating WhatsApp Button */
+.whatsapp-btn{
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    background: #C9A96E;
+    color: #fff;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:16px;
+    z-index:9999;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:.3s;
+}
 
+.whatsapp-btn:hover{
+    background:#C9A96E;
+    color:#fff;
+    transform:scale(1.1);
+}
+
+.whatsapp-btn i{
+    line-height:1;
+}
         /* Scroll Top Button */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 45px;
-            height: 45px;
+            width: 30px;
+            height: 30px;
             background: #C9A96E;
             color: #000000;
             border-radius: 50%;
@@ -116,7 +144,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
             z-index: 1040;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-
+.scroll-to-top i{
+    font-size: 14px !important;
+    color: white;
+}
         .scroll-to-top.show {
             opacity: 1;
             visibility: visible;
@@ -140,6 +171,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     </main>
 
  @include('layouts.inc.frontend.footer')
+ <a
+    href="https://wa.me/971508505260?text=Hello%20DEMANTO,%20I%20would%20like%20to%20know%20more%20about%20your%20collections."
+    class="whatsapp-btn"
+    target="_blank"
+>
+    <i class="fab fa-whatsapp"></i>
+</a>
+
     <!-- Scroll Top Button -->
     <div id="scroll-to-top" class="scroll-to-top">
         <i class="fa fa-angle-up fs-4"></i>

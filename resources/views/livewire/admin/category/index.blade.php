@@ -37,6 +37,7 @@
     <thead>
         <tr>
 <th>ID</th>
+<th>Menu</th>
 <th>Name</th>
 <th>Status</th>
 <th>Action</th>
@@ -46,6 +47,9 @@
     @foreach($categories as $category)
     <tr>
         <td>{{ $category->id }}</td>
+        <td>
+    {{ $category->menu }}
+</td>
         <td>{{ $category->name }}</td>
         <td>{{ $category->status == '1' ? 'Hidden':'Visible' }}</td>
         <td>
