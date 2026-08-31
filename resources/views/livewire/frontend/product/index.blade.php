@@ -556,64 +556,101 @@
     ::-webkit-scrollbar-thumb:hover {
         background: var(--boutique-text);
     }
-    /* ================================
-   Pagination
-================================ */
-
-.product-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 35px;
-    margin-bottom: 20px;
-}
-
-.product-pagination nav {
-    display: flex;
-    justify-content: center;
-}
+/* ============================================================
+   LUXURY PAGINATION – Enhanced
+============================================================ */
 
 .product-pagination .pagination {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product-pagination .page-item .page-link {
-    width: 40px;
-    height: 40px;
+    min-width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(179, 146, 86, 0.25);
-    border-radius: 10px;
+    border: 1px solid var(--luxury-border);
+    border-radius: 12px;
 
     background: #fff;
-    color: #6E6E6E;
+    color: var(--demanto-muted);
 
     font-family: "Cormorant Garamond", serif;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
 
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
 }
 
-.product-pagination .page-item .page-link:hover {
-    background: #B39256;
-    border-color: #B39256;
-    color: #fff;
+/* Hover – gold glow */
+.product-pagination .page-item .page-link:hover:not(.disabled) {
+    background: var(--demanto-gold-light);
+    border-color: var(--demanto-gold);
+    color: var(--demanto-gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(155, 119, 56, 0.15);
 }
 
+/* Active page – solid gold */
 .product-pagination .page-item.active .page-link {
-    background: #B39256;
-    border-color: #B39256;
+    background: var(--demanto-gold);
+    border-color: var(--demanto-gold);
     color: #fff;
+    box-shadow: 0 4px 14px rgba(155, 119, 56, 0.35);
+    transform: scale(1.05);
 }
 
+/* Disabled (previous/next when not available) */
 .product-pagination .page-item.disabled .page-link {
-    opacity: 0.4;
-    background: #FDFBF7;
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: var(--demanto-bg);
+    border-color: var(--luxury-border);
+}
+
+/* Icons inside prev/next */
+.product-pagination .page-item .page-link i {
+    font-size: 14px;
+    line-height: 1;
+    color: inherit;
+}
+
+/* Small screens – compact */
+@media (max-width: 576px) {
+    .product-pagination .page-item .page-link {
+        min-width: 36px;
+        height: 36px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    .product-pagination .pagination {
+        gap: 4px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 400px) {
+    .product-pagination .page-item .page-link {
+        min-width: 32px;
+        height: 32px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+/* Optional – add a subtle “page x of y” indicator above pagination */
+.product-pagination .pagination-info {
+    text-align: center;
+    font-size: 14px;
+    color: var(--demanto-muted);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    font-family: "Cormorant Garamond", serif;
 }
 </style>
 
@@ -767,9 +804,44 @@
                                 </div>
                                 @endforelse
                             </div>
-                            @if($products->hasPages())
-    <div class="d-flex justify-content-center mt-5 mb-4">
-        {{ $products->links('pagination::bootstrap-5') }}
+@if($products->hasPages())
+    <div class="product-pagination mt-5 mb-4">
+        <nav aria-label="Pilot pagination">
+            <ul class="pagination pagination-sm mb-0">
+                {{-- Previous --}}
+                @if ($products->onFirstPage())
+                    <li class="page-item disabled"><span class="page-link"><i class="fa fa-chevron-left"></i></span></li>
+                @else
+                    <li class="page-item">
+                        <button type="button" class="page-link" wire:click="previousPage" wire:loading.attr="disabled">
+                            <i class="fa fa-chevron-left"></i>
+                        </button>
+                    </li>
+                @endif
+
+                {{-- Pagination Elements --}}
+                @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                    @if ($page == $products->currentPage())
+                        <li class="page-item active" aria-current="page"><span class="page-link">{{ $page }}</span></li>
+                    @else
+                        <li class="page-item">
+                            <button type="button" class="page-link" wire:click="gotoPage({{ $page }})">{{ $page }}</button>
+                        </li>
+                    @endif
+                @endforeach
+
+                {{-- Next --}}
+                @if ($products->hasMorePages())
+                    <li class="page-item">
+                        <button type="button" class="page-link" wire:click="nextPage" wire:loading.attr="disabled">
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                    </li>
+                @else
+                    <li class="page-item disabled"><span class="page-link"><i class="fa fa-chevron-right"></i></span></li>
+                @endif
+            </ul>
+        </nav>
     </div>
 @endif
                         </div>
