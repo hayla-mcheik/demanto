@@ -556,6 +556,65 @@
     ::-webkit-scrollbar-thumb:hover {
         background: var(--boutique-text);
     }
+    /* ================================
+   Pagination
+================================ */
+
+.product-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.product-pagination nav {
+    display: flex;
+    justify-content: center;
+}
+
+.product-pagination .pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.product-pagination .page-item .page-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(179, 146, 86, 0.25);
+    border-radius: 10px;
+
+    background: #fff;
+    color: #6E6E6E;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+
+    transition: all 0.3s ease;
+}
+
+.product-pagination .page-item .page-link:hover {
+    background: #B39256;
+    border-color: #B39256;
+    color: #fff;
+}
+
+.product-pagination .page-item.active .page-link {
+    background: #B39256;
+    border-color: #B39256;
+    color: #fff;
+}
+
+.product-pagination .page-item.disabled .page-link {
+    opacity: 0.4;
+    background: #FDFBF7;
+}
 </style>
 
 <section class="product-area">
@@ -708,6 +767,11 @@
                                 </div>
                                 @endforelse
                             </div>
+                            @if($products->hasPages())
+    <div class="d-flex justify-content-center mt-5 mb-4">
+        {{ $products->links('pagination::bootstrap-5') }}
+    </div>
+@endif
                         </div>
                     </div>
                 </div>
