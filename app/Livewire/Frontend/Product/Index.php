@@ -18,7 +18,7 @@ public $collections;
 public $highJewelry;
 public $adSignature;
     public $brandInputs = [], $priceInput;
-    public $perPage = 2;
+    public $perPage = 20;
     
     
     protected $queryString = [
