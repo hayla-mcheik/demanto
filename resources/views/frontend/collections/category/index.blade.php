@@ -41,11 +41,8 @@
 
 
                                         <div class="collection-image">
-
-                                     <img
+<img
     src="{{ asset($categoryItem->image) }}"
-    width="260"
-    height="160"
     loading="eager"
     decoding="async"
     alt="{{ $categoryItem->name }}">
@@ -395,7 +392,7 @@ padding-top: 20px;
 
     position:relative;
 
-    height:190px;
+    height:160px;
 
     display:flex;
 
@@ -406,6 +403,7 @@ padding-top: 20px;
     overflow:hidden;
 
     contain:layout paint;
+    padding: 15px;
 }
 
 
@@ -459,41 +457,28 @@ padding-top: 20px;
 ==================================================*/
 
 .collection-image img {
+    display: block;
 
-    display:block;
-
-    opacity:0;
-
-    visibility:hidden;
-
-
+    width: auto;
+    height: auto;
 
     max-width: 100%;
-
     max-height: 160px;
 
     object-fit: contain;
 
     position: relative;
-
     z-index: 2;
 
-    transform: translateY(-8px) scale(1.04);
-
+    transform: translateY(-8px);
 
     transition:
-
         transform .45s ease,
-
         filter .45s ease;
 
-
     filter:
-
         brightness(1.02)
-
         drop-shadow(0 10px 10px rgba(0, 0, 0, .08))
-
         drop-shadow(0 22px 18px rgba(0, 0, 0, .06));
 }
 .collection-image.loaded img{
@@ -505,7 +490,7 @@ padding-top: 20px;
 
 .collection-card:hover .collection-image img {
 
-    transform: translateY(-12px) scale(1.07);
+  transform: translateY(-12px);
 }
 
 
@@ -639,7 +624,7 @@ margin-top: 20px;
 
     .collection-image {
 
-        height: 140px;
+        height: 126px;
 
         padding: 0 15px;
     }
@@ -647,7 +632,7 @@ margin-top: 20px;
 
     .collection-image img {
 
-        max-height: 130px;
+        max-height: 126px;
 
         max-width: 100%;
     }
@@ -719,7 +704,7 @@ margin-top: 20px;
 
     .collection-image {
 
-        height: 140px;
+        height: 126px;
     }
 
 
