@@ -1,4 +1,4 @@
-<div class="page-header-area bg-img" data-bg-img="{{ asset('assets/img/breadcrumb.jpg') }}">
+<div class="page-header-area bg-img" data-bg-img="{{ asset('assets/img/breadcumb.jpeg') }}">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
