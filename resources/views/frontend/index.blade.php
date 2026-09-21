@@ -1,7 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Home Page')
-
-@section('content')
+@section('title', 'DEMANTO Jewelry | Timeless Luxury & Fine Jewelry')
+@section('meta_description')
+<meta name="description"
+      content="Discover DEMANTO's timeless luxury jewelry collection, crafted with elegance and sophistication. Explore our latest pieces and experience exceptional craftsmanship.">
+@endsection
+      @section('content')
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 

@@ -3,6 +3,9 @@
 use App\Http\Controllers\Admin\AboutDataController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Models\Blogs;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail; // Import the Mail facade
@@ -22,6 +25,16 @@ use Illuminate\Support\Facades\Artisan;
 //     return view('welcome');
 // });
 
+Route::get('/sitemap.xml', function () {
+
+    $categories = Category::all();
+    $products = Product::all();
+    $blogs = Blogs::all();
+
+    return response()
+        ->view('sitemap', compact('categories', 'products', 'blogs'))
+        ->header('Content-Type', 'application/xml');
+});
 Auth::routes([
     'verify' => true
 ]);
