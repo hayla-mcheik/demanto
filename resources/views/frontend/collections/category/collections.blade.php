@@ -542,7 +542,7 @@ padding-top: 20px;
 
     position: relative;
 
-    height: 190px;
+    height: 160px;
 
     display: flex;
 
