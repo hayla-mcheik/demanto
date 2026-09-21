@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $product->name . ' | DEMANTO Jewelry')
+@section('title', $product->name . ' | DEMANTO')
 {{ $product->meta_title }}
 @endsection
 
@@ -8,9 +8,7 @@
 @endsection
 
 @section('meta_description')
-<meta name="description"
-      content="{{ Str::limit(strip_tags($product->description), 155) }}">
-{{-- {{ $product->meta_description }} --}}
+{{ $product->meta_description }}
 @endsection
 
 @section('content')
