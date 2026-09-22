@@ -56,25 +56,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     {{-- DEMANTO Organization + Website Schema --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@graph": [
+    "@@context": "https://schema.org",
+    "@@graph": [
         {
-            "@type": "Organization",
-            "@id": "{{ url('/') }}#organization",
+            "@@type": "Organization",
+            "@@id": "{{ url('/') }}#organization",
             "name": "DEMANTO",
             "url": "{{ url('/') }}",
             "logo": {
-                "@type": "ImageObject",
+                "@@type": "ImageObject",
                 "url": "{{ asset('assets/img/logogold.png') }}"
             }
         },
         {
-            "@type": "WebSite",
-            "@id": "{{ url('/') }}#website",
+            "@@type": "WebSite",
+            "@@id": "{{ url('/') }}#website",
             "url": "{{ url('/') }}",
             "name": "DEMANTO",
             "publisher": {
-                "@id": "{{ url('/') }}#organization"
+                "@@id": "{{ url('/') }}#organization"
             }
         }
     ]
